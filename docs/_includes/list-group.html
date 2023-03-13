@@ -1,0 +1,24 @@
+<div>{% assign list_group = include.list_group %}
+  {%- if list_group.size > 0 -%}
+  {%- if list_group.label -%}
+  <h2>{{ list_group.label }}</h2>
+  {%- endif -%}
+  <ul class="list-group list-group">
+    {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+    {%- for item in list_group -%}
+    <li class="list-group-item">
+      <span class="item-meta">{{ item.date | date: date_format }}</span>
+      <h3>
+        <a class="item-link" href="{{ item.url | relative_url }}">
+          {{ item.title | escape }}
+        </a>
+      </h3>
+      {%- if site.show_excerpts -%}
+      {{ item.excerpt }}
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+
+</div>
