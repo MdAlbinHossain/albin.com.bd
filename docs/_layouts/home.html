@@ -2,18 +2,37 @@
 layout: base
 ---
 
-<div>
+<header>
   {%- if page.title -%}
   <h1>{{ page.title }}</h1>
   {%- endif -%}
+</header>
+<conteent>
 
   {{ content }}
 
-  <h2 class="mt-3">Featured Projects</h2>
-  {%- include list-group.html list_group=site.projects -%}
+  <div>
+    {% assign posts = site.posts %}
+    {%- if posts.size > 0 -%}
+    {%- if page.list_title -%}
+    <h2>{{ page.list_title }}</h2>
+    {%- endif -%}
+    <ul class="list-unstyled">
+      {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+      {%- for post in posts -%}
+      <li>
+        <span>{{ post.date | date: date_format }}</span>
+        <h3> <a href="{{ post.url | relative_url }}">
+            {{ post.title | escape }} </a></h3>
+        {%- if site.show_excerpts -%}
+        {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+
+  </div>
 
 
-  <h2 class="mt-3">Recent Posts</h2>
-  {%- include list-group.html list_group=site.posts -%}
-
-</div>
+</conteent>

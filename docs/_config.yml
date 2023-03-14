@@ -8,11 +8,6 @@ author:
 baseurl: ""
 url: "https://MdAlbinHossain.github.io"
 
-collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
-
 social_links:
   - { platform: linkedin,       user_url: "https://www.linkedin.com/in/MdAlbinHossain" }
   - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
@@ -21,8 +16,6 @@ social_links:
   - { platform: twitter,        user_url: "https://twitter.com/MdAlbinHossain" }
   - { platform: github,         user_url: "https://github.com/MdAlbinHossain" }
   - { platform: telegram,       user_url: "https://t.me/MdAlbinHossain" }
-
-show_excerpts: true
 
 exclude: 
   - Gemfile

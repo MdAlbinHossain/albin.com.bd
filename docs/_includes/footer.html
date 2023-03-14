@@ -1,10 +1,16 @@
-<div class="container fixed-bottom bg-body-tertiary">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      {% if site.author.name -%}
-      <span class="mb-3 mb-md-0 text-muted">&copy;{{ site.author.name | escape }}</span>
-      {% endif -%}
-    </div>
-    {%- include social.html -%}
-  </footer>
-</div>
+<footer class="footer fixed-bottom border-top bg-light">
+  <div class="container text-center py-3">
+    {% if site.author.name -%}
+    <span class="mb-3 ms-3 mb-md-0 text-muted">&copy;{{ site.author.name | escape }}</span>
+    {% endif -%}
+    <ul class="nav justify-content-center list-unstyled">
+      {%- for entry in site.social_links -%}
+      <li class="ms-3">
+        <a class="text-muted" href="{{ entry.user_url }}" target="_blank"
+          title="{{ entry.title | default: entry.platform }}"><i class="{{ 'bi bi-' | append: entry.platform }}"
+            style="color: rgb(0, 0, 0);"></i> </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</footer>
