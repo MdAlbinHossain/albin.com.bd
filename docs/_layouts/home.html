@@ -22,7 +22,7 @@ layout: base
       {%- for post in posts -%}
       <li>
         <span>{{ post.date | date: date_format }}</span>
-        <h3> <a href="{{ post.url | relative_url }}">
+        <h3> <a class="text-decoration-none" href="{{ post.url | relative_url }}">
             {{ post.title | escape }} </a></h3>
         {%- if site.show_excerpts -%}
         {{ post.excerpt }}
