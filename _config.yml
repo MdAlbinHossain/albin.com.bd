@@ -16,6 +16,3 @@ social_links:
   - { platform: twitter,        user_url: "https://twitter.com/MdAlbinHossain" }
   - { platform: github,         user_url: "https://github.com/MdAlbinHossain" }
   - { platform: telegram,       user_url: "https://t.me/MdAlbinHossain" }
-
-exclude: 
-  - Gemfile
