@@ -1,7 +1,7 @@
 <footer class="footer mt-auto border-top bg-light">
   <div class="container text-center py-3">
     {% if site.author.name -%}
-    <span class="mb-3 ms-3 mb-md-0 text-muted">&copy;{{ site.author.name | escape }}</span>
+    <span class="m-3 text-muted">&copy;{{ site.title }} | {{ site.author.name | escape }}</span>
     {% endif -%}
     <ul class="nav justify-content-center list-unstyled">
       {%- for entry in site.social_links -%}
