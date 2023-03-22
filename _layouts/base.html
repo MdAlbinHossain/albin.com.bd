@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: " en" }}" class="h-100">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" class="h-100">
 
 {%- include head.html -%}
 
@@ -7,7 +7,7 @@
 
   {%- include header.html -%}
 
-  <main class="my-2 pt-4 flex-shrink-0">
+  <main class="mt-5 flex-shrink-0">
     <div class="container">
       {{ content }}
     </div>
