@@ -8,7 +8,7 @@ layout: home
     <div class="mt-3">
       <h2>Md. Albin Hossain</h2>
       <div>
-        <a class="btn btn-outline-light btn-lg shadow my-1 mx-2" href="./assets/Resume.pdf">Download CV</a>
+        <a class="btn btn-outline-light btn-lg shadow my-1 mx-2" href="./assets/Albin's%20Resume.pdf">Download CV</a>
         <a class="btn btn-info btn-lg shadow my-1 mx-2" href="/contact">Contact Me</a>
       </div>
     </div>
