@@ -3,7 +3,7 @@ import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 export const onRequest: PagesFunction = (context) => mailChannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "Albin", email: "md.albin.hossain@icloud.com" }],
+      to: [{ name: "Support", email: "support@albin.com.bd" }],
       "dkim_domain": "albin.com.bd",
       "dkim_selector": "mailchannels",
       "dkim_private_key": context.env.DKIM_PRIVATE_KEY
