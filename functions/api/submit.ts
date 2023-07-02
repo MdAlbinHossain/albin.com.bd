@@ -25,9 +25,10 @@ export async function onRequestPost(context) {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
+    if (resp.statusText == "Accepted") respContent = "Thank you " + input.get("name") + ".\n\nWe recieved your message.";
+    else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
   }
 
-  let htmlContent = `<html><head></head><body><p>Click to send message: <form method="post"><input type="submit" value="Send"/></form></p><pre>${respContent}</pre></body></html>`;
-  return new Response(htmlContent, { headers: { "content-type": "text/html" }, });
+  let htmlContent = `<html><head></head><body><pre>${respContent}</pre></body></html>`;
+  return new Response(htmlContent, { status: 302, headers: { "content-type": "text/html", Location: "/thank-you" } });
 }
