@@ -1,21 +1,23 @@
 export async function onRequestPost(context) {
   let input = await context.request.formData();
+  let to = input.get("to");
+  if (input.get("password") != context.env.PASSWORD) to = null;
   let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [{ email: "mail@albin.com.bd", name: "Albin" },],
+        to: [{ email: to ?? "mail@albin.com.bd", },],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
       },],
-      from: { email: "contact@albin.com.bd", name: input.get("name") },
-      reply_to: { email: input.get("email"), name: input.get("name") },
-      subject: input.get("subject"),
+      from: { email: input.get("from") ?? "contact@albin.com.bd", name: input.get("name") ?? "Albin" },
+      reply_to: { email: input.get("email") ?? "contact@albin.com.bd", },
+      subject: input.get("subject") ?? "No Subject",
       content: [{
         type: "text/html",
-        value: input.get("message"),
+        value: input.get("message") ?? "No Message",
       },],
     }),
   });
@@ -25,7 +27,7 @@ export async function onRequestPost(context) {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    if (resp.statusText == "Accepted") respContent = "<h2>Thank you " + input.get("name") + ".</h2><h3>We recieved your message.</h3>";
+    if (resp.statusText == "Accepted") respContent = "<h2>Done!</h2><h3>I recieved your message.</h3>";
     else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
   }
 
