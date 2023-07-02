@@ -12,7 +12,7 @@ export async function onRequestPost(context) {
       },],
       from: { email: "contact@albin.com.bd", name: "Contact Form" },
       reply_to: { email: input.get("email") },
-      subject: input.get("subject"),
+      subject: "Hello",
       content: [{
         type: "text/plain",
         value: input.get("message"),
