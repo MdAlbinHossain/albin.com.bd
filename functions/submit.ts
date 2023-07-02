@@ -12,9 +12,9 @@ export async function onRequestPost(context) {
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
       },],
-      from: { email: input.get("from") ?? "contact@albin.com.bd", name: input.get("name") ?? "Albin" },
-      reply_to: { email: input.get("email") ?? "contact@albin.com.bd", },
-      subject: input.get("subject") ?? "No Subject",
+      from: { email: input.get("email") ?? "anonymous@albin.com.bd", name: input.get("name") ?? "Anonymous" },
+      reply_to: { email: input.get("email") ?? "anonymous@albin.com.bd", name: input.get("name") ?? "Anonymous" },
+      subject: input.get("subject") ?? "Anonymous",
       content: [{
         type: "text/html",
         value: input.get("message") ?? "No Message",
@@ -27,10 +27,10 @@ export async function onRequestPost(context) {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    if (resp.statusText == "Accepted") respContent = "<h1>Done! Message Sent!</h1>";
+    if (resp.statusText == "Accepted") respContent = "Done! Message Sent!";
     else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
   }
 
-  let htmlContent = `<html><head></head><body><pre>${respContent}</pre></body></html>`;
+  let htmlContent = `<html><head></head><body><h1 style="text-align:center">${respContent}</h1></body></html>`;
   return new Response(htmlContent, { headers: { "content-type": "text/html" }, });
 }
