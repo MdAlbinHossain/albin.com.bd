@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    if (resp.statusText == "Accepted") respContent = "<h2>Done!</h2><h3>I recieved your message.</h3>";
+    if (resp.statusText == "Accepted") respContent = "<h1>Done! Message Sent!</h1>";
     else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
   }
 
