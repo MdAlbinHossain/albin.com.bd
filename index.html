@@ -463,21 +463,23 @@
                     md.albin.hossain@icloud.com</div>
                 </div>
                 <div class="mt-5">
-                  <form  action="/api/submit" 
-                    method="POST">
+                  <form action="/api/submit" method="POST">
                     <div class="form-outline mb-4">
-                      <input type="text" id="name" name="name" placeholder="Name" class="form-control" required />
+                      <input type="text" id="name" name="name" placeholder="Your Name" class="form-control" required />
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="email" id="email" name="email" placeholder="Email address" class="form-control"
+                      <input type="email" id="email" name="email" placeholder="Your Email" class="form-control"
+                        required />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control"
                         required />
                     </div>
                     <div class="form-outline mb-4">
                       <textarea class="form-control" name="message" style="resize: none;" id="message"
                         placeholder="Message" rows="5" required></textarea>
                     </div>
-                    <button class="btn btn-info btn-block mb-4 form-control"
-                      type="submit"><span>Send</span></button>
+                    <button class="btn btn-info btn-block mb-4 form-control" type="submit"><span>SEND</span></button>
                   </form>
                 </div>
               </div>

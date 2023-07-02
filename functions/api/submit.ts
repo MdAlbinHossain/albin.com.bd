@@ -5,16 +5,16 @@ export async function onRequestPost(context) {
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [{ email: "contact@albin.com.bd", name: "Contact Form" },],
+        to: [{ email: "mail@albin.com.bd", name: "Albin" },],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
       },],
-      from: { email: "contact@albin.com.bd", name: "Contact Form" },
-      reply_to: { email: input.get("email") },
-      subject: "Hello",
+      from: { email: "contact@albin.com.bd", name: input.get("name") },
+      reply_to: { email: input.get("email"), name: input.get("name") },
+      subject: input.get("subject"),
       content: [{
-        type: "text/plain",
+        type: "text/html",
         value: input.get("message"),
       },],
     }),
