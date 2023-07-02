@@ -30,5 +30,5 @@ export async function onRequestPost(context) {
   }
 
   let htmlContent = `<html><head></head><body><pre>${respContent}</pre></body></html>`;
-  return new Response(htmlContent, { status: 302, headers: { "content-type": "text/html", Location: "/thank-you" } });
+  return new Response(htmlContent, { headers: { "content-type": "text/html" }, });
 }
