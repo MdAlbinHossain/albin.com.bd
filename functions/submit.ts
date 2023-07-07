@@ -1,13 +1,16 @@
 export async function onRequestPost(context) {
   let input = await context.request.formData();
-  let to = input.get("to");
-  if (input.get("password") != context.env.PASSWORD) to = null;
+  let to = [{ email: "mail@albin.com.bd" }];
+  if (input.get("password") == context.env.PASSWORD) {
+    let arr = input.get("to").split(",");
+    if (arr.length > 0) to = arr.map((email) => { return { email: email.trim() }; });
+  }
   let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [{ email: to ?? "mail@albin.com.bd", },],
+        to: to,
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
