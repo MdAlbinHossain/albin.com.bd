@@ -1,545 +1,429 @@
 <!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Albin's Profile</title>
-
+  <meta name="description" content="Albin's Profile is personal website of Md. Albin Hossain">
+  <meta name="keywords"
+    content="Albin's Profile, Md. Albin Hossain, Albin, Albin Hossain, Md. Albin, Md. Albin Hossain, Albin's website, Albin's Portfolio, Albin's Page, Albin's site, Albin's web, Albin's portal">
   <meta name="author" content="Md. Albin Hossain">
-  <meta name="description" content="Albin's Personal website">
+  <meta name="robots" content="index, follow">
 
-  <meta property="og:image" content="./assets/images/favicon.jpg" />
-  <meta property="og:title" content="Albin's Profile" />
-  <meta property="og:description" content="Albin's Personal website" />
-  <meta property="og:url" content="https://albin.com.bd" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Albin's Profile" />
+  <meta property="og:title" content="Albin's Profile">
+  <meta property="og:description" content="Albin's Profile is personal website of Md. Albin Hossain">
+  <meta property="og:image" content="https://albin.com.bd/favicon.jpg">
+  <meta property="og:url" content="https://albin.com.bd/">
+  <meta property="og:site_name" content="Albin's Profile">
+  <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@MdAlbinHossain" />
-  <meta name="twitter:creator" content="@MdAlbinHossain" />
-  <meta name="twitter:title" content="Albin's Profile" />
-  <meta name="twitter:description" content="Albin's Personal website" />
-  <meta name="twitter:image" content="./assets/images/favicon.jpg" />
-  <meta name="twitter:image:alt" content="Albin's Profile" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@MdAlbinHossain">
+  <meta name="twitter:creator" content="@MdAlbinHossain">
+  <meta name="twitter:title" content="Albin's Profile">
+  <meta name="twitter:description" content="Albin's Profile is personal website of Md. Albin Hossain">
+  <meta name="twitter:image" content="https://albin.com.bd/favicon.jpg">
+
+  <meta name="application-name" content="Albin's Profile">
+
+  <link rel="canonical" href="https://albin.com.bd/">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 48px;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 36px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .project-card p {
+      margin: 0;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.4;
+    }
 
 
-  <link href="./assets/style.css" rel="stylesheet">
+    .project-card .project-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
 
-  <!-- Favicons -->
-  <link href="./assets/images/favicon.jpg" rel="icon">
-  <link href="./assets/images/favicon.jpg" rel="apple-touch-icon">
+    .project-card .project-info i {
+      margin-right: 5px;
+    }
 
-  <noscript>
-    <style type="text/css">
-      [data-aos] {
-        opacity: 1 !important;
-        transform: translate(0) scale(1) !important;
+    .project-card a {
+      display: inline-block;
+      color: #007bff;
+      font-size: 16px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .project-card a:hover {
+      color: #0056b3;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-info,
+    .contact-form {
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .contact-form h3 {
+      margin: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    form input,
+    form textarea {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #f8f8f8;
+    }
+
+    form button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #444;
+    }
+
+    .contact-info {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .contact-info h1 {
+      margin: 0;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .contact-info h3 {
+      margin: 0;
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      color: #666;
+      margin: 5px 0;
+    }
+
+    .contact-info a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      color: #007bff;
+      font-size: 24px;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #0056b3;
+    }
+
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Media queries for responsive layout */
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 36px;
       }
-    </style>
-  </noscript>
 
+      nav ul li a {
+        font-size: 18px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 32px;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 10px 0;
+      }
+
+      nav ul li a {
+        font-size: 16px;
+      }
+
+      .projects-container {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
 </head>
 
-<body class="mt-3" id="top">
+<body>
   <header>
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Albin's Profile</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
-          aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarToggler">
-          <div class="navbar-nav">
-            <a class="nav-link" href="#">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#skills">Skills</a>
-            <a class="nav-link" href="#experience">Experience</a>
-            <a class="nav-link" href="#education">Education</a>
-            <a class="nav-link" href="#profiles">CP Profiles</a>
-            <a class="nav-link" href="#project">Projects</a>
-            <a class="nav-link" href="#contact">Contact</a>
-          </div>
-        </div>
-      </div>
+    <h1>Md. Albin Hossain</h1>
+    <nav>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
-  <section>
-    <div class="container">
-      <div class="resume-container">
 
-        <div class="card shadow bg-dark my-5 p-5" id="intro">
-          <div class="text-white text-center">
-            <div class="avatar p-1"><img class="img-thumbnail shadow" src="./assets/images/avatar.jpg" width="160"
-                height="160" /></div>
-            <div class="header-bio mt-3">
-              <div data-aos="zoom-in" data-aos-delay="0">
-                <h2>Md. Albin Hossain</h2>
-                <!-- <p>Competitve Programmer</p> -->
-              </div>
-              <div class="social-links m-3" data-aos="zoom-in" data-aos-delay="200">
-                <a class="bnt btn-link text-light m-2" href="https://twitter.com/MdAlbinHossain" title="Twitter"><i
-                    class="bi-twitter"></i></a>
-                <a class="bnt btn-link text-light m-2" href="https://www.facebook.com/Md.Albin.Hossain"
-                  title="Facebook"><i class="bi-facebook"></i></a>
-                <a class="bnt btn-link text-light m-2" href="https://www.instagram.com/Md.Albin.Hossain"
-                  title="Instagram"><i class="bi-instagram"></i></a>
-                <a class="bnt btn-link text-light m-2" href="https://www.linkedin.com/in/MdAlbinHossain"
-                  title="Linkedin"><i class="bi-linkedin"></i></a>
-                <a class="bnt btn-link text-light m-2" href="https://www.github.com/MdAlbinHossain" title="Github"><i
-                    class="bi-github"></i></a>
-              </div>
-              <div><a class="btn btn-outline-light btn-lg shadow mt-1 mx-2" href="./Albin's%20Resume.pdf"
-                  data-aos="fade-right" data-aos-delay="700">Download CV</a><a
-                  class="btn btn-info btn-lg shadow mt-1 mx-2" href="#contact" data-aos="fade-left"
-                  data-aos-delay="700">Contact Me</a></div>
-            </div>
+  <main>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-container" id="projectsContainer"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-container" id="contactContainer">
+        <div class="contact-info">
+          <h3>Get in touch</h3>
+          <p>Feel free to reach out if you have any questions or suggestions.</p>
+          <h1>Md. Albin Hossain</h1>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:mail@albin.com.bd">mail@albin.com.bd</a></p>
+          <p> <i class="fas fa-map-marker-alt"></i> Fatullah, Narayanganj, Bangladesh</p>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/MdAlbinHossain" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.github.com/MdAlbinHossain" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.twitter.com/MdAlbinHossain" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/MdAlbinHossain" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/MdAlbinHossain" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@MdAlbinHossain" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+
+            <a href="https://t.me/MdAlbinHossain" target="_blank"> <i class="fab fa-telegram"></i> </a>
+
           </div>
         </div>
+        <div class="contact-form">
+          <h3>Send a message</h3>
+          <form method="POST" action="https://mdalbinhossain.pages.dev/submit">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-        <div class="card shadow bg-white my-5 p-5" id="about">
-          <div class="about-section">
-            <div class="row">
-              <div class="col-md-6">
-                <h2 class="h2 fw-light mb-4">About Me</h2>
-                <p>Hello! I'm Md. Albin Hossain. I am a <strong>Competitive Programmer</strong>.</p>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-              </div>
-              <div class="col-md-5 offset-lg-1">
-                <div class="row mt-2">
-                  <!-- <h2 class="h2 fw-light mb-4">Bio</h2> -->
-                  <div class="col-sm-5">
-                    <div class="pb-2 fw-bolder"><i class="bi-telephone pe-2 text-muted"
-                        style="width:24px;opacity:0.85;"></i> Phone</div>
-                  </div>
-                  <div class="col-sm-7">
-                    <div class="pb-2">+880 1572161136</div>
-                  </div>
-                  <div class="col-sm-5">
-                    <div class="pb-2 fw-bolder"><i class="bi-envelope pe-2 text-muted"
-                        style="width:24px;opacity:0.85;"></i> Email</div>
-                  </div>
-                  <div class="col-sm-7">
-                    <div class="pb-2">md.albin.hossain@icloud.com</div>
-                  </div>
-                  <div class="col-sm-5">
-                    <div class="pb-2 fw-bolder"><i class="bi-house pe-2 text-muted"
-                        style="width:24px;opacity:0.85;"></i> Address</div>
-                  </div>
-                  <div class="col-sm-7">
-                    <div class="pb-2">Fatulla, Narayanganj, Dhaka</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
 
-        <div class="card shadow bg-white my-5 p-5" id="facts">
-          <h2 class="h2 fw-light mb-4">Facts</h2>
+            <textarea id="message" rows="4" name="message" placeholder="Message" required></textarea>
 
-          <div class="row justify-content-between">
-
-            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
-              <div class="count-box">
-                <div>
-                  <i class="bi-puzzle" style="font-size: 3rem;"></i>
-                </div>
-                <span>1800+</span>
-                <p>Problems <strong>Solved</strong></p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="100">
-              <div class="count-box">
-                <div>
-                  <i class="bi-journal-code" style="font-size: 3rem;"></i>
-                </div>
-                <span>15+</span>
-                <p>Problems <strong>Prepared</strong></p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
-              <div class="count-box">
-                <div>
-                  <i class="bi-trophy" style="font-size: 3rem;"></i>
-                </div>
-                <span>5+</span>
-                <p><strong>Contest</strong> Managed & Judged</p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="300">
-              <div class="count-box">
-                <div>
-                  <i class="bi-journals" style="font-size: 3rem;"></i>
-                </div>
-                <span>10+</span>
-                <p><strong>Projects</strong></p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="skills">
-          <div class="skills-section">
-            <h2 class="h2 fw-light mb-4">Skills</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3"><span class="fw-bolder">C/C++</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100"
-                      data-aos-anchor=".skills-section" style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                      aria-valuemax="100">Fluent</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">Python</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="200"
-                      data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                      aria-valuemax="100">Intermediate</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">Kotlin</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300"
-                      data-aos-anchor=".skills-section" style="width: 60%" aria-valuenow="60" aria-valuemin="0"
-                      aria-valuemax="100">Pupil</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">JavaScript</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300"
-                      data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                      aria-valuemax="100">Advance</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3"><span class="fw-bolder">Programming and Problem Solving</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right"
-                      data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85"
-                      aria-valuemin="0" aria-valuemax="100">Specialist</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">Firebase</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right"
-                      data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 50%" aria-valuenow="50"
-                      aria-valuemin="0" aria-valuemax="100">Beginner</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">Android Jetpack</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right"
-                      data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 70%" aria-valuenow="70"
-                      aria-valuemin="0" aria-valuemax="100">Intermediate</div>
-                  </div>
-                </div>
-                <div class="mb-3"><span class="fw-bolder">MySQL</span>
-                  <div class="progress my-2 rounded" style="height: 20px">
-                    <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right"
-                      data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 60%" aria-valuenow="60"
-                      aria-valuemin="0" aria-valuemax="100">Beginner</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="experience">
-          <div class="work-experience-section">
-            <h2 class="h2 fw-light mb-4">Volunteer Experience</h2>
-            <div class="timeline">
-              <div class="timeline-card timeline-card-info card shadow-sm" data-aos="fade-in" data-aos-delay="0">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Problem Setter</div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">January, 2020 - Present</div>
-                  <div>I have set 15+ Problems for intra-varsity programming contests.</div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-info card shadow-sm" data-aos="fade-in" data-aos-delay="200">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Judging Director</div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">January, 2022 - Present</div>
-                  <div>I have managed two programming contests: Unlock the Algorithm Contest
-                    (Spring2022) and Take-Off Programming Contest Preliminary A (Fall 2022).
-                  </div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-info card shadow-sm" data-aos="fade-in" data-aos-delay="400">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Judge</div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">January, 2020 - Present</div>
-                  <div>I have Judged 5+ contests including Take-Off Programming Contest (Spring 2022)
-                    Advance Camp Selection Contest (Spring 2021).</div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-info card shadow-sm" data-aos="fade-in" data-aos-delay="400">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Trainer</div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">January, 2020 - Present</div>
-                  <div>I have trained rising Competitive Programmers in DIU Advanced Programming Camp.</div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-info card shadow-sm" data-aos="fade-in" data-aos-delay="400">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Lab Prefect</div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">September, 2019 - Present</div>
-                  <div>I have assisted students with <strong>Algorithms</strong> and <strong>Programming and Problem
-                      Solving</strong> courses under the instructors Mr. Saiful Islam (Assistant Professor), and Ms.
-                    Tanzina Afroz Rimi (Lecturer),
-                    Department fo CSE, Daffodil International University.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="education">
-          <div class="education-section">
-            <h2 class="h2 fw-light mb-4">Education</h2>
-            <div class="timeline">
-              <div class="timeline-card timeline-card-success card shadow-sm" data-aos="fade-in" data-aos-delay="200">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Master of Engineering in Computer Science and Engineering <span
-                      class="text-muted h6">from Bangladesh Uninversity of Engineering and Technology</span>
-                  </div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">July 2023 - December 2024</div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-success card shadow-sm" data-aos="fade-in" data-aos-delay="200">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Bachelor of Science in Computer Science and Engineering <span
-                      class="text-muted h6">from Daffodil
-                      International University</span>
-                  </div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">January 2019 - February 2023 | CGPA 3.79/4.00</div>
-                </div>
-              </div>
-              <div class="timeline-card timeline-card-success card shadow-sm" data-aos="fade-in" data-aos-delay="400">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Higher Secondary School Certificate <span class="text-muted h6">from Govt. Tolaram
-                      College</span> </div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">June 2015 - July 2017</div>
-                </div>
-              </div>
-
-              <div class="timeline-card timeline-card-success card shadow-sm" data-aos="fade-in" data-aos-delay="400">
-                <div class="timeline-head px-4 pt-3">
-                  <div class="h5">Junior & Secondary School Certificate <span class="text-muted h6">from Fatulla Pilot
-                      High School</span> </div>
-                </div>
-                <div class="timeline-body px-4 pb-4">
-                  <div class="text-muted text-sm mb-3">June 2012 - July 2015</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="profiles">
-          <div class="profile-section">
-            <h2 class="h2 fw-light mb-4">CP Profiles</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">Codeforces </p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://codeforces.com/profile/Albin">Albin</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100">Problems Solved: 726+, Max Rating: Specialist</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">UVA Online Judge</p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://uhunt.onlinejudge.org/u/Albin">Albin</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100">Problems Solved: 402+</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">Beecrowd</p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://www.beecrowd.com.br/judge/en/profile/352150">MdAlbinHossain</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100">Problems Solved: 315</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">LightOJ</p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://lightoj.com/user/albin">Albin</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100">Problems Solved: 118+</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">Codechef</p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://www.codechef.com/users/albinh">Albinh</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100"> Problems Solved: 33+, Max Rating: 1823 (4*)</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="d-flex mb-2">
-                  <div class="header-bio m-3 mb-0">
-                    <p class="text-info text-sm" data-aos="fade-left" data-aos-delay="100">SPOJ</p>
-                    <h3 class="h4 mb-1" data-aos="fade-left" data-aos-delay="0"><a
-                        href="https://www.spoj.com/users/MdAlbinHossain">MdAlbinHossain</a></h3>
-                    <p data-aos="fade-left" data-aos-delay="100">Problems Solved: 37</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="project">
-          <div class="project-section">
-            <h2 class="h2 fw-light mb-4">Projects</h2>
-            <div class="row g-0">
-              <div class="col-md-6"><a href="https://MdAlbinHossain.github.io/Run" target="_blank"><img
-                    class="img-fluid" src="./assets/images/project-1.jpg" width="400" height="400" /></a>
-              </div>
-              <div class="col-md-6 d-flex align-items-center" data-aos="fade-left" data-aos-delay="100">
-                <div class="m-4 mt-md-2">
-                  <p class="text-info text-sm">Extention / Node.js / JavaScript</p>
-                  <h3>Run++</h3>
-                  <p class="text-muted">Visual Studio Code Extension for Competitive Programmers.</p>
-                </div>
-              </div>
-            </div>
-            <div class="row g-0 project-reverse">
-              <div class="col-md-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-                <div class="m-4 mt-md-2 text-end">
-                  <p class="text-info text-sm">Android / Firebase / Jetpack / Kotlin</p>
-                  <h3>Smart CR</h3>
-                  <p class="text-muted">An Android Application for Class Management.</p>
-                </div>
-              </div>
-              <div class="col-md-6"><a href="https://MdAlbinHossain.github.io/SmartCR" target="_blank"><img
-                    class="img-fluid" src="./assets/images/project-2.jpg" width="400" height="400" /></a></div>
-            </div>
-            <div class="row g-0">
-              <div class="col-md-6"><a href="https://MdAlbinHossain.github.io/Computer-Graphics" target="_blank"><img
-                    class="img-fluid" src="./assets/images/project-3.svg" width="400" height="400" /></a></div>
-              <div class="col-md-6 d-flex align-items-center" data-aos="fade-left" data-aos-delay="100">
-                <div class="m-4 mt-md-2">
-                  <p class="text-info text-sm">C++ / OpenGL / Graphics</p>
-                  <h3>OpenGL Starter Project</h3>
-                  <p class="text-muted">C++ Starter project for Computer Graphics learners.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card shadow bg-white my-5 p-5" id="contact">
-          <div class="contant-section">
-            <h2 class="h2 fw-light text mb-4">Contact</h2>
-            <div class="row mb-4">
-              <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
-                <div class="mt-1">
-                  <div class="h6"><i class="bi-telephone pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
-                    +8801572161136</div>
-                  <div class="h6"><i class="bi-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
-                    md.albin.hossain@icloud.com</div>
-                </div>
-                <div class="mt-5">
-                  <form action="https://mdalbinhossain.pages.dev/submit" method="POST">
-                    <div class="form-outline mb-4">
-                      <input type="text" id="name" name="name" placeholder="Your Name" class="form-control" required />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <input type="email" id="email" name="email" placeholder="Your Email" class="form-control"
-                        required />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <input type="text" id="subject" name="subject" placeholder="Subject" class="form-control"
-                        required />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <textarea class="form-control" name="message" style="resize: none;" id="message"
-                        placeholder="Message" rows="5" required></textarea>
-                    </div>
-                    <button class="btn btn-info btn-block mb-4 form-control" type="submit"><span>SEND</span></button>
-                  </form>
-                </div>
-              </div>
-              <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100"><iframe
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3654.7330016047213!2d90.4772063100038!3d23.649731092546684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjPCsDM4JzU5LjAiTiA5MMKwMjgnNDcuMiJF!5e0!3m2!1sen!2sbd!4v1688536082753!5m2!1sen!2sbd"
-                  width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-            </div>
-          </div>
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
-    </div>
-  </section>
-  <footer class="pt-4 pb-4 text-muted text-center">
-    <div class="container">
-      <h4>Md. Albin Hossain</h4>
-      <div class="social-links mb-3">
-        <a class="bnt btn-link text-secondary m-2" href="https://twitter.com/MdAlbinHossain" title="Twitter"><i
-            class="bi-twitter"></i></a>
-        <a class="bnt btn-link text-secondary m-2" href="https://www.facebook.com/Md.Albin.Hossain" title="Facebook"><i
-            class="bi-facebook"></i></a>
-        <a class="bnt btn-link text-secondary m-2" href="https://www.instagram.com/Md.Albin.Hossain"
-          title="Instagram"><i class="bi-instagram"></i></a>
-        <a class="bnt btn-link text-secondary m-2" href="https://www.linkedin.com/in/MdAlbinHossain" title="Linkedin"><i
-            class="bi-linkedin"></i></a>
-        <a class="bnt btn-link text-secondary m-2" href="https://www.github.com/MdAlbinHossain" title="Github"><i
-            class="bi-github"></i></a>
-      </div>
-      <div class="mb-1">&copy; Albin's Profile. All rights reserved.</div>
-    </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Md. Albin Hossain. All rights reserved.</p>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="./assets/script.js"></script>
+
+  <script>
+    fetch("https://api.github.com/users/MdAlbinHossain/repos")
+      .then(response => response.json())
+      .then(repositories => {
+        repositories.sort((a, b) => b.stargazers_count - a.stargazers_count);
+        const projectsContainer = document.getElementById("projectsContainer");
+        if (repositories && repositories.length > 0) {
+          projectsContainer.innerHTML = "";
+
+          repositories.forEach((repo) => {
+            const projectCard = document.createElement("div");
+            projectCard.classList.add("project-card");
+
+            const projectName = document.createElement("h3");
+            projectName.textContent = repo.name;
+
+            const projectDescription = document.createElement("p");
+            projectDescription.textContent = repo.description || "No description available.";
+
+            const projectLanguage = document.createElement("p");
+            projectLanguage.classList.add("language");
+            projectLanguage.textContent = repo.language || "N/A";
+
+            const projectStars = document.createElement("p");
+            projectStars.classList.add("meta-info");
+            projectStars.innerHTML = `<i class="fas fa-star"></i> ${repo.stargazers_count}`;
+
+            const projectForks = document.createElement("p");
+            projectForks.classList.add("meta-info");
+            projectForks.innerHTML = `<i class="fas fa-code-branch"></i> ${repo.forks_count}`;
+
+            const projectLink = document.createElement("a");
+            projectLink.href = repo.html_url;
+            projectLink.textContent = "View on GitHub";
+
+            const projectInfo = document.createElement("div");
+            projectInfo.classList.add("project-info");
+            projectInfo.appendChild(projectLanguage);
+            projectInfo.appendChild(projectStars);
+            projectInfo.appendChild(projectForks);
+
+            projectCard.appendChild(projectName);
+            projectCard.appendChild(projectDescription);
+            projectCard.appendChild(projectInfo);
+            projectCard.appendChild(projectLink);
+
+            projectsContainer.appendChild(projectCard);
+          });
+        } else {
+          projectsContainer.innerHTML = "<p>No projects found.</p>";
+        }
+      }).catch(error => {
+        console.error("Error fetching projects:", error);
+        projectsContainer.innerHTML = "<p>Error fetching projects.</p>";
+      });
+  </script>
 </body>
 
 </html>

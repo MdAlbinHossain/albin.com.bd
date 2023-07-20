@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Not Found</title>
-  <link href="./assets/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+    }
 
+    .error-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-  <!-- Favicons -->
-  <link href="./assets/images/favicon.jpg" rel="icon">
-  <link href="./assets/images/favicon.jpg" rel="apple-touch-icon">
+    .error-container h1 {
+      font-size: 48px;
+      color: #333;
+      margin: 0;
+    }
 
+    .error-container p {
+      font-size: 20px;
+      color: #666;
+    }
+
+    .error-container a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .error-container a:hover {
+      color: #0056b3;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container mt-5">
-    <div class="card text-center">
-      <div class="card-header">
-        <h1>404 </h1>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title text"> <b>Page Not Found</b></h5>
-        <p class="card-text">The specified file was not found on this website. Please check the URL for mistakes and try
-          again.</p>
-        <a href="/" class="btn btn-primary"><i class="bi bi-house"></i> Go to Home Page</a>
-        <a href="https://albin.com.bd" class="btn btn-secondary"><i class="bi bi-envelope"></i> Contact
-          Support</a>
-      </div>
-    </div>
+  <div class="error-container">
+    <h1>404</h1>
+    <p>Oops! The page you are looking for could not be found.</p>
+    <a href="./">Back to Home</a>
   </div>
-
 </body>
 
 </html>
