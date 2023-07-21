@@ -107,6 +107,8 @@
       transition: transform 0.3s ease;
       display: grid;
       grid-template-rows: auto 1fr auto;
+      height: 100%;
+      text-align: left;
     }
 
     .project-card h3 {
@@ -382,9 +384,9 @@
             projectForks.classList.add("meta-info");
             projectForks.innerHTML = `<i class="fas fa-code-branch"></i> ${repo.forks_count}`;
 
-            const projectLink = document.createElement("a");
-            projectLink.href = repo.html_url;
-            projectLink.textContent = "View on GitHub";
+            // const projectLink = document.createElement("a");
+            // projectLink.href = repo.html_url;
+            // projectLink.textContent = "View on GitHub";
 
             const projectInfo = document.createElement("div");
             projectInfo.classList.add("project-info");
@@ -395,9 +397,18 @@
             projectCard.appendChild(projectName);
             projectCard.appendChild(projectDescription);
             projectCard.appendChild(projectInfo);
-            projectCard.appendChild(projectLink);
+            // projectCard.appendChild(projectLink);
 
-            projectsContainer.appendChild(projectCard);
+            const projectLink = document.createElement("a");
+            projectLink.href = repo.html_url;
+            projectLink.style.display = "block"; // Make the link fill the entire project card
+            projectLink.style.textAlign = "center"; // Center the link text
+            projectLink.style.textDecoration = "none"; // Remove the default underline
+
+            projectLink.appendChild(projectCard); // Append the project card to the anchor element
+            projectsContainer.appendChild(projectLink); // Append the anchor element to the projectsContainer
+
+            // projectsContainer.appendChild(projectCard);
           });
         } else {
           projectsContainer.innerHTML = "<p>No projects found.</p>";
