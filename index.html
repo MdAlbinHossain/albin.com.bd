@@ -333,12 +333,14 @@
         </div>
         <div class="contact-form">
           <h3>Send a message</h3>
-          <form method="POST" action="https://mdalbinhossain.pages.dev/submit">
+          <form method="POST" action="https://formsubmit.co/md.albin.hossain@hotmail.com">
             <input type="text" id="name" name="name" placeholder="Your Name" required>
 
             <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            <input type="hidden" name="_cc" value="md.albin.hossain.a@gmail.com">
+
+            <input type="text" id="subject" name="_subject" placeholder="Subject" required>
 
             <textarea id="message" rows="4" name="message" placeholder="Message" required></textarea>
 
