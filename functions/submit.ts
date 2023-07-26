@@ -19,8 +19,8 @@ export async function onRequestPost(context) {
       reply_to: { email: (input.get("from") ?? input.get("email")) ?? "anonymous@albin.com.bd", name: input.get("name") ?? "Anonymous" },
       subject: input.get("subject") ?? "Anonymous",
       content: [{
-        type: "text/html",
-        value: input.get("message") + "<footer>Sent from " + context.request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toString() + "</footer>",
+        type: "text/plain",
+        value: input.get("message") + "\n\nSent from " + context.request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toISOString(),
       },],
     }),
   });
