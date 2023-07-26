@@ -20,7 +20,7 @@ export async function onRequestPost(context) {
       subject: input.get("subject") ?? "Anonymous",
       content: [{
         type: "text/html",
-        value: input.get("message") + "\n\nSent from " + context.request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toString(),
+        value: input.get("message") + "<footer>Sent from " + context.request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toString() + "</footer>",
       },],
     }),
   });
