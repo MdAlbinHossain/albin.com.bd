@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.jpg" type="image/x-icon">
-  <link rel="stylesheet" href="./assets/css/all.min.css">
   <title>Albin's Profile</title>
   <meta name="description" content="Albin's Profile is a personal website of Md. Albin Hossain">
   <meta name="keywords"
@@ -226,23 +225,6 @@
       color: #bb1122;
     }
 
-    .social-links {
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      display: inline-block;
-      color: #3344dd;
-      font-size: 24px;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-
-    .social-links a:hover {
-      color: #bb1122;
-    }
-
 
     footer {
       background: #333;
@@ -313,20 +295,8 @@
         <div class="contact-info">
           <h3>Get in touch</h3>
           <p>Feel free to reach out if you have any questions or suggestions.</p>
-          <p><i class="fas fa-envelope"></i> <a href="mailto:mail@albin.com.bd">mail@albin.com.bd</a></p>
-          <p> <i class="fas fa-map-marker-alt"></i> Fatullah, Narayanganj, Bangladesh</p>
-
-          <div class="social-links">
-            <a href="https://www.github.com/MdAlbinHossain" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://t.me/MdAlbinHossain" target="_blank" aria-label="Telegram"> <i class="fab fa-telegram"></i>
-            </a>
-
-            <a href="https://www.youtube.com/@MdAlbinHossain" target="_blank" aria-label="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
+          <p>📧 <a href="mailto:mail@albin.com.bd">mail@albin.com.bd</a></p>
+          <p>🗺️ Fatullah, Narayanganj, Bangladesh</p>
         </div>
         <div class="contact-form">
           <h3>Send a message</h3>
@@ -375,37 +345,25 @@
 
             const projectStars = document.createElement("p");
             projectStars.classList.add("meta-info");
-            projectStars.innerHTML = `<i class="fas fa-star"></i> ${repo.stargazers_count}`;
-
-            const projectForks = document.createElement("p");
-            projectForks.classList.add("meta-info");
-            projectForks.innerHTML = `<i class="fas fa-code-branch"></i> ${repo.forks_count}`;
-
-            // const projectLink = document.createElement("a");
-            // projectLink.href = repo.html_url;
-            // projectLink.textContent = "View on GitHub";
+            projectStars.innerHTML = `⭐ ${repo.stargazers_count}`;
 
             const projectInfo = document.createElement("div");
             projectInfo.classList.add("project-info");
             projectInfo.appendChild(projectLanguage);
             projectInfo.appendChild(projectStars);
-            projectInfo.appendChild(projectForks);
 
             projectCard.appendChild(projectName);
             projectCard.appendChild(projectDescription);
             projectCard.appendChild(projectInfo);
-            // projectCard.appendChild(projectLink);
 
             const projectLink = document.createElement("a");
             projectLink.href = repo.html_url;
-            projectLink.style.display = "block"; // Make the link fill the entire project card
-            projectLink.style.textAlign = "center"; // Center the link text
-            projectLink.style.textDecoration = "none"; // Remove the default underline
+            projectLink.style.display = "block";
+            projectLink.style.textAlign = "center";
+            projectLink.style.textDecoration = "none";
 
-            projectLink.appendChild(projectCard); // Append the project card to the anchor element
-            projectsContainer.appendChild(projectLink); // Append the anchor element to the projectsContainer
-
-            // projectsContainer.appendChild(projectCard);
+            projectLink.appendChild(projectCard);
+            projectsContainer.appendChild(projectLink);
           });
         } else {
           projectsContainer.innerHTML = "<p>No projects found.</p>";
