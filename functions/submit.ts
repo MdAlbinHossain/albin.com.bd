@@ -16,7 +16,7 @@ export async function onRequestPost(context) {
   const resp = await fetch(send_request);
   const respText = await resp.text();
 
-  if (resp.statusText == "Created") respContent = "Thank You!";
+  if (resp.statusText == "Created") respContent = "Message Created!";
   else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
 
   let htmlContent = `<html><head></head><body><h1 style="text-align:center; margin-top:40px">${respContent}</h1></body></html>`;
