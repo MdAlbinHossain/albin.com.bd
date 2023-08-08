@@ -4,7 +4,7 @@ export async function onRequestPost(context) {
         method: "POST",
         headers: {
             "accept": "application/json",
-            "api-key": context.env.BREVO_API_KEY,
+            "x-api-key": context.env.BREVO_API_KEY,
             "content-type": "application/json",
         },
         body: JSON.stringify({
