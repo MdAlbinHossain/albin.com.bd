@@ -7,7 +7,7 @@ export async function onRequestPost(context) {
       sender: { name: input.get("name") ?? "Form Response", email: "form@albin.com.bd", },
       to: [{ "email": "md.albin.hossain@hotmail.com", }],
       replyTo: { email: input.get("email") ?? "form@albin.com.bd" },
-      subject: input.get("subject") ?? "Form Response",
+      subject: "[Form Response] " + input.get("subject"),
       textContent: input.get("message") + "\n\nSent from " + context.request.headers.get("CF-Connecting-IP").toString(),
     }),
   });
