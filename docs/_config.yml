@@ -1,0 +1,101 @@
+title               : Albin
+description         : Hi! I'm Albin. Nice to meet you.
+baseurl             : ""
+repository          : MdAlbinHossain/MdAlbinHossain.github.io
+open_new_tab        : true
+
+
+plugins:
+  - jemoji
+
+
+nav_exclude:
+  - pages/tags.html
+  - pages/404.html
+
+
+author:
+  name              : Albin
+  image             : https://avatars.githubusercontent.com/u/105774710?v=4
+  email             : mail@albin.com.bd
+  facebook          : Md.Albin.Hossain
+  telegram          : MdAlbinHossain
+  github            : MdAlbinHossain
+  gitlab            : MdAlbinHossain
+  instagram         : Md.Albin.Hossain
+  linkedin          : Md-Albin-Hossain
+  medium            : MdAlbinHossain
+# youtube           : your_channel_name
+# stackoverflow     : your_user_id
+# twitter           : your_username
+# kaggle            : your_username
+# soundcloud        : your_username
+# spotify           : your_username
+# tumblr            : your_username.tumblr.com
+# twitch            : your_username
+# vimeo             : your_username
+# keybase           : your_username
+# behance           : your_username
+# dribbble          : your_username
+
+
+### Posts ###
+permalink: /blog/:title
+
+
+### Collections ###
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name
+  elements:                                             # For Documentation Only
+    output: true                                        # For Documentation Only
+
+
+### Disqus ###
+disqus:
+  shortname: your-short-name-disqus                     # Your website Shortname on disqus
+
+
+### Analytics ###
+analytics:
+  enabled: false                                        # Set true to enable analytics
+  google:
+    tracking_id: your-google-tracking-id
+
+
+### Buy me a coffee ###
+# See https://www.buymeacoffee.com/
+buymeacoffee:
+  enabled: false
+  username: your_username
+  color: "#007bff"
+  message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
+  description: "Support me on Buy me a coffee!"
+
+
+### Defaults for collections ###
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "page"
+  - scope:                                              # For Documentation Only
+      path: ""                                          # For Documentation Only
+      type: "elements"                                  # For Documentation Only
+    values:                                             # For Documentation Only
+      layout: "element"                                 # For Documentation Only
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: false                                   # Set to true to enable disqus comments
+
+
+### Exclude from processing ###
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - "*.log"

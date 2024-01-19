@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "github-pages", group: :jekyll_plugins
+gem "jekyll-default-layout", "~> 0.1.4"
+gem "jekyll-gist", "~> 1.5"
+gem "jekyll-github-metadata", "~> 2.13"
+gem "jekyll-include-cache", "~> 0.2.1"
+gem "jemoji", "~> 0.12"
+gem "kramdown", "~> 2.3.1"
+gem "webrick", "~> 1.8"
