@@ -8,7 +8,7 @@ open_new_tab        : true
 
 plugins:
   - jemoji
-
+  - jekyll-github-metadata
 
 nav_exclude:
   - pages/tags.html
