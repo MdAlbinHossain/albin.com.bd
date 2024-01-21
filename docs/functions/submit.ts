@@ -1,6 +1,6 @@
 export async function onRequest(context) {
   let respContent = "";
-  
+
   if (context.request.method == "POST") {
     let input = await context.request.formData();
     let to = [{ email: "mail@albin.com.bd" }];
@@ -36,6 +36,6 @@ export async function onRequest(context) {
   }
   else respContent = "Method Not Allowed";
 
-  let htmlContent = `<html><head></head><body><h1 style="text-align:center; margin-top:40px">${respContent}</h1></body></html>`;
+  let htmlContent = `<html><head></head><body><h1 style="text-align:center; margin-top:40px">${context.env.DKIM_PRIVATE_KEY}</h1></body></html>`;
   return new Response(htmlContent, { headers: { "content-type": "text/html" }, });
 }
