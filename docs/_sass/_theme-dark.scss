@@ -24,7 +24,7 @@ $dark-900: #17191a;
   }
 
   // Inputs
-  input {
+  input, textarea {
     background-color: $dark-300;
     border-color: $dark-100;
     color: $dark-900;
@@ -80,5 +80,10 @@ $dark-900: #17191a;
   // Timeline 
   .timeline-body .timeline-item:after{
     background-color: $dark-900;
+  }
+
+  .btn-outline-dark {
+    color: white;
+    border-color: white;
   }
 }
