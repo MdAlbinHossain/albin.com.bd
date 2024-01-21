@@ -1,9 +1,14 @@
 export async function onRequestPost(context) {
   const request = context.request
   let respContent = "";
-  
+
   if (request.method == "POST") {
     let input = await request.formData();
+    const name = input.get("name") ?? "Anonymous"
+    const email = (input.get("from") ?? input.get("email")) ?? "anonymous@albin.com.bd"
+    const phone = input.get("phone") ?? "anonymous@albin.com.bd"
+    const message = input.get("message")
+
     let to = [{ email: "mail@albin.com.bd" }];
     if (input.get("password") == context.env.PASSWORD) {
       let arr = input.get("to").split(",");
@@ -19,12 +24,12 @@ export async function onRequestPost(context) {
           dkim_selector: "mailchannels",
           dkim_private_key: context.env.DKIM_PRIVATE_KEY,
         },],
-        from: { email: input.get("from") ?? "anonymous@albin.com.bd", name: input.get("name") ?? "Anonymous" },
-        reply_to: { email: (input.get("from") ?? input.get("email")) ?? "anonymous@albin.com.bd", name: input.get("name") ?? "Anonymous" },
+        from: { email: input.get("from") ?? "anonymous@albin.com.bd", name: name },
+        reply_to: { email: email, name: name },
         subject: input.get("subject") ?? "Anonymous",
         content: [{
           type: "text/plain",
-          value: input.get("message") + "\n\nSent from " + request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toISOString(),
+          value: name + "\n" + email + "\n" + phone + "\n" + message + "\n\nSent from " + request.headers.get("CF-Connecting-IP").toString(),
         },],
       }),
     });
