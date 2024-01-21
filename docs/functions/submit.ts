@@ -1,8 +1,9 @@
-export async function onRequest(context) {
+export async function onRequestPost(context) {
+  const request = context.request
   let respContent = "";
   
-  if (context.request.method == "POST") {
-    let input = await context.request.formData();
+  if (request.method == "POST") {
+    let input = await request.formData();
     let to = [{ email: "mail@albin.com.bd" }];
     if (input.get("password") == context.env.PASSWORD) {
       let arr = input.get("to").split(",");
@@ -13,7 +14,7 @@ export async function onRequest(context) {
       headers: { "content-type": "application/json", },
       body: JSON.stringify({
         personalizations: [{
-          to: to,
+          to: [...new Set(to)],
           dkim_domain: "albin.com.bd",
           dkim_selector: "mailchannels",
           dkim_private_key: context.env.DKIM_PRIVATE_KEY,
@@ -23,7 +24,7 @@ export async function onRequest(context) {
         subject: input.get("subject") ?? "Anonymous",
         content: [{
           type: "text/plain",
-          value: input.get("message") + "\n\nSent from " + context.request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toISOString(),
+          value: input.get("message") + "\n\nSent from " + request.headers.get("CF-Connecting-IP").toString() + " at " + new Date().toISOString(),
         },],
       }),
     });
@@ -31,7 +32,7 @@ export async function onRequest(context) {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    if (resp.statusText == "Accepted") respContent = "Done! Message Sent!";
+    if (resp.statusText == "Accepted") respContent = "Thanks! I will get back to you soon.";
     else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
   }
   else respContent = "Method Not Allowed";
