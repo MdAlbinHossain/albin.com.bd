@@ -1,7 +1,7 @@
 title               : Albin
 description         : Hi there! I'm Albin. Nice to meet you.
 baseurl             : ""
-url                 : https://mdalbinhossain.github.io
+url                 : https://albin.com.bd
 repository          : MdAlbinHossain/MdAlbinHossain.github.io
 open_new_tab        : true
 
@@ -9,6 +9,7 @@ open_new_tab        : true
 plugins:
   - jemoji
   - jekyll-github-metadata
+  - jekyll-sitemap
 
 nav_exclude:
   - pages/tags.html
