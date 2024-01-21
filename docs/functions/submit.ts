@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   let input = await context.request.formData();
   let to = [{ email: "mail@albin.com.bd" }];
   if (input.get("password") == context.env.PASSWORD) {
