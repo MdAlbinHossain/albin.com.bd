@@ -8,16 +8,20 @@
     {% assign title = page.name | escape %}
   {% endif %}
 
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {% seo %}
+  
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:image" content="{{ image }}">
 
-  <title>{{ title }}</title>
+
+  <!-- <title>{{ title }}</title> -->
   <meta name="description" content="{{ description }}">
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ '/assets/favicon.svg' | relative_url }}">

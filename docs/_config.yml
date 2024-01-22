@@ -10,6 +10,7 @@ plugins:
   - jemoji
   - jekyll-github-metadata
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 nav_exclude:
   - pages/tags.html
