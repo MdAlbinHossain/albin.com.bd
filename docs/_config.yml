@@ -52,7 +52,7 @@ collections:
     output: true
     permalink: /projects/:name
   elements:                                             # For Documentation Only
-    output: true                                        # For Documentation Only
+    output: false                                        # For Documentation Only
 
 
 ### Disqus ###
