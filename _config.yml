@@ -20,13 +20,11 @@
 
 title: Albin
 author: Md. Albin Hossain
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+email: mail@albin.com.bd
+description         : Hi there! I'm Albin. Nice to meet you.
+baseurl             : ""
+url                 : https://albin.com.bd
+repository          : MdAlbinHossain/MdAlbinHossain.github.io
 linkedin_username: Md-Albin-Hossain
 github_username:  MdAlbinHossain
 
@@ -34,7 +32,7 @@ github_username:  MdAlbinHossain
 # theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
+  - jekyll-sitemap
 
 
 permalink: /blog/:title
@@ -42,7 +40,7 @@ permalink: /blog/:title
 collections:
  projects:
   output: true
-  permalink: /projects/:title
+  permalink: /projects/:name
 
 defaults:
   - scope:
@@ -59,7 +57,8 @@ defaults:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
+exclude:
+    - docs
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

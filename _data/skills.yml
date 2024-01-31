@@ -2,13 +2,13 @@
   description: Hone analytical skills and boost coding proficiency with problem solving and competitive programming.
   action: See Details
   action_link: /about/
-  
-- title: Android App Development
+
+- title: Android Development
   description: Develop Native Android Applications with top-notch performance and full platform access.
   action: Recent Projects
   action_link: /projects/
 
-- title: Kotlin Multiplatform Development
-  description: Develop software with shared code for server side and different client platforms while retaining the flexibility and benefits of native programming.
+- title: Kotlin Multiplatform
+  description: Share code for server side, mobile and desktop platforms while retaining the flexibility and benefits of native.
   action: Recent Projects
   action_link: /projects/

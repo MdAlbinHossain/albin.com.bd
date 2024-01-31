@@ -2,5 +2,22 @@
 layout: page
 ---
 <div class="container col-lg-8">
-    {{ content }}
+
+
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h2 class="border-bottom pb-2 mb-0">Problem Solving Profiles</h2>
+        {%- for onlinejudge in site.data.onlinejudge -%}
+        {%- include onlinejudge.html -%}
+        {%- endfor -%}
+    </div>
+
+    <div class="d-flex flex-column flex-md-row gap-4 py-md-5 align-items-center justify-content-center">
+        <div class="list-group w-100">
+            <h2>Education</h2>
+            {%- for school in site.data.education -%}
+            {%- include education.html -%}
+            {%- endfor -%}
+        </div>
+    </div>
+
 </div>

@@ -22,10 +22,11 @@
             {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
             <time class="text-body-emphasis">{{ post.date | date: date_format }}</time>
             <p class="card-text">{{ post.excerpt | "" }}</p>
-            <div class="d-flex justify-content-between align-items-center">
-                <a href="{{ post.url | relative_url }}" class="btn btn-secondary stretched-link">Read post &raquo;</a>
-                <small class="text-body-secondary">{% include reading-time.html content = post.content %}</small>
-            </div>
+
+            <a href="{{ post.url | relative_url }}" class=" stretched-link"></a>
+            <!-- <div class="d-flex justify-content-between align-items-center"> -->
+            <!-- <small class="text-body-secondary">{% include reading-time.html content = post.content %}</small> -->
+            <!-- </div> -->
         </div>
     </div>
 </div>

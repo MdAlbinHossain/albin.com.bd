@@ -15,7 +15,7 @@
         </svg>
         {%- endif -%}
         <div class="card-body">
-            <h3 class="card-title">{{ project.title | escape }}</h3>
+            <h3 class="card-title">{{ project.name | escape }}</h3>
             <p class="card-text">{{ project.excerpt | default: "" }}</p>
             <a href="{{ project.url }}" class="stretched-link"></a>
         </div>
