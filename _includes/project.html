@@ -1,0 +1,23 @@
+{%- assign project = include.project -%}
+
+<div class="col">
+    <div class="card shadow-lg h-100">
+        {% if project.image %}
+        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ project.image }}"
+            alt="{{ project.title }}">
+        {%- else -%}
+        {%- assign block_style = "" -%}
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>{{ project.title | "Placeholder" }}</title>
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{
+                project.title | default "Thumbnail"}}</text>
+        </svg>
+        {%- endif -%}
+        <div class="card-body">
+            <h3 class="card-title">{{ project.title | escape }}</h3>
+            <p class="card-text">{{ project.excerpt | default: "" }}</p>
+            <a href="{{ project.url }}" class="stretched-link"></a>
+        </div>
+    </div>
+</div>

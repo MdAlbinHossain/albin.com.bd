@@ -1,0 +1,16 @@
+---
+layout: page
+---
+
+<div class="album">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+      {%- for project in site.projects -%}
+      {% include project.html project = project%}
+      {%- endfor -%}
+  </div>
+</div>
+
+
+<div class="contact-form container mt-5 pt-5 border-top">
+{%- include contact_form.html -%}
+</div>

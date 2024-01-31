@@ -1,0 +1,31 @@
+{%- assign post = include.post -%}
+
+<div class="col">
+    <div class="card h-100 shadow">
+        {% if post.image %}
+        <img class="bd-placeholder-img card-img-top" width="100%" src="{{ post.image }}" alt="{{ post.title }}">
+        {%- else -%}
+        <svg class="bd-placeholder-img card-img-top" width="100%" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>{{ post.title | "Placeholder" }}</title>
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{
+                post.title | default "Thumbnail"}}</text>
+        </svg>
+        {%- endif -%}
+        <div class="card-body">
+            <div class="">
+                {%- for catergory in post.categories -%}
+                <span class="badge text-bg-dark rounded-pill me-2 mb-2">{{catergory}}</span>
+                {%- endfor -%}
+            </div>
+            <h3 class="card-title">{{ post.title | "" }}</h3>
+            {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+            <time class="text-body-emphasis">{{ post.date | date: date_format }}</time>
+            <p class="card-text">{{ post.excerpt | "" }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{{ post.url | relative_url }}" class="btn btn-secondary stretched-link">Read post &raquo;</a>
+                <small class="text-body-secondary">{% include reading-time.html content = post.content %}</small>
+            </div>
+        </div>
+    </div>
+</div>

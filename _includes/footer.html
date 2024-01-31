@@ -1,0 +1,14 @@
+<footer class="fixed-bottom bg-white border-top">
+  <div class="container d-flex flex-column flex-sm-row justify-content-between">
+    <span class="m-2 mb-md-0 text-body-secondary">&copy;
+      {%- if site.author -%}
+      {{ site.author | escape }}
+      {%- else -%}
+      {{ site.title | escape }}
+      {%- endif -%}</span>
+
+    <ul class="list-unstyled d-flex m-2">
+      {%- include social.html -%}
+    </ul>
+  </div>
+</footer>

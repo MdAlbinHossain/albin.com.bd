@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div>
+
+  {{ content }}
+
+
+  {%- include home/hero.html -%}
+
+  <section class="container py-5 border-top">
+    <h2 class="h2 py-2 text-center text-uppercase">Special Skills</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+      {%- for skill in site.data.skills -%}
+      {% include home/jumbotron.html jumbotron = skill %}
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- if site.projects.size > 0 -%}
+  <section class="container py-5 border-top">
+    <h2 class="h2 py-2 text-center text-uppercase">Latest Projects</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+      {% assign projects = site.projects | limit: 5 %}
+      {%- for project in site.projects -%}
+      {% include project.html project = project%}
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if site.posts.size > 0 -%}
+  <section class="container py-5 border-top">
+    <h2 class="h2 py-2 text-center text-uppercase">Recent Posts</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+      {% assign posts = site.posts | limit: 5 %}
+      {%- for post in site.posts -%}
+      {% include post.html post = post%}
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  <section class="container py-5 border-top">
+    <h2 class="h2 py-2 text-center text-uppercase">Contact</h2>
+    {%- include contact_form.html -%}
+  </section>
+
+</div>
