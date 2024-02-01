@@ -1,14 +1,18 @@
 {%- assign jumbotron = include.jumbotron -%}
 <div class="col">
-    <div class="p-3 pt-5 text-center bg-body border border-dashed rounded h-100">
-        <!-- <i type="button" class="btn-close bg-secondary bg-opacity-10 rounded-pill mt-5 mb-3"
+    <div class="card text-center h-100 border border-dashed rounded-5">
+        <div class="card-body">
+            <!-- <i type="button" class="btn-close bg-secondary bg-opacity-10 rounded-pill mt-5 mb-3"
             aria-label="Close"></i> -->
-        <h3 class="text-body-emphasis"> {{ jumbotron.title }} </h3>
-        <p class="text-muted">
-            {{ jumbotron.description }}
-        </p>
-        <a class="btn btn-secondary px-5 mb-5 text-bottom bottom" href="{{ jumbotron.action_link }}">
-            {{ jumbotron.action }} &raquo;
-        </a>
+            <h3 class="card-title py-3"> {{ jumbotron.title }} </h3>
+            <p class="card-text">
+                {{ jumbotron.description }}
+            </p>
+        </div>
+        <div class="card-footer bg-body border-top-0">
+            <a class="btn btn-secondary px-5 mb-5" href="{{ jumbotron.action_link }}">
+                {{ jumbotron.action }} &raquo;
+            </a>
+        </div>
     </div>
 </div>

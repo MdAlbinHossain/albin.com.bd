@@ -1,6 +1,7 @@
 ---
+layout: post
 title: Dive into Computer Graphics with This Complete C++ OpenGL Starter Kit!
-tags: [Graphics, OpenGL, C++]
+categories: Graphics OpenGL C++
 description: Carefully curated package that provides everything you need to get started to make beautiful graphics with OpenGL in C++!
 image: https://mdalbinhossain.github.io/Computer-Graphics/Screenshot.png
 ---

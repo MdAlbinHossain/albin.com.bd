@@ -40,14 +40,14 @@ permalink: /blog/:title
 collections:
  projects:
   output: true
-  permalink: /projects/:name
 
 defaults:
   - scope:
       path: ""
       type: "projects"
     values:
-      layout: "page"
+      layout: "project"
+      permalink: /projects/:name
 
 # Exclude from processing.
 # The following items will not be processed, by default.

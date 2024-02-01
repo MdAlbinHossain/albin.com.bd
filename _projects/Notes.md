@@ -1,7 +1,8 @@
 ---
 name: Notes
-tools: [Android, Room, Kotlin]
+categories: [Room Database]
 image: https://mdalbinhossain.github.io/Notes/Screenshot.png
 description: An Android app for creating and managing instant notes.
+download_url: https://mdalbinhossain.github.io/Notes/
 external_url: https://mdalbinhossain.github.io/Notes/
 ---

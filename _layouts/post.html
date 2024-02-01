@@ -4,6 +4,9 @@ layout: default
 <article class="container col-lg-8" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header>
+    {%- if page.image -%}
+    <img src="{{ page.image }}" class="img-fluid" alt="{{ page.title }}">
+    {%- endif -%}
     <p>
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
