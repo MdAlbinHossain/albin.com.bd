@@ -18,21 +18,22 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Albin
-author: Md. Albin Hossain
-email: mail@albin.com.bd
+title               : Albin
+author              : Md. Albin Hossain
+email               : mail@albin.com.bd
 description         : Hi there! I'm Albin. Nice to meet you.
 baseurl             : ""
 url                 : https://albin.com.bd
 repository          : MdAlbinHossain/MdAlbinHossain.github.io
-linkedin_username: Md-Albin-Hossain
-github_username:  MdAlbinHossain
+linkedin_username   : Md-Albin-Hossain
+github_username     : MdAlbinHossain
 
 # Build settings
 # theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 
 permalink: /blog/:title
