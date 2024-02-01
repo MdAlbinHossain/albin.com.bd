@@ -8,11 +8,9 @@ layout: default
       {%- if page.description -%}
       <p class="lead text-body-secondary">{{ page.description }}</p>
       {%- endif -%}
-      <p>
-        {%- if page.action -%}
-        <a href="{{ page.action_link }}" class="btn btn-dark btn-lg my-2">{{ page.action }}</a>
-        {%- endif -%}
-      </p>
+      {%- if page.action -%}
+      <a href="{{ page.action_link }}" class="btn btn-dark btn-lg my-5">{{ page.action }}</a>
+      {%- endif -%}
     </div>
   </div>
 </header>
