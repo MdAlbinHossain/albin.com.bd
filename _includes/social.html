@@ -1,66 +1,66 @@
-{%- if site.dribbble_username -%}<li class="me-1"><a
+{%- if site.dribbble_username -%}<li class="me-1"><a aria-label="Dribbble"
     href="https://dribbble.com/{{ site.dribbble_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#dribbble' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.facebook_username -%}<li class="me-1"><a
+{%- if site.facebook_username -%}<li class="me-1"><a aria-label="Facebook"
     href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.flickr_username -%}<li class="me-1"><a
+{%- if site.flickr_username -%}<li class="me-1"><a aria-label="Flickr"
     href="https://www.flickr.com/photos/{{ site.flickr_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#flickr' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.github_username -%}<li class="me-1"><a
+{%- if site.github_username -%}<li class="me-1"><a aria-label="GitHub"
     href="https://github.com/{{ site.github_username| cgi_escape | escape }}"><svg class="bi" width="24" height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.instagram_username -%}<li class="me-1"><a
+{%- if site.instagram_username -%}<li class="me-1"><a aria-label="Instagram"
     href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#instagram' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.linkedin_username -%}<li class="me-1"><a
+{%- if site.linkedin_username -%}<li class="me-1"><a aria-label="LinkedIn"
     href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.pinterest_username -%}<li class="me-1"><a
+{%- if site.pinterest_username -%}<li class="me-1"><a aria-label="Pinterest"
     href="https://www.pinterest.com/{{ site.pinterest_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#pinterest' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- for mst in site.mastodon -%}{%- if mst.username and mst.instance -%}<li class="me-1"><a
+{%- for mst in site.mastodon -%}{%- if mst.username and mst.instance -%}<li class="me-1"><a aria-label="Mastodon"
     href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><svg class="bi" width="24" height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#mastodon' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}{%- endfor -%}
-{%- if site.twitter_username -%}<li class="me-1"><a
+{%- if site.twitter_username -%}<li class="me-1"><a aria-label="Twitter"
     href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><svg class="bi" width="24"
       height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.youtube_username -%}<li class="me-1"><a
+{%- if site.youtube_username -%}<li class="me-1"><a aria-label="YouTube"
     href="https://youtube.com/{{ site.youtube_username| cgi_escape | escape }}"><svg class="bi" width="24" height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.googleplus_username -%}<li class="me-1"><a
+{%- if site.googleplus_username -%}<li class="me-1"><a aria-label="Google+"
     href="https://plus.google.com/{{ site.googleplus_username| escape }}"><svg class="bi" width="24" height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#googleplus' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
-{%- if site.rss -%}<li class="me-1"><a href="{{ 'feed.xml' | relative_url }}"><svg class="bi" width="24" height="24">
+{%- if site.rss -%}<li class="me-1"><a aria-label="RSS" href="{{ 'feed.xml' | relative_url }}"><svg class="bi" width="24" height="24">
       <use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use>
     </svg>
   </a></li>{%- endif -%}
