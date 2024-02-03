@@ -32,20 +32,12 @@ export async function onRequestPost(context) {
           value:
             `<!DOCTYPE html>
             <html>
-              <head>
-                <style>
-                  body { font-family: Arial, sans-serif; }
-                  h1 { color: #333; }
-                  p { margin: 0; }
-                </style>
-              </head>
               <body>
-                <h1>${input.get("name") ?? ""}</h1>
-                <p>${input.get("email") ?? ""}</p>
-                <p>${phone}</p>
-                <br>
                 <p>${message}</p>
                 <br>
+                <p>${input.get("name") ?? ""}</p>
+                <p>${input.get("email") ?? ""}</p>
+                <p>${phone}</p>
                 <p>Sent from ${request.headers.get("CF-Connecting-IP")}, ${request.headers.get("CF-IPCountry")}</p>
               </body>
             </html>`,
