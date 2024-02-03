@@ -5,8 +5,8 @@ export async function onRequestPost(context) {
   if (request.method == "POST") {
     let input = await request.formData();
     const name = input.get("name") ?? "Anonymous"
-    const email = (input.get("from") ?? input.get("email")) ?? "anonymous@albin.com.bd"
-    const phone = input.get("phone") ?? "anonymous@albin.com.bd"
+    const email = (input.get("from") ?? input.get("email")) ?? "contact@albin.com.bd"
+    const phone = input.get("phone") ?? ""
     const message = input.get("message")
 
     let to = [{ email: "mail@albin.com.bd" }];
@@ -24,12 +24,29 @@ export async function onRequestPost(context) {
           dkim_selector: "mailchannels",
           dkim_private_key: context.env.DKIM_PRIVATE_KEY,
         },],
-        from: { email: input.get("from") ?? "anonymous@albin.com.bd", name: name },
+        from: { email: input.get("from") ?? "contact@albin.com.bd", name: name },
         reply_to: { email: email, name: name },
-        subject: input.get("subject") ?? "Anonymous",
+        subject: input.get("subject") ?? name + " - Form Submission",
         content: [{
-          type: "text/plain",
-          value: name + "\n" + email + "\n" + phone + "\n" + message + "\n\nSent from " + request.headers.get("CF-Connecting-IP").toString(),
+          type: "text/html",
+          value:
+            `<!DOCTYPE html>
+            <html>
+              <head>
+                <style>
+                  body { font-family: Arial, sans-serif; }
+                  h1 { color: #333; }
+                  p { margin: 0; }
+                </style>
+              </head>
+              <body>
+                <h1>${name}</h1>
+                <p>${email}</p>
+                <p>${phone}</p>
+                <p>${message}</p>
+                <p>Sent from ${request.headers.get("CF-Connecting-IP").toString()}</p>
+              </body>
+            </html>`,
         },],
       }),
     });
