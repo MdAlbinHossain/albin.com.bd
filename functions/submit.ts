@@ -40,11 +40,13 @@ export async function onRequestPost(context) {
                 </style>
               </head>
               <body>
-                <h1>${name}</h1>
-                <p>${email}</p>
+                <h1>${input.get("name") ?? ""}</h1>
+                <p>${input.get("email") ?? ""}</p>
                 <p>${phone}</p>
+                <br>
                 <p>${message}</p>
-                <p>Sent from ${request.headers.get("CF-Connecting-IP").toString()}</p>
+                <br>
+                <p>Sent from ${request.headers.get("CF-Connecting-IP")}, ${request.headers.get("CF-IPCountry")}</p>
               </body>
             </html>`,
         },],
