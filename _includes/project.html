@@ -21,7 +21,7 @@
                 {%- endfor -%}
             </div>
             <h3 class="card-title h5">{{ project.name | escape }}</h3>
-            <p class="card-text">{{ project.excerpt | default: "" }}</p>
+            <p class="card-text">{{ project.description | escape }}</p>
             <a href="{{ project.url }}" class="stretched-link" aria-label="{{ project.name | escape }}"></a>
         </div>
     </div>

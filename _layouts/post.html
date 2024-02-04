@@ -7,9 +7,10 @@ layout: default
     {%- if page.image -%}
     <img src="{{ page.image }}" class="img-fluid" alt="{{ page.title }}">
     {%- endif -%}
+    <h1 class="h1" itemprop="name headline">{{ page.title | escape }}</h1>
     <p>
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
         {{ page.date | date: date_format }}
       </time>
       {%- if page.author -%}
@@ -17,7 +18,6 @@ layout: default
           itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}
     </p>
-    <h1 class="h1" itemprop="name headline">{{ page.title | escape }}</h1>
     <hr>
   </header>
 
