@@ -19,12 +19,22 @@
 # in the templates via {{ site.myvariable }}.
 
 title               : Albin
-author              : Md. Albin Hossain
-email               : mail@albin.com.bd
-description         : Hi there! I'm Albin. Nice to meet you.
+description         : Portfolio of Md. Albin Hossain.
 baseurl             : ""
 url                 : https://albin.com.bd
 repository          : MdAlbinHossain/MdAlbinHossain.github.io
+
+author:
+  name              : Md. Albin Hossain
+  description       : Hi! I am Md. Albin Hossain.
+  email             : mail@albin.com.bd
+  social_links:
+  #  - { platform: facebook,       user_url: "https://www.facebook.com/Md.Albin.Hosssain" }
+   - { platform: github,         user_url: "https://github.com/MdAlbinHossain" }
+  #  - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
+   - { platform: linkedin,       user_url: "https://www.linkedin.com/in/Md-Albin-Hossain" }
+  #  - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }  
+
 linkedin_username   : Md-Albin-Hossain
 github_username     : MdAlbinHossain
 

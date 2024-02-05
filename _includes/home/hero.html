@@ -2,13 +2,13 @@
     <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
     <h1 class="display-5 fw-bold text-body-emphasis">
         {%- if site.author -%}
-        {{ site.author | escape }}
+        {{ site.author.name | escape }}
         {%- else -%}
         {{ site.title | escape }}
         {%- endif -%}
     </h1>
     <div class="col-lg-6 mx-auto mb-5 pb-5">
-        <p class="lead mb-4">{{ site.description | escape }}
+        <p class="lead mb-4">{{ site.author.description | escape }}
             </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a href="/projects" class="btn btn-dark btn-lg px-4 gap-3">Projects</a>
