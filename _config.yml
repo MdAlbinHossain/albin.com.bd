@@ -26,14 +26,18 @@ repository          : MdAlbinHossain/MdAlbinHossain.github.io
 
 author:
   name              : Md. Albin Hossain
-  description       : Hi! I am Md. Albin Hossain.
+  description       : Hi there! I am Albin. Nice to meet you!
   email             : mail@albin.com.bd
   social_links:
-  #  - { platform: facebook,       user_url: "https://www.facebook.com/Md.Albin.Hosssain" }
+   - { platform: email,          user_url: "mailto:mail@albin.com.bd"}
+   - { platform: telegram,       user_url: "https://t.me/MdAlbinHossain" }
    - { platform: github,         user_url: "https://github.com/MdAlbinHossain" }
+   - { platform: linkedin,       user_url: "https://linkedin.com/in/Md-Albin-Hossain" }
+  #  - { platform: facebook,       user_url: "https://www.facebook.com/Md.Albin.Hosssain" }
   #  - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
-   - { platform: linkedin,       user_url: "https://www.linkedin.com/in/Md-Albin-Hossain" }
-  #  - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }  
+  #  - { platform: threads,      user_url: "https://www.threads.net/Md.Albin.Hossain" }
+  #  - { platform: stackoverflow,  user_url: "https://stackoverflow.com/users/23159657/albin" }
+   - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }
 
 linkedin_username   : Md-Albin-Hossain
 github_username     : MdAlbinHossain
@@ -81,3 +85,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+compress_html:
+  clippings: all
