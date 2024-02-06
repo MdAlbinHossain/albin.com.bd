@@ -37,7 +37,7 @@ author:
   #  - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
   #  - { platform: threads,      user_url: "https://www.threads.net/Md.Albin.Hossain" }
   #  - { platform: stackoverflow,  user_url: "https://stackoverflow.com/users/23159657/albin" }
-   - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }
+  #  - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }
 
 linkedin_username   : Md-Albin-Hossain
 github_username     : MdAlbinHossain
