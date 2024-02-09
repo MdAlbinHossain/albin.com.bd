@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [{ email: email, name: name }, ...new Set(to)],
+        to: [,...new Set(to)],
         cc: [...new Set(cc)],
         bcc: [...new Set(bcc)],
         dkim_domain: "albin.com.bd",
