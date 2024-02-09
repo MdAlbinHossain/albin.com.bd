@@ -25,7 +25,7 @@ export async function onRequestPost(context) {
       personalizations: [{
         to: [...new Set(to)],
         cc: [...new Set(cc)],
-        bcc: [{ email: "md.albin.hossain@icloud.com" }],
+        bcc: [{ email: "bcc@icloud.com"}],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
