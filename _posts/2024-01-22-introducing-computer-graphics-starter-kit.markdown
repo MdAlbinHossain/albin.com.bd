@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Dive into Computer Graphics with This Complete C++ OpenGL Starter Kit!
 author: Md. Albin Hossain
 categories: Graphics OpenGL C++

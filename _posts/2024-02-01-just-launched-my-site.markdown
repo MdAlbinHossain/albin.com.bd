@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Just Launched my Brand New Website!"
 author: Md. Albin Hossain
 categories: misc

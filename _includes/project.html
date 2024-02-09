@@ -20,7 +20,7 @@
                 <span class="badge text-bg-dark rounded-pill me-2 mb-2">{{catergory}}</span>
                 {%- endfor -%}
             </div>
-            <h3 class="card-title h5">{{ project.name | escape }}</h3>
+            <h3 class="card-title h5">{{ project.title | escape }}</h3>
             <p class="card-text">{{ project.description | escape }}</p>
             <a href="{{ project.url }}" class="stretched-link" aria-label="{{ project.name | escape }}"></a>
         </div>

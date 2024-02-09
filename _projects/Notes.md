@@ -1,5 +1,5 @@
 ---
-name: Notes
+title: Notes
 categories: [Room Database]
 image: https://mdalbinhossain.github.io/Notes/Screenshot.png
 description: An Android app for creating and managing instant notes.
