@@ -3,14 +3,16 @@ export async function onRequestPost(context) {
   let respContent = "";
 
   let input = await request.formData();
-  const name = input.get("name") ?? "Md. Albin Hossain"
-  const email = input.get("from") ?? "mail@albin.com.bd"
+  const sender = {
+    name: "Md. Albin Hossain",
+    email: "mail@albin.com.bd"
+  };
   const subject = input.get("subject")
   const message = input.get("message")
 
   let to = [];
   let cc = [];
-  let bcc = [{ email: email, name: name }];
+  let bcc = [{ email: "md.albin.hossain@icloud.com" }];
 
   if (input.get("password") == context.env.PASSWORD) {
     let arr = input.get("to").split(",");
@@ -34,12 +36,15 @@ export async function onRequestPost(context) {
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
       },],
-      from: { email: email, name: name },
+      from: sender,
       subject: subject,
       content: [{
         type: "text/html",
         value: message,
-      },],
+      }, {
+        type: "text/plain",
+        value: message,
+      }],
     }),
   });
 
