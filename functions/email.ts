@@ -4,7 +4,7 @@ export async function onRequestPost(context) {
 
   let input = await request.formData();
   const name = input.get("name") ?? "Md. Albin Hossain"
-  const email = input.get("from") ?? "albin@albin.com.bd"
+  const email = input.get("from") ?? "mail@albin.com.bd"
   const subject = input.get("subject")
   const message = input.get("message")
 
@@ -27,7 +27,7 @@ export async function onRequestPost(context) {
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [...new Set(to)],
+        to: [{ email: email, name: name }, ...new Set(to)],
         cc: [...new Set(cc)],
         bcc: [...new Set(bcc)],
         dkim_domain: "albin.com.bd",
