@@ -17,7 +17,7 @@ export async function onRequestPost(context) {
     arr = input.get("cc").split(",");
     if (arr.length > 0) cc = arr.map((email) => { return { email: email.trim() }; });
   }
-  
+
   let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json", },
@@ -34,9 +34,6 @@ export async function onRequestPost(context) {
       subject: subject,
       content: [{
         type: "text/html",
-        value: message,
-      }, {
-        type: "text/plain",
         value: message,
       }],
     }),
