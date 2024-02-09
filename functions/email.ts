@@ -3,16 +3,12 @@ export async function onRequestPost(context) {
   let respContent = "";
 
   let input = await request.formData();
-  const sender = {
-    name: "Md. Albin Hossain",
-    email: "mail@albin.com.bd"
-  };
+  const sender = { email: "mail@albin.com.bd", name: "Md. Albin Hossain" };
   const subject = input.get("subject")
   const message = input.get("message")
 
-  let to = [];
-  let cc = [];
-  let bcc = [{ email: "md.albin.hossain@icloud.com" }];
+  let to = [{ email: "to@albin.com.bd" }];
+  let cc = [{ email: "cc@albin.com.bd" }];
 
   if (input.get("password") == context.env.PASSWORD) {
     let arr = input.get("to").split(",");
@@ -20,10 +16,8 @@ export async function onRequestPost(context) {
 
     arr = input.get("cc").split(",");
     if (arr.length > 0) cc = arr.map((email) => { return { email: email.trim() }; });
-
-    arr = input.get("bcc").split(",");
-    if (arr.length > 0) bcc = bcc.concat(arr.map((email) => { return { email: email.trim() }; }));
   }
+  
   let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json", },
@@ -31,7 +25,7 @@ export async function onRequestPost(context) {
       personalizations: [{
         to: [...new Set(to)],
         cc: [...new Set(cc)],
-        bcc: [...new Set(bcc)],
+        bcc: [{ email: "md.albin.hossain@icloud.com" }],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
@@ -40,6 +34,9 @@ export async function onRequestPost(context) {
       subject: subject,
       content: [{
         type: "text/html",
+        value: message,
+      }, {
+        type: "text/plain",
         value: message,
       }],
     }),
