@@ -41,9 +41,6 @@ export async function onRequestPost(context) {
       content: [{
         type: "text/html",
         value: message,
-      }, {
-        type: "text/plain",
-        value: message,
       }],
     }),
   });
