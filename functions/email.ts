@@ -12,10 +12,10 @@ export async function onRequestPost(context) {
 
   if (input.get("password") == context.env.PASSWORD) {
     let arr = input.get("to").split(",");
-    if (arr.length > 0) to = arr.map((email) => { return { email: email.trim() }; });
+    if (arr.length > 0) to = arr.map((toEmail) => { return { email: toEmail.trim() }; });
 
     arr = input.get("cc").split(",");
-    if (arr.length > 0) cc = arr.map((email) => { return { email: email.trim() }; });
+    if (arr.length > 0) cc = arr.map((ccEmail) => { return { email: ccEmail.trim() }; });
   }
 
   let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
