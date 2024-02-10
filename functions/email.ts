@@ -28,7 +28,7 @@ async function sendEmail(context, sender, to, cc, subject, message) {
       personalizations: [{
         to: Array.from(new Set(to)),
         cc: Array.from(new Set(cc)),
-        bcc: [{ email: "md.albin.hossain@hotmail.com" }],
+        bcc: [{ email: "md.albin.hossain@icloud.com" }],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
@@ -41,11 +41,6 @@ async function sendEmail(context, sender, to, cc, subject, message) {
       }],
     }),
   });
-
-  const resp = await fetch(send_request);
-  const respText = await resp.text();
-
-  const respContent = (resp.statusText == "Accepted") ? message : resp.status + " " + resp.statusText + "\n\n" + respText;
-
-  return new Response(respContent, { headers: { "content-type": "text/html" }, });
+  
+  return await fetch(send_request);
 }
