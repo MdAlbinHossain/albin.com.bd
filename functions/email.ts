@@ -23,9 +23,9 @@ export async function onRequestPost(context) {
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
-        to: [...new Set(to)],
-        cc: [...new Set(cc)],
-        bcc: [{ email: "bcc@icloud.com"}],
+        to: Array.from(new Set(to)),
+        cc: Array.from(new Set(cc)),
+        bcc: [{ email: "md.albin.hossain@hotmail.com" }],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
         dkim_private_key: context.env.DKIM_PRIVATE_KEY,
