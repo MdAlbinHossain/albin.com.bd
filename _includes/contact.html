@@ -4,7 +4,7 @@
         <p>Fill in the form or <a href="mailto:{{ site.author.email }}">email</a> me.</p>
         <div class="card">
             <div class="card-body p-sm-5">
-                <form method="POST" action="https://forms.mdalbinhossain.workers.dev/">
+                <form method="POST" action="{{ site.api }}">
                     <div class="mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Name" required/></div>
                     <div class="mb-3"><input class="form-control" type="email" id="email" name="email" placeholder="Email" required/></div>
                     <div class="mb-3"><input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone (Optional)"/></div>
