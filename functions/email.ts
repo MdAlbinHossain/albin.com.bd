@@ -45,5 +45,5 @@ export async function onRequestPost(context) {
   if (resp.statusText == "Accepted") respContent = message;
   else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
 
-  return new Response(respContent, { headers: { "content-type": "text/html" }, });
+  return new Response(respContent+cc.toString(), { headers: { "content-type": "text/html" }, });
 }
