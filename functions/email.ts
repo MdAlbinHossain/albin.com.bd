@@ -24,7 +24,7 @@ export async function onRequestPost(context) {
     body: JSON.stringify({
       personalizations: [{
         to: Array.from(new Set(to)),
-        cc: Array.from(new Set(cc)),
+        cc: [],
         bcc: [{ email: "md.albin.hossain@hotmail.com" }],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
@@ -45,5 +45,5 @@ export async function onRequestPost(context) {
   if (resp.statusText == "Accepted") respContent = message;
   else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
 
-  return new Response(respContent+cc.toString(), { headers: { "content-type": "text/html" }, });
+  return new Response(respContent+JSON.stringify(cc), { headers: { "content-type": "text/html" }, });
 }
