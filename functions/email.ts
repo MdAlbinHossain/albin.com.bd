@@ -1,30 +1,33 @@
 export async function onRequestPost(context) {
   const request = context.request
-  let respContent = "";
+  const input = await request.formData();
 
-  let input = await request.formData();
   const sender = { email: "mail@albin.com.bd", name: "Md. Albin Hossain" };
   const subject = input.get("subject")
   const message = input.get("message")
 
-  let to = [{ email: "to@albin.com.bd" }];
-  let cc = [{ email: "cc@albin.com.bd" }];
+  const toInput = input.get("to");
+  const ccInput = input.get("cc");
+
+  const to = (toInput.length > 0 && toInput != null && toInput != undefined) ? toInput.split(",").map((toEmail) => { return { email: toEmail.trim() }; }) : [];
+  const cc = (ccInput.length > 0 && ccInput != null && ccInput != undefined) ? ccInput.split(",").map((ccEmail) => { return { email: ccEmail.trim() }; }) : [];
 
   if (input.get("password") == context.env.PASSWORD) {
-    let arr = input.get("to").split(",");
-    if (arr.length > 0) to = arr.map((toEmail) => { return { email: toEmail.trim() }; });
-
-    arr = input.get("cc").split(",");
-    if (arr.length > 0) cc = arr.map((ccEmail) => { return { email: ccEmail.trim() }; });
+    return await sendEmail(context, sender, to, cc, subject, message);
   }
+  else {
+    return new Response("Unauthorized", { status: 401, });
+  }
+}
 
-  let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
+async function sendEmail(context, sender, to, cc, subject, message) {
+  const send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json", },
     body: JSON.stringify({
       personalizations: [{
         to: Array.from(new Set(to)),
-        cc: [],
+        cc: Array.from(new Set(cc)),
         bcc: [{ email: "md.albin.hossain@hotmail.com" }],
         dkim_domain: "albin.com.bd",
         dkim_selector: "mailchannels",
@@ -42,8 +45,7 @@ export async function onRequestPost(context) {
   const resp = await fetch(send_request);
   const respText = await resp.text();
 
-  if (resp.statusText == "Accepted") respContent = message;
-  else respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
+  const respContent = (resp.statusText == "Accepted") ? message : resp.status + " " + resp.statusText + "\n\n" + respText;
 
-  return new Response(respContent+JSON.stringify(cc), { headers: { "content-type": "text/html" }, });
+  return new Response(respContent, { headers: { "content-type": "text/html" }, });
 }
