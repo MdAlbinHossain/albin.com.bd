@@ -82,23 +82,24 @@
         }
 
         .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             margin: 20px 0;
         }
 
         .project {
             position: relative;
             overflow: hidden;
-            margin-bottom: 2px;
+            width: 48%;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .project img {
             width: 100%;
             height: 100%;
-            max-width: 512px;
-            max-height: 512px;
             object-fit: cover;
             transition: filter 0.3s ease-in-out;
         }
@@ -218,7 +219,12 @@
             }
 
             .projects {
-                grid-template-columns: repeat(1, 1fr);
+                flex-direction: column;
+            }
+
+            .project {
+                width: 100%;
+                margin-bottom: 20px;
             }
         }
     </style>
