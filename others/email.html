@@ -83,8 +83,277 @@ permalink: /email/
 
             <div class="preview" id="preview">Message Preview</div>
 
-            <textarea id="message" name="message" rows="5" placeholder="Message" oninput="updatePreview()"
-                required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Message" oninput="updatePreview()" required>
+                <html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto
+        }
+
+        h1,
+        h3 {
+            font-family: 'Courier New', Courier, monospace;
+            color: #07f;
+            text-decoration: none;
+        }
+
+        h2,
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            color: #333;
+        }
+
+        header,
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .project,
+        .service {
+            margin-bottom: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+        }
+
+        .project img,
+        .service img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            float: left;
+            border-radius: 10px;
+            transition: transform .3s;
+            background-color: #e0e0f0;
+            text-align: center
+        }
+
+        .project img:hover,
+        .service img:hover {
+            transform: scale(1.1)
+        }
+
+        .project .info,
+        .service .info {
+            margin-left: 170px
+        }
+
+        .skill {
+            display: inline-block;
+            background-color: #e0e0f0;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #07f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color .3s
+        }
+
+        .button:hover {
+            background-color: #069
+        }
+
+        .social {
+            text-align: center;
+        }
+
+        .icon {
+            margin: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            box-shadow: 0 2px 5px rgb(0, 0, 0);
+            border-radius: 10px;
+            padding: 8px;
+            color: white;
+            background-color: black;
+            transition: all 0.3s;
+        }
+
+        .icon:hover {
+            transform: rotate(360deg) scale(1.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width:600px) {
+            .container {
+                width: 100%
+            }
+
+            .project img,
+            .service img {
+                width: 100px;
+                height: 100px
+            }
+
+            .project .info,
+            .service .info {
+                margin-left: 120px
+            }
+        }
+
+        @media screen and (max-width:400px) {
+
+            .project img,
+            .service img {
+                width: 80px;
+                height: 80px
+            }
+
+            .project .info,
+            .service .info {
+                margin-left: 100px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="https://avatars.githubusercontent.com/u/105774710" alt="Md. Albin Hossain" class="avatar">
+            <h1>Md. Albin Hossain</h1>
+            <h2>Full Stack Android Developer</h2>
+            <a href="https://albin.com.bd/resume" class="button">Downlaod Resume</a>
+        </header>
+        <div class="content">
+            <section class="intro">
+                <p>Hi there,</p>
+                <p>
+                    I am a full stack Android developer with X years of experience in creating amazing apps and
+                    services. I
+                    am writing to you to express my interest in working with your company.
+                </p>
+            </section>
+
+            <section class="skills">
+                <h2>Skills</h2>
+                <p>These are some of the skills that I have:</p>
+                <div class="skills">
+                    <span class="skill">Kotlin</span>
+                    <span class="skill">Compose</span>
+                    <span class="skill">Ktor</span>
+                    <span class="skill">Firebase</span>
+                    <span class="skill">Retrofit</span>
+                    <span class="skill">Coroutines</span>
+                    <span class="skill">Room</span>
+                    <span class="skill">MVVM</span>
+                </div>
+            </section>
+
+            <section class="services">
+                <h2>Expertise</h2>
+                <p>These are some of the services that I offer:</p>
+                <div class="service">
+                    <img src="https://source.unsplash.com/random" alt="Service 1">
+                    <div class="info">
+                        <h3>Service 1</h3>
+                        <p>A brief description of what the service is and how it can benefit the
+                            client.</p>
+                    </div>
+                </div>
+                <div class="service">
+                    <img src="https://source.unsplash.com/random" alt="Service 2">
+                    <div class="info">
+                        <h3>Service 2</h3>
+                        <p>A brief description of what the service is and how it can benefit the
+                            client.</p>
+                    </div>
+                </div>
+                <div class="service">
+                    <img src="https://source.unsplash.com/random" alt="Service 3">
+                    <div class="info">
+                        <h3>Service 3</h3>
+                        <p>A brief description of what the service is and how it can benefit the
+                            client.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Projects</h2>
+                <p>Here are some of the projects that I have worked on:</p>
+                <a class="project" href="https://albin.com.bd/projects/">
+                    <img src="https://source.unsplash.com/random" alt="Project 1">
+                    <div class="info">
+                        <h3>Project 1</h3>
+                        <p>A brief description of what the project is about and what technologies you
+                            used.</p>
+                    </div>
+                </a>
+                <a class="project" href="https://albin.com.bd/projects/">
+                    <img src="https://source.unsplash.com/random" alt="Project 2">
+                    <div class="info">
+                        <h3>Project 2</h3>
+                        <p>A brief description of what the project is about and what technologies you
+                            used.</p>
+                    </div>
+                </a>
+                <a class="project" href="https://albin.com.bd/projects/">
+                    <img src="https://source.unsplash.com/random" alt="Project 3">
+                    <div class="info">
+                        <h3>Project 3</h3>
+                        <p>A brief description of what the project is about and what technologies you
+                            used.</p>
+                    </div>
+                </a>
+            </section>
+
+            <section class="outro">
+                <p>If you are interested in hiring me, please reply to this email or visit my website for more
+                    information.</p>
+                <p>Thank you for your time and consideration.</p>
+                <a href="https://albin.com.bd/resume/" class="button">Downlaod Resume</a>
+            </section>
+        </div>
+        <footer>
+            <a href="https://albin.com.bd/" class="button">Visit my Website</a>
+            <h1>Md. Albin Hossain</h1>
+            <h2>Full Stack Android Developer</h2>
+            <div class="social">
+                <a class="icon github" href="https://github.com/MdAlbinHossain"> Github</a>
+                <a class="icon linkedin" href="https://linkedin.com/in/Md-Albin-Hossain">LinkedIn</a>
+                <a class="icon telegram" href="https://t.me/MdAlbinHossain"> Telegram</a>
+                <a class="icon email" href="mailto:mail@albin.com.bd"> Email</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+            </textarea>
 
             <input type="password" id="password" name="password" minlength="10" placeholder="Password" required>
             <button type="submit">Send</button>
