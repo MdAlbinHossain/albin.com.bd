@@ -230,7 +230,8 @@
         <section class="projects">
           <h2>Projects</h2>
           <p>Here are some of the projects that I have worked on:</p>
-          {%- for project in site.projects -%}
+          {%- assign projects = site.projects | sort: "date" | reverse -%}
+          {%- for project in projects limit:5 -%}
           <a class="project" href="{{ project.url }}">
             <img src="{{ project.image }}" alt="{{ project.title }}" />
             <div class="info">
