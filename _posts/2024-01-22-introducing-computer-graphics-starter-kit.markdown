@@ -3,7 +3,6 @@ title: Dive into Computer Graphics with This Complete C++ OpenGL Starter Kit!
 author: Md. Albin Hossain
 categories: Graphics OpenGL C++
 description: Carefully curated package that provides everything you need to get started to make beautiful graphics with OpenGL in C++!
-image: https://mdalbinhossain.github.io/Computer-Graphics/Screenshot.png
 ---
 
 Are you fascinated by the world of 3D graphics but don't know where to start?
