@@ -1,282 +1,271 @@
 <html>
-  <head>
-    <meta name="robots" content="noindex" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
 
+<head>
+  <meta name="robots" content="noindex" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    h1,
+    h3,
+    .contact {
+      font-family: "Courier New", Courier, monospace;
+      color: #07f;
+      text-decoration: none;
+    }
+
+    h2,
+    p {
+      font-family: "Times New Roman", Times, serif;
+      color: #333;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .header,
+    .footer {
+      background-color: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .project,
+    .service {
+      margin-bottom: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
+
+    .project img {
+      width: 150px;
+      height: 150px;
+      margin-right: 20px;
+      float: left;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      background-color: #e0e0f0;
+      text-align: center;
+    }
+
+    .project img:hover {
+      transform: scale(1.1);
+    }
+
+    .project .info {
+      margin-left: 170px;
+    }
+
+    .skill {
+      display: inline-block;
+      background-color: #e0e0f0;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: orange;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: darkorange;
+    }
+
+    .social {
+      text-align: center;
+    }
+
+    .icon {
+      margin: 5px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border: none;
+      box-shadow: 0 2px 5px rgb(0, 0, 0);
+      border-radius: 10px;
+      padding: 8px;
+      color: white;
+      background-color: black;
+      transition: all 0.3s;
+    }
+
+    .icon:hover {
+      transform: rotate(360deg) scale(1.2);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media screen and (max-width: 600px) {
       .container {
-        max-width: 720px;
-        margin: 0 auto;
+        width: 100%;
       }
 
-      h1,
-      h3 {
-        font-family: "Courier New", Courier, monospace;
-        color: #07f;
-        text-decoration: none;
-      }
-
-      h2,
-      p {
-        font-family: "Times New Roman", Times, serif;
-        color: #333;
-      }
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .header,
-      .footer {
-        background-color: #f0f0f0;
-        padding: 20px;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .avatar {
+      .project img {
         width: 100px;
         height: 100px;
-        border-radius: 50%;
       }
 
-      .content {
-        padding: 20px;
+      .project .info {
+        margin-left: 120px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+
+      .project img {
+        width: 80px;
+        height: 80px;
       }
 
-      .project,
-      .service {
-        margin-bottom: 20px;
-        overflow: hidden;
-        text-decoration: none;
-        display: block;
+      .project .info {
+        margin-left: 100px;
       }
+    }
+  </style>
+</head>
 
-      .project img,
-      .service img {
-        width: 150px;
-        height: 150px;
-        margin-right: 20px;
-        float: left;
-        border-radius: 10px;
-        transition: transform 0.3s;
-        background-color: #e0e0f0;
-        text-align: center;
-      }
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://avatars.githubusercontent.com/u/105774710" alt="Md. Albin Hossain" class="avatar" />
+      <h1>Md. Albin Hossain</h1>
+      <h2>Full Stack Android Developer</h2>
+      <a href="https://albin.com.bd/resume" class="button">Downlaod Resume</a>
+    </div>
+    <div class="content">
+      <section class="intro">
+        <p>Hi there,</p>
+        <p>
+          I am writing to express my interest in the Android Developer position at your company. I am a recent graduate
+          of Daffodil International University with a Bachelor of Science in Computer Science and Engineering. I have a
+          strong passion for developing innovative and user-friendly android applications using Kotlin and other
+          technologies.
+        </p>
+      </section>
 
-      .project img:hover,
-      .service img:hover {
-        transform: scale(1.1);
-      }
-
-      .project .info,
-      .service .info {
-        margin-left: 170px;
-      }
-
-      .skill {
-        display: inline-block;
-        background-color: #e0e0f0;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-
-      .button {
-        display: inline-block;
-        background-color: orange;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 16px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-      }
-
-      .button:hover {
-        background-color: darkorange;
-      }
-
-      .social {
-        text-align: center;
-      }
-
-      .icon {
-        margin: 5px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        border: none;
-        box-shadow: 0 2px 5px rgb(0, 0, 0);
-        border-radius: 10px;
-        padding: 8px;
-        color: white;
-        background-color: black;
-        transition: all 0.3s;
-      }
-
-      .icon:hover {
-        transform: rotate(360deg) scale(1.2);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      }
-
-      @media screen and (max-width: 600px) {
-        .container {
-          width: 100%;
-        }
-
-        .project img,
-        .service img {
-          width: 100px;
-          height: 100px;
-        }
-
-        .project .info,
-        .service .info {
-          margin-left: 120px;
-        }
-      }
-
-      @media screen and (max-width: 400px) {
-        .project img,
-        .service img {
-          width: 80px;
-          height: 80px;
-        }
-
-        .project .info,
-        .service .info {
-          margin-left: 100px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="header">
-        <img
-          src="https://avatars.githubusercontent.com/u/105774710"
-          alt="Md. Albin Hossain"
-          class="avatar"
-        />
-        <h1>Md. Albin Hossain</h1>
-        <h2>Full Stack Android Developer</h2>
-        <a href="https://albin.com.bd/resume" class="button">Downlaod Resume</a>
-      </div>
-      <div class="content">
-        <section class="intro">
-          <p>Hi there,</p>
-          <p>
-            I am a full stack Android developer with X years of experience in
-            creating amazing apps and services. I am writing to you to express
-            my interest in working with your company.
-          </p>
-        </section>
-
-        <section class="skills">
-          <h2>Skills</h2>
-          <p>These are some of the skills that I have:</p>
-          <div class="skills">
-            <span class="skill">Kotlin</span>
-            <span class="skill">Compose</span>
-            <span class="skill">Ktor</span>
-            <span class="skill">Firebase</span>
-            <span class="skill">Retrofit</span>
-            <span class="skill">Coroutines</span>
-            <span class="skill">Room</span>
-            <span class="skill">MVVM</span>
-          </div>
-        </section>
-
-        <section class="services">
-          <h2>Expertise</h2>
-          <p>These are some of the services that I offer:</p>
-          <div class="service">
-            <img src="https://source.unsplash.com/random" alt="Service 1" />
-            <div class="info">
-              <h3>Service 1</h3>
-              <p>
-                A brief description of what the service is and how it can
-                benefit the client.
-              </p>
-            </div>
-          </div>
-          <div class="service">
-            <img src="https://source.unsplash.com/random" alt="Service 2" />
-            <div class="info">
-              <h3>Service 2</h3>
-              <p>
-                A brief description of what the service is and how it can
-                benefit the client.
-              </p>
-            </div>
-          </div>
-          <div class="service">
-            <img src="https://source.unsplash.com/random" alt="Service 3" />
-            <div class="info">
-              <h3>Service 3</h3>
-              <p>
-                A brief description of what the service is and how it can
-                benefit the client.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="projects">
-          <h2>Projects</h2>
-          <p>Here are some of the projects that I have worked on:</p>
-          {%- assign projects = site.projects -%}
-          {%- for project in projects limit:5 -%}
-          <a class="project" href="{{ project.url | absolute_url }}">
-            <img src="{{ project.image }}" alt="{{ project.title }}" />
-            <div class="info">
-              <h3>{{ project.title }}</h3>
-              <p>{{ project.description }}</p>
-            </div>
-          </a>
-          {%- endfor -%}
-        </section>
-
-        <section class="outro">
-          <p>
-            If you are interested in hiring me, please reply to this email or
-            visit my website for more information.
-          </p>
-          <p>Thank you for your time and consideration.</p>
-          <a href="https://albin.com.bd/resume/" class="button"
-            >Downlaod Resume</a
-          >
-        </section>
-      </div>
-      <div class="footer">
-        <a href="https://albin.com.bd/" class="button">Visit my Website</a>
-        <h1>Md. Albin Hossain</h1>
-        <h2>Full Stack Android Developer</h2>
-        <div class="social">
-          <a class="icon github" href="https://github.com/MdAlbinHossain">
-            Github</a
-          >
-          <a
-            class="icon linkedin"
-            href="https://linkedin.com/in/Md-Albin-Hossain"
-            >LinkedIn</a
-          >
-          <a class="icon telegram" href="https://t.me/MdAlbinHossain">
-            Telegram</a
-          >
-          <a class="icon email" href="mailto:mail@albin.com.bd"> Email</a>
+      <section class="skills">
+        <h2>Skills</h2>
+        <p>These are some of the skills that I have:</p>
+        <div class="skills">
+          <span class="skill">Kotlin</span>
+          <span class="skill">Compose</span>
+          <span class="skill">Ktor</span>
+          <span class="skill">Firebase</span>
+          <span class="skill">Retrofit</span>
+          <span class="skill">Coroutines</span>
+          <span class="skill">Room</span>
+          <span class="skill">MVVM</span>
         </div>
+      </section>
+
+      <section class="services">
+        <h2>Expertise</h2>
+        <p>These are some of the things I do best:</p>
+        {%- for skill in site.data.skills limit:5 -%}
+        <div class="service">
+          <div class="info">
+            <h3>{{ skill.title }}</h3>
+            <p>
+              {{ skill.description }}
+            </p>
+          </div>
+        </div>
+        {%- endfor -%}
+      </section>
+
+      <section class="projects">
+        <h2>Projects</h2>
+        <p>Here are some of the projects that I have worked on:</p>
+        {%- assign projects = site.projects -%} {%- for project in projects
+        limit:5 -%}
+        <a class="project" href="{{ project.url | absolute_url }}">
+          <img src="{{ project.image }}" alt="{{ project.title }}" />
+          <div class="info">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+          </div>
+        </a>
+        {%- endfor -%}
+      </section>
+
+      <section class="outro">
+        <p>In addition to my android development skills, I also have experience in backend development using Ktor, JWT,
+          Postgres, and Firebase. I am proficient in software design principles such as OOP, Clean Architecture, and
+          RDBMS. I am familiar with version control tools such as Git, GitHub, and GitLab. I also have some knowledge of
+          AI/ML, HTML, CSS, and JavaScript.</p>
+        <p>I am an avid problem solver and competitive programmer. I have participated in several national and
+          university level programming contests and achieved good ranks. I have solved over 750 problems on Codeforces
+          with a max rating of 1466. I have also solved hundreds of problems on other online judges such as UVA,
+          LightOJ, and Beecrowd.</p>
+        <p>I have been involved in the ACM, DIU Computer and Programming Club (CPC) as a problem setter, judge, judging
+          director, and trainer. I have authored and tested 15+ challenging problems for various intra-varsity
+          programming contests. I have also led a judge panel and managed the problem set and judging system for a
+          programming
+          contest with over 600 participants. I have conducted training sessions on data structures and algorithms for
+          aspiring
+          competitive programmers.</p>
+
+        <p>I am a quick learner and a team player. I am always eager to learn new technologies and methodologies. I am
+          confident that my skills and experience make me a perfect candidate for the Android Developer position at your
+          company.</p>
+        <p>
+          I am eager to join your company and contribute to your android development team. I believe that I have the
+          skills, experience, and enthusiasm that you are looking for. I am available for an interview at your
+          convenience. You can reach me at +8801771215705 or mail@albin.com.bd.</p>
+        <a href="https://albin.com.bd/resume/" class="button">Downlaod Resume</a>
+        <p>Thank you for your consideration and I look forward to hearing from you soon.</p>
+        <p>Best regards,</p>
+        <p class="contact">
+          Md. Albin Hossain <br />
+          Phone: +8801771215705 <br />
+          Email: mail@albin.com.bd <br />
+        </p>
+      </section>
+    </div>
+    <div class="footer">
+      <a href="https://albin.com.bd/" class="button">Visit my Website</a>
+      <h1>Md. Albin Hossain</h1>
+      <h2>Full Stack Android Developer</h2>
+      <div class="social">
+        <a class="icon github" href="https://github.com/MdAlbinHossain">Github</a>
+        <a class="icon linkedin" href="https://linkedin.com/in/Md-Albin-Hossain">LinkedIn</a>
+        <a class="icon telegram" href="https://t.me/MdAlbinHossain">Telegram</a>
+        <a class="icon email" href="mailto:mail@albin.com.bd">Email</a>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
