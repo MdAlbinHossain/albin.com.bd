@@ -4,14 +4,45 @@
         <p>Fill in the form or <a href="mailto:{{ site.author.email }}">email</a> me.</p>
         <div class="card">
             <div class="card-body p-sm-5">
-                <form method="POST" action="{{ site.api }}">
-                    <div class="mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Name" required/></div>
-                    <div class="mb-3"><input class="form-control" type="email" id="email" name="email" placeholder="Email" required/></div>
-                    <div class="mb-3"><input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone (Optional)"/></div>
-                    <div class="mb-3"><textarea class="form-control" id="message" name="message" rows="3" placeholder="Message" required></textarea></div>
-                    <div><button class="btn btn-dark d-block w-100" type="submit">Send </button></div>
+                <form>
+                    <div class="mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Name"
+                            required /></div>
+                    <div class="mb-3"><input class="form-control" type="email" id="email" name="email"
+                            placeholder="Email" required /></div>
+                    <div class="mb-3"><input class="form-control" type="tel" id="phone" name="phone"
+                            placeholder="Phone (Optional)" /></div>
+                    <div class="mb-3"><textarea class="form-control" id="message" name="message" rows="3"
+                            placeholder="Message" required></textarea></div>
+                    <div><button id="sendbutton" class="btn btn-dark d-block w-100" type="submit">Send</button></div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const form = document.querySelector('form');
+    const sendbutton = document.getElementById('sendbutton');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        sendbutton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+        try {
+            const resp_text = await sendFormDataToApi();
+            form.reset();
+            sendbutton.innerHTML = 'Sent';
+            console.log('Success! Message sent:', resp_text);
+        } catch (error) {
+            console.error('Error sending data:', error);
+            sendbutton.innerHTML = 'Error';
+        }
+        async function sendFormDataToApi() {
+            const response = await fetch('{{ site.api }}', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.text();
+            return data;
+        }
+    });
+</script>
