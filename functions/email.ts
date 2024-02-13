@@ -42,5 +42,7 @@ async function sendEmail(context, sender, to, cc, subject, message) {
     }),
   });
   
-  return await fetch(send_request);
+  const send_response = await fetch(send_request);
+  const send_data = await send_response.json();
+  return new Response(JSON.stringify(send_data), { status: send_response.status, });
 }
