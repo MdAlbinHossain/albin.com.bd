@@ -42,7 +42,7 @@ export default {
 				});
 			}
 		}
-		return new Response('Forbidden', { status: 403, statusText: 'Forbidden' });
+		return Response.redirect('https://albin.com.bd', 301);
 	},
 };
 
