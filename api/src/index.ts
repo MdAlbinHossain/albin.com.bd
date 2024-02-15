@@ -3,7 +3,8 @@ import { createMimeMessage } from 'mimetext';
 
 export interface Env {
 	SENDER: { name: string; addr: string };
-	RECIPIENT: { name: string; addr: string };
+	RECIPIENT1: { name: string; addr: string };
+	RECIPIENT2: { name: string; addr: string };
 	SEB: any;
 }
 
@@ -29,15 +30,30 @@ export default {
 			if (request.method === 'POST') {
 				const reqHeaders = await readRequestHeaders(request);
 				const reqBody = await readRequestBody(request);
-				const respBody = await sendEmail(reqHeaders + "\n" + reqBody, env);
-				return new Response(respBody, {
-					status: 200,
-					statusText: 'OK',
-					headers: {
-						'content-type': 'text/plain',
-						'Access-Control-Allow-Origin': requestOrigin,
-					},
-				});
+				const fullMessage = `<div>${reqBody}<div>
+				<br>
+				<hr>
+				<div>${reqHeaders}</div>`;
+				const respBody = await sendEmail(fullMessage, env);
+				if (respBody === 'Accepted') {
+					return new Response(respBody, {
+						status: 200,
+						statusText: 'OK',
+						headers: {
+							'content-type': 'text/plain',
+							'Access-Control-Allow-Origin': requestOrigin,
+						},
+					});
+				} else {
+					return new Response('Error sending email', {
+						status: 500,
+						statusText: 'Internal Server Error',
+						headers: {
+							'content-type': 'text/plain',
+							'Access-Control-Allow-Origin': requestOrigin,
+						},
+					});
+				}
 			}
 		}
 		return new Response('Forbidden', { status: 403, statusText: 'Forbidden' });
@@ -46,21 +62,25 @@ export default {
 
 async function readRequestHeaders(request: Request) {
 	const headers = request.headers.entries();
-	const headerObj: { [key: string]: any } = {};
+	let html = '<ul>';
 	for (const header of headers) {
-		headerObj[header[0]] = header[1];
+		html += `<li><strong>${header[0]}:</strong> ${header[1]}</li>`;
 	}
-	return JSON.stringify(headerObj);
+	html += '</ul>';
+	return html;
 }
 
-async function readRequestBody(request: Request) {
+async function readRequestBody(request: Request): Promise<string> {
 	const contentType = request.headers.get('content-type');
 	if (contentType && contentType.includes('application/json')) {
-		return JSON.stringify(await request.json());
+		const jsonBody = await request.json();
+		return `<pre>${JSON.stringify(jsonBody, null, 2)}</pre>`;
 	} else if (contentType && contentType.includes('application/text')) {
-		return request.text();
+		const textBody = await request.text();
+		return `<pre>${textBody}</pre>`;
 	} else if (contentType && contentType.includes('text/html')) {
-		return request.text();
+		const htmlBody = await request.text();
+		return htmlBody;
 	} else if (contentType && contentType.includes('form')) {
 		const formData = await request.formData();
 		const body: { [key: string]: any } = {};
@@ -68,28 +88,44 @@ async function readRequestBody(request: Request) {
 			body[entry[0]] = entry[1];
 		}
 
-		return JSON.stringify(body);
+		let html = '<ul>';
+		for (const key in body) {
+			html += `<li><strong>${key}:</strong> ${body[key]}</li>`;
+		}
+		html += '</ul>';
+
+		return html;
 	} else {
-		return 'a file';
+		return '<p>a file</p>';
 	}
 }
 
 async function sendEmail(message: string, env: Env) {
-	const msg = createMimeMessage();
-	msg.setSender(env.SENDER);
-	msg.setRecipient(env.RECIPIENT);
-	msg.setSubject('Form Submission');
-	msg.addMessage({
-		contentType: 'text/plain',
+	const msg1 = createMimeMessage();
+	msg1.setSender(env.SENDER);
+	msg1.setRecipient(env.RECIPIENT1);
+	msg1.setSubject('Form Submission');
+	msg1.addMessage({
+		contentType: 'text/html',
+		data: message,
+	});
+	const msg2 = createMimeMessage();
+	msg2.setSender(env.SENDER);
+	msg2.setRecipient(env.RECIPIENT2);
+	msg2.setSubject('Form Submission');
+	msg2.addMessage({
+		contentType: 'text/html',
 		data: message,
 	});
 
-	var emailMessage = new EmailMessage(env.SENDER.addr, env.RECIPIENT.addr, msg.asRaw());
+	var emailMessage1 = new EmailMessage(env.SENDER.addr, env.RECIPIENT1.addr, msg1.asRaw());
+	var emailMessage2 = new EmailMessage(env.SENDER.addr, env.RECIPIENT2.addr, msg2.asRaw());
 	try {
-		await env.SEB.send(emailMessage);
+		await env.SEB.send(emailMessage1);
+		await env.SEB.send(emailMessage2);
 	} catch (e: any) {
 		return e.message;
 	}
 
-	return 'Message sent';
+	return 'Accepted';
 }
