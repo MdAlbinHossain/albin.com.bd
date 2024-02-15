@@ -30,30 +30,16 @@ export default {
 			if (request.method === 'POST') {
 				const reqHeaders = await readRequestHeaders(request);
 				const reqBody = await readRequestBody(request);
-				const fullMessage = `<div>${reqBody}<div>
-				<br>
-				<hr>
-				<div>${reqHeaders}</div>`;
+				const fullMessage = `<div>${reqBody}<div><div> <br/> <hr/> ${reqHeaders}</div>`;
 				const respBody = await sendEmail(fullMessage, env);
-				if (respBody === 'Accepted') {
-					return new Response(respBody, {
-						status: 200,
-						statusText: 'OK',
-						headers: {
-							'content-type': 'text/plain',
-							'Access-Control-Allow-Origin': requestOrigin,
-						},
-					});
-				} else {
-					return new Response('Error sending email', {
-						status: 500,
-						statusText: 'Internal Server Error',
-						headers: {
-							'content-type': 'text/plain',
-							'Access-Control-Allow-Origin': requestOrigin,
-						},
-					});
-				}
+				return new Response(respBody, {
+					status: respBody === 'Accepted' ? 200 : 500,
+					statusText: respBody === 'Accepted' ? 'OK' : 'Internal Server Error',
+					headers: {
+						'content-type': 'text/plain',
+						'Access-Control-Allow-Origin': requestOrigin,
+					},
+				});
 			}
 		}
 		return new Response('Forbidden', { status: 403, statusText: 'Forbidden' });
