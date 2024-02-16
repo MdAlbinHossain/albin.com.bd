@@ -3,12 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2024-02-08"
 
 send_email = [
-   	{name = "SEB", allowed_destination_addresses = ["md.albin.hossain@icloud.com", "md.albin.hossain@hotmail.com"]},
+   	{name = "SEB", allowed_destination_addresses = ["md.albin.hossain@icloud.com", "md_albin_hossain@hotmail.com"]},
 ]
 
 [vars]
 RECIPIENT1 = { name= "Albin Hossain", addr= "md.albin.hossain@icloud.com" }
-RECIPIENT2 = { name= "Albin Hossain", addr= "md.albin.hossain@hotmail.com" }
+RECIPIENT2 = { name= "Albin Hossain", addr= "md_albin_hossain@hotmail.com" }
 SENDER = { name= "Albin", addr= "api@albin.com.bd" }
 
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
