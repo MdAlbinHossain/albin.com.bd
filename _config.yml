@@ -1,23 +1,3 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
 title               : Albin
 description         : Portfolio of Md. Albin Hossain.
 baseurl             : ""
@@ -39,9 +19,13 @@ author:
   #  - { platform: threads,      user_url: "https://www.threads.net/Md.Albin.Hossain" }
   #  - { platform: stackoverflow,  user_url: "https://stackoverflow.com/users/23159657/albin" }
   #  - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }
-
-linkedin_username   : Md-Albin-Hossain
-github_username     : MdAlbinHossain
+  #  - { platform: twitter,        user_url: "https://twitter.com/MdAlbinHossain" }
+  #  - { platform: reddit,         user_url: "https://www.reddit.com/user/MdAlbinHossain" }
+  #  - { platform: medium,         user_url: "https://medium.com/@MdAlbinHossain" }
+  #  - { platform: dev,            user_url: "https://dev.to/MdAlbinHossain" }
+  #  - { platform: codepen,        user_url: "https://codepen.io/MdAlbinHossain" }
+  #  - { platform: gitlab,         user_url: "https://gitlab.com/MdAlbinHossain" }
+  #  - { platform: discord,        user_url: "https://discord.com/users/1234567890" }
 
 # Build settings
 # theme: minima
