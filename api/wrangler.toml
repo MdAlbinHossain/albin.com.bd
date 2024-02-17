@@ -9,7 +9,7 @@ send_email = [
 [vars]
 RECIPIENT1 = { name= "Albin Hossain", addr= "md.albin.hossain@icloud.com" }
 RECIPIENT2 = { name= "Albin Hossain", addr= "md_albin_hossain@hotmail.com" }
-SENDER = { name= "Albin", addr= "api@albin.com.bd" }
+SENDER = { name= "Albin", addr= "noreply@albin.com.bd" }
 
 # Bind a KV Namespace. Use KV as persistent storage for small key-value pairs.
 # Docs: https://developers.cloudflare.com/workers/runtime-apis/kv
