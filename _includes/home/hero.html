@@ -1,16 +1,17 @@
-<div class="px-4 py-5 my-5 text-center">
-    <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-    <h1 class="display-5 fw-bold text-body-emphasis">
-        {%- if site.author -%}
-        {{ site.author.name | escape }}
-        {%- else -%}
-        {{ site.title | escape }}
-        {%- endif -%}
-    </h1>
-    <div class="col-lg-6 mx-auto mb-5 pb-5">
-        <p class="lead mb-4">{{ site.author.description | escape }}
-            </p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+<div class="row flex-lg-row-reverse align-items-center g-5 pb-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{ "/assets/hero.svg" | relative_url }}" class="d-block mx-lg-auto img-fluid"
+            alt="Hero: Md. Albin Hossain's website" width="700" height="700" loading="lazy">
+    </div>
+    <div class="col-lg-6">  
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+            {%- if site.author -%}
+            {{ site.author.name | escape }}
+            {%- else -%}
+            {{ site.title | escape }}
+            {%- endif -%}</h1>
+        <p class="lead">{{ site.author.description | escape }}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <a href="/projects" class="btn btn-dark btn-lg px-4 gap-3">Projects</a>
             <a href="/contact" class="btn btn-outline-secondary btn-lg px-4">Contact Me</a>
         </div>
