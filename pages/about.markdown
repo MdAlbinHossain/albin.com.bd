@@ -7,7 +7,7 @@ action_link: /resume/
 weight: 3
 ---
 ## Little More about Myself
-Hi! I'm Md. Albin Hossain, a full-stack Android developer with a passion for building innovative and user-friendly apps. I've been coding since my early days in college, and I'm always eager to learn new technologies and tackle challenging problems.
+Hi! I'm {{ site.author.name | escape }}, a full-stack Android developer with a passion for building innovative and user-friendly apps. I've been coding since my early days in college, and I'm always eager to learn new technologies and tackle challenging problems.
 
 When it comes to Android development, I have a diverse skillset that spans across the entire stack. I'm proficient in Kotlin, Compose, MVVM architecture, and various libraries like Hilt, Room, Retrofit, and WorkManager. I'm also well-versed in data structures and algorithms, which helps me design efficient and robust solutions.
 
