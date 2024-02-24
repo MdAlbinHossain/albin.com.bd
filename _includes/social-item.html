@@ -1,6 +1,6 @@
 {% assign entry = include.item %}
-<li class="mx-1">
-    <a rel="me" href="{{ entry.user_url }}" target="_blank"
+<li class="ms-3">
+    <a class="link-body-emphasis" href="{{ entry.user_url }}" target="_blank"
         title="{{ entry.title | default: entry.platform }}" aria-label="{{ entry.title | default: entry.platform }}">
         <svg class="bi" width="24" height="24">
             <use xlink:href="{{ '/assets/social-icons.svg#' | append: entry.platform | relative_url }}"></use>

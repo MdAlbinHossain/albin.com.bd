@@ -1,12 +1,60 @@
-<footer class="fixed-bottom bg-white border-top">
-  <div class="container d-flex flex-column flex-sm-row justify-content-between">
-    <span class="m-2 mb-md-0 text-body-secondary">&copy;
-      {%- if site.author -%}
-      {{ site.author.name | escape }}
-      {%- else -%}
-      {{ site.title | escape }}
-      {%- endif -%}</span>
+<div class="container-fluid bg-body-tertiary">
 
-    {%- include social.html -%}
-  </div>
-</footer>
+  <footer class="container py-5">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3">
+        <h5>{{ site.title }}</h5>
+        <ul class="nav flex-column">
+          {%- for path in page_paths -%}
+          {%- assign my_page = site.pages | where: "path", path | first -%}
+          {%- if my_page.title -%}
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" href="{{ my_page.url | relative_url }}">{{ my_page.title |
+              escape }}</a>
+          </li>
+          {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Products</h5>
+        <ul class="nav flex-column">
+          {% assign projects = site.projects %}
+          {%- for project in site.projects limit:5 -%}
+          <li class="nav-item mb-2"><a href="{{ project.url }}" class="nav-link p-0 text-body-secondary">{{
+              project.title | escape }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Expertise</h5>
+        <ul class="nav flex-column">
+          {%- for skill in site.data.skills -%}
+          <li class="nav-item mb-2"><a href="{{ skill.action_link }}" class="nav-link p-0 text-body-secondary">{{
+              skill.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form action="{{ site.api }}" method="POST">
+          <h5>Subscribe to my newsletter</h5>
+          <p>Monthly digest of what's new and exciting from me.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden">Email address</label>
+            <input id="newsletter1" type="text" name="email" class="form-control" placeholder="Email address">
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; {%- if site.author -%} {{ site.author.name | escape }}{%- else -%}{{ site.title | escape }}{%- endif -%}
+      </p>
+      {%- include social.html -%}
+    </div>
+  </footer>
+</div>

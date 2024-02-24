@@ -3,6 +3,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- if has google site verification -->
+  {%- if site.google_site_verification -%}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}">
+  {%- endif -%}
+
   <link rel="shortcut icon" href="{{ "/assets/favicon.svg" | relative_url }}">
 
   {%- seo -%}

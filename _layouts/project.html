@@ -2,13 +2,13 @@
 layout: default
 ---
 
-<article class="container col-lg-8" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="container" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
       <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         {% if page.image %}
-        <div class="col-10 col-sm-8 col-lg-6">
+        <div class="col-lg-6">
           <img src="{{ page.image }}" class="d-block mx-lg-auto img-fluid" alt="Project Image" width="700"
-            height="500" loading="lazy">
+            height="700" loading="lazy">
         </div>
         {%- endif -%}
         <div class="col-lg-6">
