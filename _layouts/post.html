@@ -1,33 +1,59 @@
 ---
 layout: default
 ---
-<article class="container col-lg-8" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header>
-    {%- if page.image -%}
-    <img src="{{ page.image }}" class="img-fluid" alt="{{ page.title }}">
-    {%- endif -%}
-    <h1 class="h1" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p>
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-      • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
-          itemprop="name">{{ page.author }}</span></span>
+<div class="row">
+  <article class="col-md-8" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <header>
+      {%- if page.image -%}
+      <img src="{{ page.image }}" class="img-fluid" alt="{{ page.title }}">
       {%- endif -%}
-    </p>
-    <hr>
-  </header>
+      <h1 class="h1" itemprop="name headline">{{ page.title | escape }}</h1>
+      <p>
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card"
+            itemprop="name">{{ page.author }}</span></span>
+        {%- endif -%}
+      </p>
+      <hr>
+    </header>
 
-  <div itemprop="articleBody">
-    {{ content }}
-  </div>
+    <div itemprop="articleBody">
+      {{ content }}
+    </div>
 
-  {%- if site.disqus.shortname -%}
-  {%- include comments.html -%}
-  {%- endif -%}
+    {%- if site.disqus.shortname -%}
+    {%- include comments.html -%}
+    {%- endif -%}
 
-  <a href="{{ page.url | relative_url }}" hidden></a>
-</article>
+    <a href="{{ page.url | relative_url }}" hidden></a>
+  </article>
+
+  <aside class="col-md-4">
+    <div class="position-sticky" style="top: 3rem;">
+      <div class="p-3 mb-3 bg-body-tertiary rounded">
+        <h4 class="fst-italic">On this page</h4>
+        {% include toc.html html=content class="list-group" item_class="list-group-item" %}
+      </div>
+      <!-- tags -->
+      <div class="p-3 mb-3 bg-body-tertiary rounded">
+        <h4 class="fst-italic">Tags</h4>
+        <ul class="list-inline mb-0">
+          {%- for tag in page.tags -%}
+          <li class="list-inline-item">
+            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/">{{ tag | capitalize }}</a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+    
+
+  </aside>
+
+</div>
