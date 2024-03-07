@@ -18,7 +18,7 @@
         <p class="lead text-secondary">Fill in the form or <a href="mailto:{{ site.author.email }}">email</a> me.</p>
         <div class="card">
             <div class="card-body p-sm-5">
-                <form>
+                <form id="contact">
                     <div class="mb-3"><input class="form-control" type="text" id="name" name="name" placeholder="Name"
                             required /></div>
                     <div class="mb-3"><input class="form-control" type="email" id="email" name="email"
@@ -34,7 +34,7 @@
     </div>
 </div>
 <script>
-    const form = document.querySelector('form');
+    const form = document.getElementById('contact');
     const sendbutton = document.getElementById('sendbutton');
 
     form.addEventListener('submit', async (e) => {
