@@ -4,7 +4,7 @@ layout: page
 
 <div class="row flex-md-row-reverse">
   <div class="col-md-8">
-    <h2>Recent Posts</h2>
+    <h2 class="mb-4">Recent Posts</h2>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-5">
       {%- for post in site.posts -%}
       {% include post.html post = post%}
@@ -18,8 +18,6 @@ layout: page
         <p class="mb-0">This is a blog about my thoughts and experiences in the world of software development.</p>
       </div>
 
-      
-      <!-- popular posts -->
       <div class="p-3 mb-3 bg-body-tertiary rounded">
         <h4 class="fst-italic">Popular Posts</h4>
         <ul class="list-group">
@@ -36,7 +34,7 @@ layout: page
         <ul class="list-inline mb-0">
           {%- for category in site.categories -%}
           <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/">{{ category | first | capitalize }}</a>
+            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="link-primary"><span>{{ category | first | capitalize }}</span></a>
           </li>
           {%- endfor -%}
         </ul>
