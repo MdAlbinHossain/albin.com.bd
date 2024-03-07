@@ -3,7 +3,7 @@
   <footer class="container py-5">
     <div class="row">
       <div class="col-6 col-md-2 mb-3">
-        <h5>{{ site.title }}</h5>
+        <h4>{{ site.title }}</h4>
         <ul class="nav flex-column">
           {%- for path in page_paths -%}
           {%- assign my_page = site.pages | where: "path", path | first -%}
@@ -18,7 +18,7 @@
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Products</h5>
+        <h4>Products</h4>
         <ul class="nav flex-column">
           {% assign projects = site.projects %}
           {%- for project in site.projects limit:5 -%}
@@ -29,7 +29,7 @@
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Expertise</h5>
+        <h4>Expertise</h4>
         <ul class="nav flex-column">
           {%- for skill in site.data.skills -%}
           <li class="nav-item mb-2"><a href="{{ skill.action_link }}" class="nav-link p-0 text-body-secondary">{{
@@ -40,7 +40,7 @@
 
       <div class="col-md-5 offset-md-1 mb-3">
         <form action="{{ site.api }}" method="POST">
-          <h5>Subscribe to my newsletter</h5>
+          <h4>Subscribe to my newsletter</h4>
           <p>Monthly digest of what's new and exciting from me.</p>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
             <label for="newsletter1" class="visually-hidden">Email address</label>
