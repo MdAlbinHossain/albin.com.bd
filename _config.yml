@@ -8,6 +8,10 @@ api                 : https://api.mdalbinhossain.workers.dev/
 author:
   name              : Md. Albin Hossain
   description       : Hi there! I am Albin. Nice to meet you!
+  address           : Virtually Everywhere
+  city              : Narayanganj
+  country           : Bangladesh
+  phone             : +880 157 xxx xxxx
   email             : mail@albin.com.bd
   social_links:
    - { platform: email,          user_url: "mailto:mail@albin.com.bd"}

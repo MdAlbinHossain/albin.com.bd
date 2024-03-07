@@ -7,13 +7,13 @@ layout: default
   {{ content }}
 
 
-  <section class="container pb-5">
+  <section class="pb-5">
     {%- include home/hero.html -%}
   </section>
 
-  <section class="container py-5 border-top">
-    <h2 class="h2 py-2 text-center text-uppercase">Skills</h2>
-    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+  <section class="py-5 border-top">
+    <h2 class="fw-bold py-2 text-center text-uppercase">Skills</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
       {%- for skill in site.data.skills -%}
       {% include home/jumbotron.html jumbotron = skill %}
       {%- endfor -%}
@@ -21,9 +21,9 @@ layout: default
   </section>
 
   {%- if site.projects.size > 0 -%}
-  <section class="container py-5 border-top">
-    <h2 class="h2 py-2 text-center text-uppercase">Latest Projects</h2>
-    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+  <section class="py-5 border-top">
+    <h2 class="fw-bold py-2 text-center text-uppercase">Latest Projects</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
       {% assign projects = site.projects %}
       {%- for project in site.projects limit:6 -%}
       {% include project.html project = project%}
@@ -33,9 +33,9 @@ layout: default
   {%- endif -%}
 
   {%- if site.posts.size > 0 -%}
-  <section class="container py-5 border-top">
-    <h2 class="h2 py-2 text-center text-uppercase">Recent Posts</h2>
-    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+  <section class="py-5 border-top">
+    <h2 class="fw-bold py-2 text-center text-uppercase">Recent Posts</h2>
+    <div class="row py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
       {% assign posts = site.posts %}
       {%- for post in site.posts limit:6 -%}
       {% include post.html post = post%}
@@ -45,8 +45,8 @@ layout: default
   {%- endif -%}
 
 
-  <section class="container py-5 border-top">
-    <h2 class="h2 py-2 text-center text-uppercase">Contact</h2>
+  <section class="py-5 border-top">
+    <h2 class="fw-bold py-2 text-center text-uppercase">Contact</h2>
     {%- include contact.html -%}
   </section>
 

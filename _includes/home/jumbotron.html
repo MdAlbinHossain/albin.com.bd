@@ -1,13 +1,13 @@
 {%- assign jumbotron = include.jumbotron -%}
 <div class="col">
-    <div class="card text-center h-100 border border-dashed rounded-5">
+    <div class="card text-center h-100">
         <div class="card-body">
             <h3 class="card-title py-3"> {{ jumbotron.title }} </h3>
             <p class="card-text">
                 {{ jumbotron.description }}
             </p>
         </div>
-        <div class="card-footer bg-body border-top-0">
+        <div class="footer bg-body">
             <a class="btn btn-secondary px-5 mb-5" href="{{ jumbotron.action_link }}">
                 {{ jumbotron.action }} &raquo;
             </a>
