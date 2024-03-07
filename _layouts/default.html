@@ -13,19 +13,22 @@ layout: compress
   <main class="container my-5 py-5 rounded bg-white" aria-label="Content">
     <ul class="list-group" id="results-container"></ul>
 
-    <script>
-      var sjs = SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action"><h3>{title}</h3></a>',
-        noResultsText: '<li class="list-group-item list-group-item-action disabled">No results found</li>',
-        json: '{{ '/search.json' | relative_url }}'
-      })
-    </script>
     {{ content }}
   </main>
 
   {%- include footer.html -%}
+
+  
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action"><h3>{title}</h3></a>',
+      noResultsText: '<li class="list-group-item list-group-item-action disabled">No results found</li>',
+      json: '{{ '/search.json' | relative_url }}'
+    })
+  </script>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6a634ca65a3c4680b2671b0d4aca4ca2"}'></script><!-- End Cloudflare Web Analytics -->
 
 </body>
 
