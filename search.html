@@ -16,7 +16,7 @@ layout: page
                 const resultsContainer = document.getElementById('search-results');
                 searchResults.forEach(result => {
                     const resultElement = document.createElement('li');
-                    resultElement.classList.add('list-group-item', 'list-group-item-action')
+                    resultElement.classList.add('list-group-item', 'list-group-item-action');
                     resultElement.innerHTML = `<a href="${result.url}"><h3>${result.title}</h3></a>`;
                     resultsContainer.appendChild(resultElement);
                 });
