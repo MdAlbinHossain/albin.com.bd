@@ -4,14 +4,24 @@ layout: page
 <ul id="search-results" class="list-group"></ul>
 
 <script>
+    function searchJSON(data, searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
+        return data.filter(item => {
+            for (const key in item) {
+                if (JSON.stringify(item[key]).toLowerCase().includes(searchTerm)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
     window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const searchQuery = urlParams.get('q');
         fetch('search.json')
             .then(response => response.json())
             .then(data => {
-                const searchResults = data.filter(result => (result.title.includes(searchQuery) || result.categories.includes(searchQuery) 
-                || result.description.includes(searchQuery) || result.tags.includes(searchQuery)));
+                const searchResults = searchJSON(data, searchQuery);
 
                 const resultsContainer = document.getElementById('search-results');
                 searchResults.forEach(result => {
