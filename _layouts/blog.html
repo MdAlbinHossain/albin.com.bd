@@ -6,10 +6,23 @@ layout: page
   <div class="col-md-8">
     <h2 class="mb-4">Recent Posts</h2>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-5">
-      {%- for post in site.posts -%}
+      {%- for post in paginator.posts -%}
       {% include post.html post = post%}
       {%- endfor -%}
     </div>
+    <!-- Pagination links -->
+    <nav class="pagination d-flex justify-content-between align-items-center mt-5" aria-label="Pagination">
+      {% if paginator.previous_page %}
+      <a class="btn btn-outline-primary rounded-pill" href="{{ paginator.previous_page_path }}">Older</a>
+      {% else %}
+      <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Older</a>
+      {% endif %}
+      {% if paginator.next_page %}
+      <a class="btn btn-outline-primary rounded-pill" href="{{ paginator.next_page_path }}">Newer</a>
+      {% else %}
+      <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
+      {% endif %}
+    </nav>
   </div>
   <div class="col-md-4">
     <aside class="position-sticky" style="top: 3rem;">
@@ -18,26 +31,18 @@ layout: page
         <p class="mb-0">This is a blog about my thoughts and experiences in the world of software development.</p>
       </div>
 
-      <div class="p-3 mb-3 bg-body-tertiary rounded">
-        <h4 class="fst-italic">Popular Posts</h4>
-        <ul class="list-group">
-          {%- for post in site.posts limit:3 -%}
-          <li class="list-group">
-            <a href="{{ post.url | relative_url }}" class="list-group-item">{{ post.title }}</a>
-          </li>
-          {%- endfor -%}
-        </ul>
-      </div>
-
-      <div class="p-3 mb-3 bg-body-tertiary rounded">
+      <div class="p-4">
         <h4 class="fst-italic">Categories</h4>
-        <ul class="list-inline mb-0">
+        <ol class="list-unstyled mb-0">
           {%- for category in site.categories -%}
-          <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="link-primary"><span>{{ category | first | capitalize }}</span></a>
+          <li>
+            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="link-primary">
+              <span>{{ category | first | capitalize }}</span>
+              <span class="post-count">({{ category | last | size }})</span>
+            </a>
           </li>
           {%- endfor -%}
-        </ul>
+        </ol>
       </div>
 
     </aside>

@@ -7,9 +7,9 @@ layout: default
 
     <header>
       {%- if page.image -%}
-      <img src="{{ page.image }}" class="img-fluid" alt="{{ page.title }}">
+      <img src="{{ page.image }}" class="img-fluid w-100" alt="{{ page.title }}">
       {%- endif -%}
-      <h1 class="h1" itemprop="name headline">{{ page.title | escape }}</h1>
+      <h1 itemprop="name headline">{{ page.title | escape }}</h1>
       <p>
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
           {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
@@ -27,6 +27,18 @@ layout: default
       {{ content }}
     </div>
 
+    <nav class="blog-pagination d-flex justify-content-between align-items-center mt-5" aria-label="Pagination">
+      {%- if page.previous -%}
+      <a class="btn btn-outline-primary" href="{{ page.previous.url | relative_url }}" role="button">← {{
+        page.previous.title | escape }}</a>
+      <span> </span>
+      {%- endif -%}
+      {%- if page.next -%}
+      <a class="btn btn-outline-primary" href="{{ page.next.url | relative_url }}" role="button">{{ page.next.title |
+        escape }} →</a>
+      {%- endif -%}
+    </nav>
+
     {%- if site.disqus.shortname -%}
     {%- include comments.html -%}
     {%- endif -%}
@@ -36,23 +48,49 @@ layout: default
 
   <aside class="col-md-4">
     <div class="position-sticky" style="top: 3rem;">
-      <div class="p-3 mb-3 bg-body-tertiary rounded">
+      <div class="mb-3">
         <h4 class="fst-italic">On this page</h4>
         {% include toc.html html=content class="list-group" item_class="list-group-item" %}
       </div>
-      <!-- tags -->
-      <div class="p-3 mb-3 bg-body-tertiary rounded">
-        <h4 class="fst-italic">Tags</h4>
-        <ul class="list-inline mb-0">
-          {%- for tag in page.tags -%}
-          <li class="list-inline-item">
-            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/">{{ tag | capitalize }}</a>
+
+      <div>
+        <h4 class="fst-italic">Recent posts</h4>
+        <ul class="list-unstyled">
+          {%- assign posts = site.posts | where_exp: "post", "post.url != page.url" -%}
+          {%- for post in posts limit:5 -%}
+          <li>
+            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+              href="{{ post.url | relative_url }}">
+              {%- if post.image -%}
+              <img src="{{ post.image }}" class="img-thumbnail" width="100%" height="96" alt="{{ post.title }}">
+              {%- endif -%}
+              <div class="col-lg-8">
+                <h6 class="mb-0">{{ post.title | escape }}</h6>
+                <small class="text-body-secondary"><time datetime="{{ post.date | date_to_xmlschema }}"
+                    itemprop="datePublished">
+                    {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+                    {{ post.date | date: date_format }}
+                  </time></small>
+              </div>
+            </a>
           </li>
           {%- endfor -%}
         </ul>
       </div>
-    </div>
-    
+
+      
+      <div class="p-3 mb-3 bg-body-tertiary rounded">
+        <h4 class="fst-italic">Categories</h4>
+        <ol class="list-inline mb-0">
+          {%- for category in page.categories -%}
+          <li class="list-inline-item">
+            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="link-primary">
+              <span>{{ category | capitalize }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ol>
+      </div>
 
   </aside>
 

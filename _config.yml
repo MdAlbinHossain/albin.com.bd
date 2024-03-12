@@ -11,7 +11,7 @@ author:
   address           : Virtually Everywhere
   city              : Narayanganj
   country           : Bangladesh
-  phone             : +8809697495705
+  phone             : "+8809697495705"
   email             : mail@albin.com.bd
   social_links:
    - { platform: email,          user_url: "mailto:mail@albin.com.bd"}
@@ -39,9 +39,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-redirect-from
   - jemoji
+  - jekyll-paginate
 
+paginate: 5
 
 permalink: /blog/:title
+paginate_path: /blog/page:num/
 
 collections:
  projects:
