@@ -22,6 +22,7 @@ sitemap: false
       "title"    : "{{ item.title | escape }}",
       "description" : "{{ item.description | strip_html | strip_newlines }}",
       "categories"     : "{{ item.categories | join: ', ' }}",
+      "tags"     : "{{ item.tags | join: ', ' }}",
       "url"      : "{{ item.external_url | default: item.url | relative_url }}"
     },
     {% endif %}
@@ -33,6 +34,7 @@ sitemap: false
       "title"    : "{{ item.title | escape }}",
       "description" : "{{ item.description | strip_html | strip_newlines }}",
       "categories"     : "{{ item.categories | join: ', ' }}",
+      "tags"     : "{{ item.tags | join: ', ' }}",
       "url"      : "{{ item.external_url | default: item.url | relative_url }}"
     } {% unless forloop.last %},{% endunless %}
   {% endif %}
