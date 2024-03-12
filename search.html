@@ -10,11 +10,9 @@ layout: page
         fetch('search.json')
             .then(response => response.json())
             .then(data => {
-                // Filter search results based on searchQuery
                 const searchResults = data.filter(result => (result.title.includes(searchQuery) || result.categories.includes(searchQuery) 
                 || result.description.includes(searchQuery) || result.tags.includes(searchQuery)));
 
-                // Display search results
                 const resultsContainer = document.getElementById('search-results');
                 searchResults.forEach(result => {
                     const resultElement = document.createElement('li');
