@@ -2,6 +2,7 @@
 title: Dive into Computer Graphics with This Complete C++ OpenGL Starter Kit!
 author: Md. Albin Hossain
 categories: Graphics OpenGL C++
+tags: vscode, run++
 description: Carefully curated package that provides everything you need to get started to make beautiful graphics with OpenGL in C++!
 ---
 

@@ -31,14 +31,28 @@ layout: page
         <p class="mb-0">This is a blog about my thoughts and experiences in the world of software development.</p>
       </div>
 
-      <div class="p-4">
+      <div class="py-4">
         <h4 class="fst-italic">Categories</h4>
-        <ol class="list-unstyled mb-0">
+        <ol class="list-inline mb-0">
           {%- for category in site.categories -%}
-          <li>
-            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="link-primary">
+          <li class="list-inline-item">
+            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="btn btn-outline-primary my-1">
               <span>{{ category | first | capitalize }}</span>
-              <span class="post-count">({{ category | last | size }})</span>
+              <span class="badge text-bg-secondary">{{ category | last | size }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ol>
+      </div>
+
+      <div class="py-4">
+        <h4 class="fst-italic">Tags</h4>
+        <ol class="list-inline mb-0">
+          {%- for tag in site.tags -%}
+          <li class="list-inline-item">
+            <a href="{{ '/tags/' | relative_url }}{{ tag | first | slugify }}/" class="btn btn-outline-secondary my-1">
+              <span>{{ tag | first | capitalize }}</span>
+              <span class="badge text-bg-secondary">{{ tag | last | size }}</span>
             </a>
           </li>
           {%- endfor -%}
