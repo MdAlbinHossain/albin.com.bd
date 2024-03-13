@@ -3,14 +3,14 @@ layout: default
 ---
 
 <div class="row flex-lg-row-reverse">
-  <article class="col-md-8" itemscope itemtype="http://schema.org/BlogPosting">
+  <article class="col-md-8 mb-5" itemscope itemtype="http://schema.org/BlogPosting">
 
     <header>
       {%- if page.image -%}
       <img src="{{ page.image }}" class="img-fluid w-100" alt="{{ page.title }}">
       {%- endif -%}
-      <h1 itemprop="name headline">{{ page.title | escape }}</h1>
-      <p>
+      <h1 itemprop="name headline" class="display-5 link-body-emphasis mb-1">{{ page.title | escape }}</h1>
+      <p style="margin-bottom: 1.25rem;color: #727272;">
         <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
           {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
           {{ page.date | date: date_format }}
@@ -27,7 +27,52 @@ layout: default
       {{ content }}
     </div>
 
-    <nav class="blog-pagination d-flex justify-content-between align-items-center mt-5" aria-label="Pagination">
+    <!-- share -->
+    <div class="d-flex justify-content-center my-5">
+      <div class="d-flex gap-2 align-items-center">
+        <span class="me-2">Share:</span>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}"
+          target="_blank" rel="noopener" class="btn btn-outline-primary">
+          <svg class="bi" width="24" height="24">
+            <use xlink:href="{{ '/assets/social-icons.svg#twitter' | relative_url }}"></use>
+        </svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener"
+          class="btn btn-outline-primary">
+          <svg class="bi" width="24" height="24">
+            <use xlink:href="{{ '/assets/social-icons.svg#facebook' | relative_url }}"></use>
+        </svg>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_encode }}"
+          target="_blank" rel="noopener" class="btn btn-outline-primary">
+          <svg class="bi" width="24" height="24">
+            <use xlink:href="{{ '/assets/social-icons.svg#linkedin' | relative_url }}"></use>
+        </svg>
+        </a>
+
+        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ site.url }}{{ page.url }}" class="btn btn-outline-primary">
+          <svg class="bi" width="24" height="24">
+            <use xlink:href="{{ '/assets/social-icons.svg#email' | relative_url }}"></use>
+        </svg>
+        </a>
+
+        <button class="btn btn-outline-primary" onclick="navigator.clipboard.writeText('{{ site.url }}{{ page.url }}')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-link" viewBox="0 0 16 16">
+            <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+            <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"/>
+          </svg>
+        </button>
+        
+
+      </div>
+    </div>
+
+
+    {%- if site.disqus.shortname -%}
+    {%- include comments.html -%}
+    {%- endif -%}
+
+    <nav class="blog-pagination d-flex justify-content-between align-items-center mb-5" aria-label="Pagination">
       {%- if page.previous -%}
       <a class="btn btn-outline-primary" href="{{ page.previous.url | relative_url }}" role="button">← {{
         page.previous.title | escape }}</a>
@@ -38,10 +83,6 @@ layout: default
         escape }} →</a>
       {%- endif -%}
     </nav>
-
-    {%- if site.disqus.shortname -%}
-    {%- include comments.html -%}
-    {%- endif -%}
 
     <a href="{{ page.url | relative_url }}" hidden></a>
   </article>
