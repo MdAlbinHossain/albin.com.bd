@@ -5,6 +5,7 @@ permalink: /about/
 action: Download Resume
 action_link: /resume/
 weight: 3
+navigation: true
 ---
 ## Little More about Myself
 Hi! I'm {{ site.author.name | escape }}, a full-stack Android developer with a passion for building innovative and user-friendly apps. I've been coding since my early days in college, and I'm always eager to learn new technologies and tackle challenging problems.

@@ -1,7 +1,14 @@
 ---
 layout: page
+title: Search
+permalink: /search
+navigation: false
 ---
-<ul id="search-results" class="list-group"></ul>
+<form class="ms-auto d-flex" role="search" action="{{ '/search' | relative_url }}">
+    <input name="q" class="form-control me-2" type="search" aria-label="Search" id="search">
+    <button class="btn btn-dark" type="submit">Search</button>
+</form>
+<ul id="search-results" class="list-group mt-3"></ul>
 
 <script>
     function searchJSON(data, searchTerm) {
@@ -30,6 +37,17 @@ layout: page
                     resultElement.innerHTML = `<a href="${result.url}"><h3>${result.title}</h3></a>`;
                     resultsContainer.appendChild(resultElement);
                 });
+
+                if (searchResults.length === 0) {
+                    const noResultsElement = document.createElement('li');
+                    noResultsElement.classList.add('list-group-item', 'list-group-item-action');
+                    noResultsElement.textContent = 'No results found';
+                    resultsContainer.appendChild(noResultsElement);
+                }
+
+                const searchInputElement = document.getElementById('search');
+                searchInputElement.value = searchQuery;
+
             })
             .catch(error => {
                 console.error('Error fetching search results:', error);

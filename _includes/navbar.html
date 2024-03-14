@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" rel="author" href="{{ "/" | relative_url }}">
-      <!-- <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+    <a class="navbar-brand" rel="author" href="{{ '/' | relative_url }}">
+      <!-- <img src="{{ '/assets/favicon.svg' | relative_url }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
       {{ site.title | escape }}</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,22 +10,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0">
-        {%- assign header_pages = site.pages| sort: 'weight' -%}
+        {%- assign header_pages = site.pages | sort: 'weight' -%}
         {%- for my_page in header_pages -%}
         {%- unless my_page.url contains 'page' -%}
-        {%- if my_page.title -%}
+        {%- if my_page.navigation -%}
         <li class="nav-item">
-          <a class="nav-link {% if my_page.url == page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+          <a class="nav-link {% if my_page.url == page.url %}active{% endif %}"
+            href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
         </li>
         {%- endif -%}
         {%- endunless -%}
         {%- endfor -%}
       </ul>
-      
-<form class="ms-auto d-flex" role="search" action="{{ '/search' | relative_url }}">
-  <input name="q" id="search-input" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
+
+      <form class="ms-auto d-flex" role="search" action="{{ '/search' | relative_url }}">
+        <input name="q" id="search-input" class="form-control me-2" type="search" placeholder="Search..."
+          aria-label="Search">
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
