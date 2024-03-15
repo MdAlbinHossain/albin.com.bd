@@ -1,0 +1,26 @@
+{% assign feature = include.feature %}
+<hr class="featurette-divider">
+{% if include.align == "left" %}
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">{{ feature.title }} <span class="text-body-secondary">{{
+                feature.subtitle | escape }}</span></h2>
+        <p class="lead">{{ feature.content }}</p>
+    </div>
+    <div class="col-md-5">
+        <img class="featurette-image img-fluid mx-auto" src="{{ feature.image }}" width="500"
+            height="500" alt="Screenshot: {{ feature.title }}">
+    </div>
+</div>
+{% else %}
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">{{ feature.title }}<span class="text-body-secondary">{{ feature.subtitle }}</span></h2>
+        <p class="lead">{{ feature.content }}</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid mx-auto" src="{{ feature.image }}" width="500"
+            height="500" alt="Screenshot: {{ feature.title }}">
+    </div>
+</div>
+{% endif %}
