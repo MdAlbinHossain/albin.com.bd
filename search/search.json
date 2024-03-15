@@ -8,10 +8,11 @@ sitemap: false
     {% if item.title %}
     {
       "title"    : "{{ item.title | escape }}",
-      "description" : "{{ item.description | strip_html | strip_newlines }}",
+      "author"   : "{{ item.author | escape }}",
+      "description" : "{{ item.description | default: item.excerpt | strip_html | strip_newlines }}",
       "categories"     : "{{ item.categories | join: ', ' }}",
       "tags"     : "{{ item.tags | join: ', ' }}",
-      "url"      : "{{ item.external_url | default: item.url | relative_url }}"
+      "url"      : "{{ item.url | relative_url }}"
     },
     {% endif %}
   {% endfor %}
@@ -20,10 +21,11 @@ sitemap: false
     {% if item.title %}
     {
       "title"    : "{{ item.title | escape }}",
-      "description" : "{{ item.description | strip_html | strip_newlines }}",
+      "author"   : "{{ item.author | escape }}",
+      "description" : "{{ item.description | default: item.excerpt | strip_html | strip_newlines }}",
       "categories"     : "{{ item.categories | join: ', ' }}",
       "tags"     : "{{ item.tags | join: ', ' }}",
-      "url"      : "{{ item.external_url | default: item.url | relative_url }}"
+      "url"      : "{{ item.url | relative_url }}"
     },
     {% endif %}
   {% endfor %}
@@ -32,10 +34,11 @@ sitemap: false
   {% if item.title %}
     {
       "title"    : "{{ item.title | escape }}",
-      "description" : "{{ item.description | strip_html | strip_newlines }}",
+      "author"   : "{{ item.author | escape }}",
+      "description" : "{{ item.description | default: item.excerpt | strip_html | strip_newlines }}",
       "categories"     : "{{ item.categories | join: ', ' }}",
       "tags"     : "{{ item.tags | join: ', ' }}",
-      "url"      : "{{ item.external_url | default: item.url | relative_url }}"
+      "url"      : "{{ item.url | relative_url }}"
     } {% unless forloop.last %},{% endunless %}
   {% endif %}
   {% endfor %}

@@ -29,6 +29,9 @@ layout: default
       {% include project.html project = project%}
       {%- endfor -%}
     </div>
+    <div class="text-end">
+      <a href="{{ '/projects' | relative_url }}" class="btn btn-dark">View All Projects</a>
+    </div>
   </section>
   {%- endif -%}
 
@@ -40,6 +43,9 @@ layout: default
       {%- for post in site.posts limit:6 -%}
       {% include post.html post = post%}
       {%- endfor -%}
+    </div>
+    <div class="text-end">
+      <a href="{{ '/blog' | relative_url }}" class="btn btn-dark">View All Posts</a>
     </div>
   </section>
   {%- endif -%}
