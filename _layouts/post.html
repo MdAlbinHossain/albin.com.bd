@@ -27,7 +27,6 @@ layout: default
       {{ content }}
     </div>
 
-    <!-- share -->
     <div class="d-flex justify-content-center my-5">
       <div class="d-flex gap-2 align-items-center">
         <span class="me-2">Share:</span>
@@ -49,21 +48,17 @@ layout: default
             <use xlink:href="{{ '/assets/social-icons.svg#linkedin' | relative_url }}"></use>
         </svg>
         </a>
-
         <a href="mailto:?subject={{ page.title | url_encode }}&body={{ site.url }}{{ page.url }}" class="btn btn-outline-primary">
           <svg class="bi" width="24" height="24">
             <use xlink:href="{{ '/assets/social-icons.svg#email' | relative_url }}"></use>
         </svg>
         </a>
-
         <button class="btn btn-outline-primary" onclick="navigator.clipboard.writeText('{{ site.url }}{{ page.url }}')">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-link" viewBox="0 0 16 16">
             <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
             <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"/>
           </svg>
         </button>
-        
-
       </div>
     </div>
 
@@ -76,7 +71,7 @@ layout: default
       {%- if page.previous -%}
       <a class="btn btn-outline-primary" href="{{ page.previous.url | relative_url }}" role="button">← {{
         page.previous.title | escape }}</a>
-      <span> </span>
+      <span>&nbsp;</span>
       {%- endif -%}
       {%- if page.next -%}
       <a class="btn btn-outline-primary" href="{{ page.next.url | relative_url }}" role="button">{{ page.next.title |

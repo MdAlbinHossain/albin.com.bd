@@ -10,7 +10,6 @@ layout: page
       {% include post.html post = post%}
       {%- endfor -%}
     </div>
-    <!-- Pagination links -->
     <nav class="pagination d-flex justify-content-between align-items-center mt-5" aria-label="Pagination">
       {% if paginator.previous_page %}
       <a class="btn btn-outline-primary rounded-pill" href="{{ paginator.previous_page_path }}">Older</a>
@@ -36,7 +35,8 @@ layout: page
         <ol class="list-inline mb-0">
           {%- for category in site.categories -%}
           <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/" class="btn btn-outline-primary my-1">
+            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/"
+              class="btn btn-outline-primary my-1">
               <span>{{ category | first | capitalize }}</span>
               <span class="badge text-bg-secondary">{{ category | last | size }}</span>
             </a>
@@ -60,6 +60,5 @@ layout: page
       </div>
 
     </aside>
-    
   </div>
 </div>
