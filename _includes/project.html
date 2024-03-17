@@ -1,7 +1,8 @@
 {%- assign project = include.project -%}
 
-{%- assign colors = "primary,secondary,success,danger,warning,info,dark,light" | split: "," -%}
-{%- assign color = colors | sample -%}
+{%- assign colors = "primary,secondary,success,danger,warning,info,dark" | split: "," -%}
+{%- assign colorIndex = forloop.index0 | modulo: colors.size -%}
+{%- assign color = colors[colorIndex] -%}
 
 <div class="col">
     <div class="card text-center shadow h-100 bg-{{ color }} bg-gradient">

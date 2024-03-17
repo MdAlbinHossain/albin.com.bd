@@ -18,6 +18,62 @@ layout: default
           <a href="{{ page.download_url }}" class="btn btn-dark btn-lg px-4 me-md-2">Download</a>
           <a href="{{ page.external_url }}" class="btn btn-outline-secondary btn-lg px-4">Details</a>
         </div>
+        <div class="d-flex justify-content-start mt-3">
+          {% if page.app_store_url %}
+          <a href="{{ page.app_store_url }}" class="m-2">
+            <img src="{{ '/assets/app-store-badge.svg' | relative_url }}" alt="Download on the App Store" width="150"
+              height="50">
+          </a>
+          {% endif %}
+          {% if page.play_store_url %}
+          <a href="{{ page.play_store_url }}">
+            <img src="{{ '/assets/google-play-badge.png' | relative_url }}" alt="Get it on Google Play" width="150"
+              height="50">
+          </a>
+          {% endif %}
+          {% if page.microsoft_store_url %}
+          <a href="{{ page.microsoft_store_url }}" class="m-2">
+            <img src="{{ '/assets/microsoft-store-badge.png' | relative_url }}" alt="Get it on Microsoft Store"
+              width="150" height="50">
+          </a>
+          {% endif %}
+          {% if page.amazon_store_url %}
+          <a href="{{ page.amazon_store_url }}" class="m-2">
+            <img src="{{ '/assets/amazon-store-badge.png' | relative_url }}" alt="Get it on Amazon Appstore" width="150"
+              height="50">
+          </a>
+          {% endif %}
+          {% if page.huawei_store_url %}
+          <a href="{{ page.huawei_store_url }}" class="m-2">
+            <img src="{{ '/assets/huawei-store-badge.png' | relative_url }}" alt="Get it on Huawei AppGallery"
+              width="150" height="50">
+          </a>
+          {% endif %}
+          {% if page.samsung_store_url %}
+          <a href="{{ page.samsung_store_url }}" class="m-2">
+            <img src="{{ '/assets/samsung-store-badge.png' | relative_url }}" alt="Get it on Samsung Galaxy Store"
+              width="150" height="50">
+          </a>
+          {% endif %}
+          {% if page.oppo_store_url %}
+          <a href="{{ page.oppo_store_url }}" class="m-2">
+            <img src="{{ '/assets/oppo-store-badge.png' | relative_url }}" alt="Get it on OPPO App Market" width="150"
+              height="50">
+          </a>
+          {% endif %}
+          {% if page.vivo_store_url %}
+          <a href="{{ page.vivo_store_url }}" class="m-2">
+            <img src="{{ '/assets/vivo-store-badge.png' | relative_url }}" alt="Get it on VIVO App Store" width="150"
+              height="50">
+          </a>
+          {% endif %}
+          {% if page.xiaomi_store_url %}
+          <a href="{{ page.xiaomi_store_url }}" class="m-2">
+            <img src="{{ '/assets/xiaomi-store-badge.png' | relative_url }}" alt="Get it on Xiaomi GetApps" width="150"
+              height="50">
+          </a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </header>
@@ -33,6 +89,69 @@ layout: default
     {% include feature.html feature=feature align="left" %}
     {% endif %}
     {% endfor %}
+    
   </div>
+
+  <section class="text-center py-5 my-5">
+    <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Get the app now</h2>
+    <p class="lead">Download the app and start using it.</p>
+    <div class="d-flex justify-content-start mt-3">
+      {% if page.app_store_url %}
+      <a href="{{ page.app_store_url }}" class="m-2">
+        <img src="{{ '/assets/app-store-badge.svg' | relative_url }}" alt="Download on the App Store" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.play_store_url %}
+      <a href="{{ page.play_store_url }}">
+        <img src="{{ '/assets/google-play-badge.png' | relative_url }}" alt="Get it on Google Play" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.microsoft_store_url %}
+      <a href="{{ page.microsoft_store_url }}" class="m-2">
+        <img src="{{ '/assets/microsoft-store-badge.png' | relative_url }}" alt="Get it on Microsoft Store" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.amazon_store_url %}
+      <a href="{{ page.amazon_store_url }}" class="m-2">
+        <img src="{{ '/assets/amazon-store-badge.png' | relative_url }}" alt="Get it on Amazon Appstore" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.huawei_store_url %}
+      <a href="{{ page.huawei_store_url }}" class="m-2">
+        <img src="{{ '/assets/huawei-store-badge.png' | relative_url }}" alt="Get it on Huawei AppGallery" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.samsung_store_url %}
+      <a href="{{ page.samsung_store_url }}" class="m-2">
+        <img src="{{ '/assets/samsung-store-badge.png' | relative_url }}" alt="Get it on Samsung Galaxy Store"
+          width="150" height="50">
+      </a>
+      {% endif %}
+      {% if page.oppo_store_url %}
+      <a href="{{ page.oppo_store_url }}" class="m-2">
+        <img src="{{ '/assets/oppo-store-badge.png' | relative_url }}" alt="Get it on OPPO App Market" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.vivo_store_url %}
+      <a href="{{ page.vivo_store_url }}" class="m-2">
+        <img src="{{ '/assets/vivo-store-badge.png' | relative_url }}" alt="Get it on VIVO App Store" width="150"
+          height="50">
+      </a>
+      {% endif %}
+      {% if page.xiaomi_store_url %}
+      <a href="{{ page.xiaomi_store_url }}" class="m-2">
+        <img src="{{ '/assets/xiaomi-store-badge.png' | relative_url }}" alt="Get it on Xiaomi GetApps" width="150"
+          height="50">
+      </a>
+      {% endif %}
+    </div>
+  </section>
+
 
 </article>

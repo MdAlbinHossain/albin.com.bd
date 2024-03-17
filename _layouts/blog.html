@@ -3,6 +3,30 @@ layout: page
 ---
 
 <div class="row flex-md-row-reverse">
+  <div class="col-md-4">
+    <aside class="position-sticky" style="top: 3rem;">
+      <div class="p-4 mb-3 bg-body-tertiary rounded">
+        <h4 class="fst-italic">About</h4>
+        <p class="mb-0">This is a blog about my thoughts and experiences in the world of software development.</p>
+      </div>
+
+      <div>
+        <h4 class="fst-italic">Categories</h4>
+        <ol class="list-inline mb-0">
+          {%- for category in site.categories -%}
+          <li class="list-inline-item">
+            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/"
+              class="btn btn-sm btn-outline-primary my-1">
+              <span>{{ category | first | capitalize }}</span>
+              <span class="badge text-bg-secondary">{{ category | last | size }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ol>
+      </div>
+
+    </aside>
+  </div>
   <div class="col-md-8">
     <h2 class="mb-4">Recent Posts</h2>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-5">
@@ -22,43 +46,5 @@ layout: page
       <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
       {% endif %}
     </nav>
-  </div>
-  <div class="col-md-4">
-    <aside class="position-sticky" style="top: 3rem;">
-      <div class="p-3 mb-3 bg-body-tertiary rounded">
-        <h4 class="fst-italic">About</h4>
-        <p class="mb-0">This is a blog about my thoughts and experiences in the world of software development.</p>
-      </div>
-
-      <div class="py-4">
-        <h4 class="fst-italic">Categories</h4>
-        <ol class="list-inline mb-0">
-          {%- for category in site.categories -%}
-          <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | first | slugify }}/"
-              class="btn btn-outline-primary my-1">
-              <span>{{ category | first | capitalize }}</span>
-              <span class="badge text-bg-secondary">{{ category | last | size }}</span>
-            </a>
-          </li>
-          {%- endfor -%}
-        </ol>
-      </div>
-
-      <div class="py-4">
-        <h4 class="fst-italic">Tags</h4>
-        <ol class="list-inline mb-0">
-          {%- for tag in site.tags -%}
-          <li class="list-inline-item">
-            <a href="{{ '/tags/' | relative_url }}{{ tag | first | slugify }}/" class="btn btn-outline-secondary my-1">
-              <span>{{ tag | first | capitalize }}</span>
-              <span class="badge text-bg-secondary">{{ tag | last | size }}</span>
-            </a>
-          </li>
-          {%- endfor -%}
-        </ol>
-      </div>
-
-    </aside>
   </div>
 </div>

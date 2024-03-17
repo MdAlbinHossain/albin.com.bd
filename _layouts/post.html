@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="row flex-lg-row-reverse">
+<div class="row">
   <article class="col-md-8 mb-5" itemscope itemtype="http://schema.org/BlogPosting">
 
     <header>
@@ -83,13 +83,13 @@ layout: default
   </article>
 
   <aside class="col-md-4">
-    <div class="position-sticky" style="top: 3rem;">
+    <div class="position-sticky" style="top: 3.5rem;">
       <div class="mb-3">
         <h4 class="fst-italic">On this page</h4>
         {% include toc.html html=content class="list-group" item_class="list-group-item" %}
       </div>
 
-      <div class="py-3">
+      <div>
         <h4 class="fst-italic">Recent posts</h4>
         <ul class="list-unstyled">
           {%- assign posts = site.posts | where_exp: "post", "post.url != page.url" -%}
@@ -115,12 +115,12 @@ layout: default
       </div>
 
       
-      <div class="py-3">
+      <div class="mb-3">
         <h4 class="fst-italic">Categories</h4>
         <ol class="list-inline mb-0">
           {%- for category in page.categories -%}
           <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="btn btn-outline-primary">
+            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="btn btn-sm btn-outline-primary">
               <span>{{ category | capitalize }}</span>
             </a>
           </li>
@@ -129,12 +129,12 @@ layout: default
       </div>
 
       
-      <div class="py-3">
+      <div class="mb-3">
         <h4 class="fst-italic">Tags</h4>
         <ol class="list-inline mb-0">
           {%- for tag in page.tags -%}
           <li class="list-inline-item">
-            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="btn btn-outline-secondary">
+            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="btn btn-sm btn-outline-secondary">
               <span>{{ tag | capitalize }}</span>
             </a>
           </li>
