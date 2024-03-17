@@ -36,14 +36,14 @@ layout: page
     </div>
     <nav class="pagination d-flex justify-content-between align-items-center mt-5" aria-label="Pagination">
       {% if paginator.previous_page %}
-      <a class="btn btn-outline-primary rounded-pill" href="{{ paginator.previous_page_path }}">Older</a>
-      {% else %}
-      <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Older</a>
-      {% endif %}
-      {% if paginator.next_page %}
-      <a class="btn btn-outline-primary rounded-pill" href="{{ paginator.next_page_path }}">Newer</a>
+      <a class="btn btn-outline-success rounded-pill" href="{{ paginator.previous_page_path }}">Newer</a>
       {% else %}
       <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
+      {% endif %}
+      {% if paginator.next_page %}
+      <a class="btn btn-outline-success rounded-pill" href="{{ paginator.next_page_path }}">Older</a>
+      {% else %}
+      <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Older</a>
       {% endif %}
     </nav>
   </div>
