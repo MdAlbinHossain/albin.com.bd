@@ -33,6 +33,9 @@ author:
 
 # Build settings
 # theme: minima
+
+colors: [primary, secondary, success, danger, warning, info, dark]
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap

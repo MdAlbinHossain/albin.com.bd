@@ -120,7 +120,8 @@ layout: default
         <ol class="list-inline mb-0">
           {%- for category in page.categories -%}
           <li class="list-inline-item">
-            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="btn btn-sm btn-outline-primary">
+            {%- assign color = site.colors | sample -%}
+            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="btn btn-sm btn-outline-{{ color }}">
               <span>{{ category | capitalize }}</span>
             </a>
           </li>
