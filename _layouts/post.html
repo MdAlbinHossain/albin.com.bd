@@ -121,7 +121,7 @@ layout: default
           {%- for category in page.categories -%}
           <li class="list-inline-item">
             {%- assign color = site.colors | sample -%}
-            <a href="{{ '/categories/' | relative_url }}{{ category | slugify }}/" class="btn btn-sm btn-outline-{{ color }}">
+            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="btn btn-sm btn-outline-{{ color }}">
               <span>{{ category | capitalize }}</span>
             </a>
           </li>
@@ -135,7 +135,7 @@ layout: default
         <ol class="list-inline mb-0">
           {%- for tag in page.tags -%}
           <li class="list-inline-item">
-            <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="btn btn-sm btn-outline-secondary">
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="btn btn-sm btn-outline-secondary">
               <span>{{ tag | capitalize }}</span>
             </a>
           </li>

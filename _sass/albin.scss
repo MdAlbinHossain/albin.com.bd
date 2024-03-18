@@ -4,51 +4,74 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap");
 
 html {
-    scroll-padding-top: 54px;
+  scroll-padding-top: 54px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
-body, button, input, select, textarea{
-    font-family: "Open Sans", sans-serif;
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Open Sans", sans-serif;
 }
 
 p {
-    font-family: "Roboto Slab", serif;
+  font-family: "Roboto Slab", serif;
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #000;
-    text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
 }
 
 .section-title::after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: #f8b500;
-    margin: 20px auto 5px;
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #f8b500;
+  margin: 20px auto 5px;
 }
 
 
 .featurette-divider {
-    margin: 5rem 0;
+  margin: 5rem 0;
+}
+
+.themed-grid-col {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(112.520718, 44.062154, 249.437846, .15);
+  border: 1px solid rgba(112.520718, 44.062154, 249.437846, .3);
+}
+
+.themed-container {
+  padding: .75rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(112.520718, 44.062154, 249.437846, .15);
+  border: 1px solid rgba(112.520718, 44.062154, 249.437846, .3);
+}
+
+
+@media (min-width: 40em) {
+  .featurette-heading {
+    font-size: 50px;
   }
-  
-  
-  @media (min-width: 40em) {
-    .featurette-heading {
-      font-size: 50px;
-    }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
   }
-  
-  @media (min-width: 62em) {
-    .featurette-heading {
-      margin-top: 7rem;
-    }
-  }
+}

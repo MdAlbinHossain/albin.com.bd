@@ -1,0 +1,28 @@
+---
+layout: page
+---
+
+<div class="container">
+    <ul class="row mb-3 list-unstyled">
+        {% for tag in site.tags %}
+        <li class="col-4 themed-grid-col mb-3 text-center">
+            <a href="#{{ tag | first | slugify }}">{{ tag | first }}</a>
+            <span class="badge bg-secondary rounded-pill">{{ tag | last | size }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="row">
+        {% for tag in site.tags %}
+        <h2 id="{{ tag | first | slugify }}" class="border-bottom mb-3 pb-3">{{ tag | first }}</h2>
+        <ul class="list-unstyled">
+            {% for post in tag.last %}
+            <li>
+                <h3>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </h3>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>
