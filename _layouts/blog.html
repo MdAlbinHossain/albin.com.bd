@@ -15,10 +15,11 @@ layout: page
         <ol class="list-inline mb-0">
           {%- for category in site.categories -%}
           <li class="list-inline-item">
+            {%- assign color = site.colors | sample -%}
             <a href="{{ '/categories/' | relative_url }}#{{ category | first | slugify }}"
-              class="btn btn-sm btn-outline-primary my-1">
+              class="btn btn-sm btn-outline-{{ color }} my-1">
               <span>{{ category | first | capitalize }}</span>
-              <span class="badge text-bg-secondary">{{ category | last | size }}</span>
+              <span class="badge text-bg-{{ color }}">{{ category | last | size }}</span>
             </a>
           </li>
           {%- endfor -%}

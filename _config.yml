@@ -19,13 +19,13 @@ author:
    - { platform: github,         user_url: "https://github.com/MdAlbinHossain" }
    - { platform: linkedin,       user_url: "https://linkedin.com/in/Md-Albin-Hossain" }
   #  - { platform: facebook,       user_url: "https://www.facebook.com/Md.Albin.Hosssain" }
-   - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
-   - { platform: threads,      user_url: "https://www.threads.net/Md.Albin.Hossain" }
+  #  - { platform: instagram,      user_url: "https://www.instagram.com/Md.Albin.Hossain" }
+  #  - { platform: threads,      user_url: "https://www.threads.net/Md.Albin.Hossain" }
   #  - { platform: stackoverflow,  user_url: "https://stackoverflow.com/users/23159657/albin" }
    - { platform: youtube,        user_url: "https://www.youtube.com/@MdAlbinHossain" }
   #  - { platform: twitter,        user_url: "https://twitter.com/MdAlbinHossain" }
   #  - { platform: reddit,         user_url: "https://www.reddit.com/user/MdAlbinHossain" }
-   - { platform: medium,         user_url: "https://medium.com/@MdAlbinHossain" }
+  #  - { platform: medium,         user_url: "https://medium.com/@MdAlbinHossain" }
   #  - { platform: dev,            user_url: "https://dev.to/MdAlbinHossain" }
   #  - { platform: codepen,        user_url: "https://codepen.io/MdAlbinHossain" }
   #  - { platform: gitlab,         user_url: "https://gitlab.com/MdAlbinHossain" }
