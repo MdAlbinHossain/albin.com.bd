@@ -9,7 +9,7 @@
         {% if project.image %}
         <a href="{{ project.url }}" class="stretched-link" aria-label="{{ project.title | escape }}">
         <img class="card-img" src="{{ project.image }}"
-            alt="{{ project.title }}"></a>
+            alt="{{ project.title }}" loading="lazy"></a>
         {%- else -%}
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ project.title | escape }}</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ project.title | escape }}</text></svg>
         <div class="card-body">
