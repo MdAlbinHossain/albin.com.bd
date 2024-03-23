@@ -27,39 +27,55 @@ layout: default
       {{ content }}
     </div>
 
-    <div class="d-flex justify-content-center my-5">
-      <div class="d-flex gap-2 align-items-center">
-        <span class="me-2">Share:</span>
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}"
-          target="_blank" rel="noopener" class="btn btn-outline-primary">
-          <svg class="bi" width="24" height="24">
-            <use xlink:href="{{ '/assets/social-icons.svg#twitter' | relative_url }}"></use>
+
+    {%- if page.tags.size > 0 -%}
+    <div class="d-flex gap-2 align-items-center my-5">
+      <h4>Tags:</h4>
+      <ol class="list-inline mb-0">
+        {%- for tag in page.tags -%}
+        <li class="list-inline-item">
+          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="btn btn-sm btn-outline-secondary">
+            <span>{{ tag | capitalize }}</span>
+          </a>
+        </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+    {%- endif -%}
+    <div class="d-flex gap-2 align-items-center my-5">
+      <h4>Share:</h4>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}"
+        target="_blank" rel="noopener" class="btn btn-outline-primary">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="{{ '/assets/social-icons.svg#twitter' | relative_url }}"></use>
         </svg>
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener"
-          class="btn btn-outline-primary">
-          <svg class="bi" width="24" height="24">
-            <use xlink:href="{{ '/assets/social-icons.svg#facebook' | relative_url }}"></use>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener"
+        class="btn btn-outline-primary">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="{{ '/assets/social-icons.svg#facebook' | relative_url }}"></use>
         </svg>
-        </a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_encode }}"
-          target="_blank" rel="noopener" class="btn btn-outline-primary">
-          <svg class="bi" width="24" height="24">
-            <use xlink:href="{{ '/assets/social-icons.svg#linkedin' | relative_url }}"></use>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_encode }}"
+        target="_blank" rel="noopener" class="btn btn-outline-primary">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="{{ '/assets/social-icons.svg#linkedin' | relative_url }}"></use>
         </svg>
-        </a>
-        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ site.url }}{{ page.url }}" class="btn btn-outline-primary">
-          <svg class="bi" width="24" height="24">
-            <use xlink:href="{{ '/assets/social-icons.svg#email' | relative_url }}"></use>
+      </a>
+      <a href="mailto:?subject={{ page.title | url_encode }}&body={{ site.url }}{{ page.url }}"
+        class="btn btn-outline-primary">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="{{ '/assets/social-icons.svg#email' | relative_url }}"></use>
         </svg>
-        </a>
-        <button class="btn btn-outline-primary" onclick="navigator.clipboard.writeText('{{ site.url }}{{ page.url }}')">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-link" viewBox="0 0 16 16">
-            <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
-            <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"/>
-          </svg>
-        </button>
-      </div>
+      </a>
+      <button class="btn btn-outline-primary" onclick="navigator.clipboard.writeText('{{ site.url }}{{ page.url }}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-link" viewBox="0 0 16 16">
+          <path
+            d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+          <path
+            d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" />
+        </svg>
+      </button>
     </div>
 
 
@@ -83,10 +99,11 @@ layout: default
   </article>
 
   <aside class="col-md-4">
-    <div class="position-sticky" style="top: 3.5rem;">
+    <div class="position-sticky" style="top: 4rem;">
       <div class="mb-3">
         <h4 class="fst-italic">Table of Contents</h4>
-        {% include toc.html html=content class="list-group" item_class="list-group-item" anchor_class="link-body-emphasis text-decoration-none" %}
+        {% include toc.html html=content class="list-group" item_class="list-group-item"
+        anchor_class="link-body-emphasis text-decoration-none" %}
       </div>
 
       <div>
@@ -114,29 +131,15 @@ layout: default
         </ul>
       </div>
 
-      
+
       <div class="mb-3">
         <h4 class="fst-italic">Categories</h4>
         <ol class="list-inline mb-0">
           {%- for category in page.categories -%}
           <li class="list-inline-item">
-            {%- assign color = site.colors | sample -%}
-            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="btn btn-sm btn-outline-{{ color }}">
+            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}"
+              class="btn btn-sm btn-outline-secondary">
               <span>{{ category | capitalize }}</span>
-            </a>
-          </li>
-          {%- endfor -%}
-        </ol>
-      </div>
-
-      
-      <div class="mb-3">
-        <h4 class="fst-italic">Tags</h4>
-        <ol class="list-inline mb-0">
-          {%- for tag in page.tags -%}
-          <li class="list-inline-item">
-            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="btn btn-sm btn-outline-secondary">
-              <span>{{ tag | capitalize }}</span>
             </a>
           </li>
           {%- endfor -%}
