@@ -4,7 +4,7 @@ layout: page
 
 <div class="row">
   <div class="col-md-8">
-    <h2 class="mb-4">Recent Posts</h2>
+    <h2 class="my-4">Recent Posts</h2>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-5">
       {%- for post in paginator.posts -%}
       {% include post.html post = post%}
@@ -35,11 +35,10 @@ layout: page
         <ol class="list-inline mb-0">
           {%- for category in site.categories -%}
           <li class="list-inline-item">
-            {%- assign color = site.colors | sample -%}
             <a href="{{ '/categories/' | relative_url }}#{{ category | first | slugify }}"
-              class="btn btn-sm btn-outline-{{ color }} my-1">
+              class="btn btn-sm btn-outline-secondary my-1">
               <span>{{ category | first | capitalize }}</span>
-              <span class="badge text-bg-{{ color }}">{{ category | last | size }}</span>
+              <span class="badge text-bg-secondary">{{ category | last | size }}</span>
             </a>
           </li>
           {%- endfor -%}

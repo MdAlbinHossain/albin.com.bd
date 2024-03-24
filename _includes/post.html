@@ -15,8 +15,7 @@
         <div class="footer ms-3 bg-white d-flex justify-content-between align-items-center">
             <div class="my-3">
                 {%- for catergory in post.categories -%}
-                {%- assign color = site.colors | sample -%}
-                <span class="badge bg-body-secondary border rounded-pill me-3  mb-2 text-{{ color }}">{{catergory}}</span>
+                <span class="badge bg-body-secondary border rounded-pill me-3  mb-2 text-dark">{{catergory}}</span>
                 {%- endfor -%}
             </div>
             <a href="{{ post.url | relative_url }}"  class="stretched-link" aria-label="{{ post.title | escape }}"></a>
