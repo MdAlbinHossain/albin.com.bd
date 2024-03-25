@@ -1,6 +1,7 @@
 ---
-redirect_from: 
-    - /resume
+sitemap: false
+permalink: /resume/
+redirect_from:
     - /Resume
     - /cv
     - /CV

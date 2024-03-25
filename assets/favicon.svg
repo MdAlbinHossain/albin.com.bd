@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<title>Albin</title>
-	<rect width="512" height="512" rx="64" ry="64" fill-rule="evenodd"/>
-	<path d="m133.8 447.17c63.881-106.3-9.621-385.65 124.79-383.48 133.47 2.153-21.881 387.76 111.57 384.61 62.653-1.4776 82.619-133.63 43.81-182.84-69.429-88.03-250.33 68.12-336.34 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="57.138"/>
+	<path d="m88.465 460.07c65.475-108.95 29.767-410.35 167.53-408.13 136.8 2.2067 9.9924 410.48 146.77 407.25 64.217-1.5145 72.544-128.74 32.766-179.18-71.162-90.227-295.3 37.342-383.46-32.478" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="91.325"/>
 	<metadata>
 		<rdf:RDF>
 			<cc:Work rdf:about="">
