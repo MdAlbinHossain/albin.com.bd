@@ -1,0 +1,20 @@
+{
+  "name": "mdalbinhossain",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "test": "vitest",
+    "preview": "wrangler pages dev _site",
+    "deploy": "wrangler pages deploy _site"
+  },
+  "dependencies": {
+    "hono": "^4.2.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240404.0",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.47.1"
+  }
+}
