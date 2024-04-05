@@ -8,6 +8,8 @@ export interface Env {
 }
 
 export const onRequest: PagesFunction<Env> = async (context) => {
-	// const value = await context.env.KV.get('example');
- 	return new Response("Hello World");
+	return new Response(JSON.stringify({
+		headers: Object.fromEntries(context.request.headers),
+	}),
+		{ headers: { 'content-type': 'application/json' } });
 }
