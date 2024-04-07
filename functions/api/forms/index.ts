@@ -1,4 +1,3 @@
-
 import { Buffer } from "buffer";
 
 const encoder = new TextEncoder();
