@@ -21,6 +21,34 @@ export const createResponse = async (db: D1Database, response: FormResponse) => 
 	return results;
 };
 
+export const getResponses = async (db: D1Database) => {
+	const query = `SELECT * FROM FormResponses`;
+
+	const results = await db.prepare(query).all();
+
+	return results;
+}
+
+export const onRequestGet: PagesFunction<Env> = async (context) => {
+	const request = context.request;
+	const requestOrigin = request.headers.get('Origin');
+	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev'];
+
+	if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
+		const responses = await getResponses(context.env.DB);
+
+		return new Response(JSON.stringify(responses), {
+			status: 200,
+			statusText: 'OK',
+			headers: {
+				'content-type': 'application/json',
+				'Access-Control-Allow-Origin': requestOrigin,
+			},
+		});
+	}
+	return Response.redirect('https://albin.com.bd', 301);
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
 	const request = context.request;
 	if (context.params.test) {
