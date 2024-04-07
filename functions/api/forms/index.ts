@@ -42,9 +42,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
 		const reqHeaders = await readRequestHeaders(request);
 		const reqBody = await readRequestBody(request);
-		const fullMessage = `<div>${reqBody}<div><div> <br/> <hr/> ${reqHeaders}</div>`;
 		try {
-			const respBody = await createResponse(context.env.DB, { id: "", formName: 'test', data: reqHeaders });
+			const respBody = await createResponse(
+				context.env.DB,
+				{
+					id: "", formName: request.url,
+					data: JSON.stringify({ headers: reqHeaders, body: reqBody })
+				});
 
 			return new Response(JSON.stringify(respBody), {
 				status: respBody.success === true ? 200 : 500,
@@ -71,11 +75,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
 async function readRequestHeaders(request: Request) {
 	const headers = request.headers.entries();
-	let html = '<ul>';
-	for (const header of headers) {
-		html += `<li><strong>${header[0]}:</strong> ${header[1]}</li>`;
-	}
-	html += '</ul>';
+	const html = JSON.stringify([...headers], null, 2);
 	return html;
 }
 
@@ -97,11 +97,7 @@ async function readRequestBody(request: Request): Promise<string> {
 			body[entry[0]] = entry[1];
 		}
 
-		let html = '<ul>';
-		for (const key in body) {
-			html += `<li><strong>${key}:</strong> ${body[key]}</li>`;
-		}
-		html += '</ul>';
+		const html = JSON.stringify(body, null, 2);
 
 		return html;
 	} else {
