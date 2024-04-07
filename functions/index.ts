@@ -7,7 +7,7 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>()
 
 
-app.get("/:id", async (c) => {
+app.get("/api/:id", async (c) => {
   const userId= c.req.param("id")
   return c.json({ userId})
 })
