@@ -1,6 +1,6 @@
 export interface Env {
 	// MY_KV_NAMESPACE: KVNamespace;
-	// MY_DB: D1Database;
+	DB: D1Database;
 	// MY_DURABLE_OBJECT: DurableObjectNamespace;
 	// MY_BUCKET: R2Bucket;
 	// MY_SERVICE: Fetcher;
