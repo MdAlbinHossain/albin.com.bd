@@ -36,7 +36,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	const responses = await getResponses(context.env.DB);
 
 	const html = responses.map((response) => {
-		return `<div><h3>${response.form_name}</h3>${response.data}</div>`;
+		return `<div><h3>${response.id} - ${response.form_name}</h3>${response.data}</div>`;
 	}).join('');
 
 	return new Response(html, {
