@@ -34,7 +34,16 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	const requestOrigin = request.headers.get('Origin');
 	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev'];
 
-	return await authenticate(request, context.env);
+	const authenticated = await authenticate(request, context.env);
+
+	if (!authenticated) {
+		return new Response("You need to login.", {
+			status: 401,
+			headers: {
+				"WWW-Authenticate": 'Basic realm="my scope", charset="UTF-8"',
+			},
+		});
+	}
 
 
 	// if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
@@ -46,6 +55,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 		headers: {
 			'content-type': 'application/json',
 			'Access-Control-Allow-Origin': requestOrigin || '*',
+			'cache-control': 'no-store'
 		},
 	});
 	// }
@@ -156,8 +166,8 @@ function timingSafeEqual(a: string, b: string) {
 }
 
 async function authenticate(request: Request, env: Env) {
-	const BASIC_USER = "admin";
-	const BASIC_PASS = env.PASSWORD ?? "password";
+	const BASIC_USER = "albin";
+	const BASIC_PASS = env.PASSWORD ?? "adminpass";
 
 	const authorization = request.headers.get("Authorization");
 	if (!authorization) {
@@ -185,18 +195,8 @@ async function authenticate(request: Request, env: Env) {
 		!timingSafeEqual(BASIC_USER, user) ||
 		!timingSafeEqual(BASIC_PASS, pass)
 	) {
-		return new Response("You need to login.", {
-			status: 401,
-			headers: {
-				"WWW-Authenticate": 'Basic realm="my scope", charset="UTF-8"',
-			},
-		});
+		return false;
 	}
 
-	return new Response("🎉 You have private access!", {
-		status: 200,
-		headers: {
-			"Cache-Control": "no-store",
-		},
-	});
+	return true;
 }
