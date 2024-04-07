@@ -53,7 +53,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	if (context.params.test) {
 		const reqBody = await readRequestBody(request);
 
-		return new Response(reqBody, {
+		return new Response(JSON.stringify(reqBody), {
 			status: 200,
 			statusText: 'OK',
 			headers: {
@@ -67,14 +67,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev'];
 
 	if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
-		const reqHeaders = await readRequestHeaders(request);
 		const reqBody = await readRequestBody(request);
 		try {
 			const respBody = await createResponse(
 				context.env.DB,
 				{
 					id: "", formName: request.url,
-					data: JSON.stringify({ headers: reqHeaders, body: reqBody })
+					data: JSON.stringify({ headers: Object.fromEntries(request.headers), body: reqBody })
 				});
 
 			return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
@@ -168,25 +167,17 @@ async function getResponses(db: D1Database) {
 	return results;
 }
 
-async function readRequestHeaders(request: Request) {
-	return JSON.stringify(Object.fromEntries(request.headers), null, 4);
-}
-
-async function readRequestBody(request: Request): Promise<string> {
+async function readRequestBody(request: Request) {
 	const contentType = request.headers.get('content-type');
 	if (contentType && contentType.includes('application/json')) {
-		const jsonBody = await request.json();
-		return JSON.stringify(jsonBody, null, 4);
+		return String(await request.json());
 	} else if (contentType && contentType.includes('application/text')) {
-		const textBody = await request.text();
-		return textBody;
+		return await request.text();
 	} else if (contentType && contentType.includes('text/html')) {
-		const htmlBody = await request.text();
-		return htmlBody;
+		return await request.text();
 	} else if (contentType && contentType.includes('form')) {
-		const formData = await request.formData();
-		return JSON.stringify(Object.fromEntries(formData), null, 4);
+		return Object.fromEntries(await request.formData());
 	} else {
-		return 'a file or binary data';
+		return String('a file or binary data');
 	}
 }
