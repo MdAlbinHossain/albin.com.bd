@@ -35,13 +35,17 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	// if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
 	const responses = await getResponses(context.env.DB);
 
-	return new Response(JSON.stringify(responses), {
+	const html = responses.map((response) => {
+		return `<div><h3>${response.formName}</h3>${response.data}</div>`;
+	}).join('');
+
+	return new Response(html, {
 		status: 200,
 		statusText: 'OK',
 		headers: {
-			'content-type': 'text/plain',
 			'Access-Control-Allow-Origin': requestOrigin || '*',
-			'cache-control': 'no-store'
+			'cache-control': 'no-store',
+			'content-type': 'text/html',
 		},
 	});
 	// }
