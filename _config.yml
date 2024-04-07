@@ -3,7 +3,7 @@ description         : Portfolio of Md. Albin Hossain.
 baseurl             : ""
 url                 : https://albin.com.bd
 repository          : MdAlbinHossain/MdAlbinHossain.github.io
-api                 : https://api.mdalbinhossain.workers.dev/
+api                 : /api/forms/
 
 author:
   name              : Md. Albin Hossain
