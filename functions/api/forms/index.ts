@@ -39,7 +39,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 		status: 200,
 		statusText: 'OK',
 		headers: {
-			'content-type': 'application/json',
+			'content-type': 'text/plain',
 			'Access-Control-Allow-Origin': requestOrigin || '*',
 			'cache-control': 'no-store'
 		},
@@ -149,7 +149,7 @@ async function authenticate(request: Request, env: Env) {
 }
 
 async function createResponse(db: D1Database, response: FormResponse) {
-	const query = `INSERT INTO FormResponses(form_name, data) VALUES (?, ?)`;
+	const query = 'INSERT INTO FormResponses(form_name, data) VALUES (?, ?)';
 
 	const results = await db
 		.prepare(query)
@@ -160,7 +160,7 @@ async function createResponse(db: D1Database, response: FormResponse) {
 };
 
 async function getResponses(db: D1Database) {
-	const query = `SELECT * FROM FormResponses`;
+	const query = 'SELECT * FROM FormResponses';
 
 	const { results } = await db.prepare(query).all();
 
