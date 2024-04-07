@@ -35,32 +35,17 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	// if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
 	const responses = await getResponses(context.env.DB);
 
-	const html = `
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Form Responses</title>
-		</head>
-		<body>
-			<h1>Form Responses</h1>
-			<ul>
-				${responses.map((response) => `<li>${response.form_name} - ${response.data}</li>`).join('')}
-			</ul>
-		</body>
-		</html>
-	`;
-
-	return new Response(html, {
+	return new Response(JSON.stringify(responses), {
 		status: 200,
 		statusText: 'OK',
 		headers: {
-			'content-type': 'text/html',
+			'content-type': 'application/json',
 			'Access-Control-Allow-Origin': requestOrigin || '*',
 			'cache-control': 'no-store'
 		},
 	});
+	// }
+	// return Response.redirect('https://albin.com.bd', 301);
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
