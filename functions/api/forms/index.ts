@@ -34,7 +34,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	const requestOrigin = request.headers.get('Origin');
 	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev'];
 
-	await authenticate(request, context.env);
+	return await authenticate(request, context.env);
 
 
 	// if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
