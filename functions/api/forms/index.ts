@@ -81,7 +81,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 					data: JSON.stringify({ headers: reqHeaders, body: reqBody })
 				});
 
-			return new Response(JSON.stringify(respBody), {
+			return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
 				status: respBody.success === true ? 200 : 500,
 				statusText: respBody.success === true ? 'OK' : 'Internal Server Error',
 				headers: {
