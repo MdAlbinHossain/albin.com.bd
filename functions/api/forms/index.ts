@@ -1,3 +1,8 @@
+
+import { Buffer } from "buffer";
+
+const encoder = new TextEncoder();
+
 export interface Env {
 	KV: KVNamespace;
 	DB: D1Database;
@@ -9,25 +14,6 @@ type FormResponse = {
 	formName: string;
 	data: string;
 };
-
-export const createResponse = async (db: D1Database, response: FormResponse) => {
-	const query = `INSERT INTO FormResponses(form_name, data) VALUES (?, ?)`;
-
-	const results = await db
-		.prepare(query)
-		.bind(response.formName, response.data)
-		.run();
-
-	return results;
-};
-
-export const getResponses = async (db: D1Database) => {
-	const query = `SELECT * FROM FormResponses`;
-
-	const results = await db.prepare(query).all();
-
-	return results;
-}
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
 	const request = context.request;
@@ -114,44 +100,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	return Response.redirect('https://albin.com.bd', 301);
 };
 
-async function readRequestHeaders(request: Request) {
-	const headers = request.headers.entries();
-	const html = JSON.stringify([...headers], null, 2);
-	return html;
-}
-
-async function readRequestBody(request: Request): Promise<string> {
-	const contentType = request.headers.get('content-type');
-	if (contentType && contentType.includes('application/json')) {
-		const jsonBody = await request.json();
-		return `<pre>${JSON.stringify(jsonBody, null, 2)}</pre>`;
-	} else if (contentType && contentType.includes('application/text')) {
-		const textBody = await request.text();
-		return `<pre>${textBody}</pre>`;
-	} else if (contentType && contentType.includes('text/html')) {
-		const htmlBody = await request.text();
-		return htmlBody;
-	} else if (contentType && contentType.includes('form')) {
-		const formData = await request.formData();
-		const body: { [key: string]: any } = {};
-		for (const entry of formData.entries()) {
-			body[entry[0]] = entry[1];
-		}
-
-		const html = JSON.stringify(body, null, 2);
-
-		return html;
-	} else {
-		return '<p>a file</p>';
-	}
-}
-
-
-
-import { Buffer } from "buffer";
-
-const encoder = new TextEncoder();
-
 function timingSafeEqual(a: string, b: string) {
 	const aBytes = encoder.encode(a);
 	const bBytes = encoder.encode(b);
@@ -199,4 +147,46 @@ async function authenticate(request: Request, env: Env) {
 	}
 
 	return true;
+}
+
+async function createResponse(db: D1Database, response: FormResponse) {
+	const query = `INSERT INTO FormResponses(form_name, data) VALUES (?, ?)`;
+
+	const results = await db
+		.prepare(query)
+		.bind(response.formName, response.data)
+		.run();
+
+	return results;
+};
+
+async function getResponses(db: D1Database) {
+	const query = `SELECT * FROM FormResponses`;
+
+	const { results } = await db.prepare(query).all();
+
+	return results;
+}
+
+async function readRequestHeaders(request: Request) {
+	return JSON.stringify(Object.fromEntries(request.headers), null, 4);
+}
+
+async function readRequestBody(request: Request): Promise<string> {
+	const contentType = request.headers.get('content-type');
+	if (contentType && contentType.includes('application/json')) {
+		const jsonBody = await request.json();
+		return JSON.stringify(jsonBody, null, 4);
+	} else if (contentType && contentType.includes('application/text')) {
+		const textBody = await request.text();
+		return textBody;
+	} else if (contentType && contentType.includes('text/html')) {
+		const htmlBody = await request.text();
+		return htmlBody;
+	} else if (contentType && contentType.includes('form')) {
+		const formData = await request.formData();
+		return JSON.stringify(Object.fromEntries(formData), null, 4);
+	} else {
+		return 'a file or binary data';
+	}
 }
