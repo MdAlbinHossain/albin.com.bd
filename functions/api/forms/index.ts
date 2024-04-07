@@ -11,7 +11,7 @@ export interface Env {
 
 type FormResponse = {
 	id: string;
-	formName: string;
+	form_name: string;
 	data: string;
 };
 
@@ -36,7 +36,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 	const responses = await getResponses(context.env.DB);
 
 	const html = responses.map((response) => {
-		return `<div><h3>${response.formName}</h3>${response.data}</div>`;
+		return `<div><h3>${response.form_name}</h3>${response.data}</div>`;
 	}).join('');
 
 	return new Response(html, {
@@ -76,7 +76,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			const respBody = await createResponse(
 				context.env.DB,
 				{
-					id: "", formName: request.url,
+					id: "", form_name: request.url,
 					data: JSON.stringify({ headers: Object.fromEntries(request.headers), body: reqBody })
 				});
 
@@ -157,7 +157,7 @@ async function createResponse(db: D1Database, response: FormResponse) {
 
 	const results = await db
 		.prepare(query)
-		.bind(response.formName, response.data)
+		.bind(response.form_name, response.data)
 		.run();
 
 	return results;
