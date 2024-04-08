@@ -40,14 +40,14 @@
       </div>
 
       <div class="col-md-5 offset-md-1 mb-3">
-        <form id="newsletter" name="newsletter" action="{{ site.api }}" method="POST">
+        <form id="newsletter" name="newsletter" action="{{ site.api | relative_url }}" method="POST">
           <h4>Subscribe to my newsletter</h4>
           <p>Monthly digest of what's new and exciting from me.</p>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
             <label for="emailAddress" class="visually-hidden">Email address</label>
             <input id="emailAddress" type="email" name="email" class="form-control" placeholder="Email address"
               required>
-            <button id="sendbutton" class="btn btn-dark" type="submit">Subscribe</button>
+            <button id="newsletterSendbutton" class="btn btn-dark" type="submit">Subscribe</button>
           </div>
         </form>
       </div>
@@ -60,44 +60,3 @@
     </div>
   </footer>
 </div>
-
-
-<script>
-  const form = document.getElementById('newsletter');
-  const sendbutton = document.getElementById('sendbutton');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    sendbutton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-
-    try {
-      const resp_text = await sendFormDataToApi();
-      form.reset();
-      if (resp_text === 'Accepted') {
-        sendbutton.innerHTML = 'Thanks! 🎉';
-        sendbutton.classList.remove('btn-dark');
-        sendbutton.classList.add('btn-success');
-      }
-      else {
-        sendbutton.innerHTML = 'Error';
-        sendbutton.classList.remove('btn-dark');
-        sendbutton.classList.add('btn-danger');
-      }
-      console.log(resp_text);
-    } catch (error) {
-      console.error('Error sending data:', error);
-      sendbutton.innerHTML = 'Error';
-      sendbutton.classList.remove('btn-dark');
-      sendbutton.classList.add('btn-danger');
-    }
-    async function sendFormDataToApi() {
-      const response = await fetch('{{ site.api }}', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.text();
-      return data;
-    }
-  });
-</script>
