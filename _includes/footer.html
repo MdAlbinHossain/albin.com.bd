@@ -9,7 +9,8 @@
           {%- unless my_page.url contains 'page' -%}
           {%- if my_page.navigation -%}
           <li class="nav-item mb-2">
-            <a class="nav-link p-0 text-body-secondary" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            <a class="nav-link p-0 text-body-secondary" href="{{ my_page.url | relative_url }}">{{ my_page.title |
+              escape }}</a>
           </li>
           {%- endif -%}
           {%- endunless -%}
@@ -22,7 +23,8 @@
         <ul class="nav flex-column">
           {% assign projects = site.projects %}
           {%- for project in site.projects limit:5 -%}
-          <li class="nav-item mb-2"><a href="{{ project.url }}" class="nav-link p-0 text-body-secondary">{{ project.title | escape }}</a></li>
+          <li class="nav-item mb-2"><a href="{{ project.url }}" class="nav-link p-0 text-body-secondary">{{
+              project.title | escape }}</a></li>
           {%- endfor -%}
         </ul>
       </div>
@@ -31,19 +33,21 @@
         <h4>Expertise</h4>
         <ul class="nav flex-column">
           {%- for skill in site.data.skills -%}
-          <li class="nav-item mb-2"><a href="{{ skill.action_link }}" class="nav-link p-0 text-body-secondary">{{ skill.title }}</a></li>
+          <li class="nav-item mb-2"><a href="{{ skill.action_link }}" class="nav-link p-0 text-body-secondary">{{
+              skill.title }}</a></li>
           {%- endfor -%}
         </ul>
       </div>
 
       <div class="col-md-5 offset-md-1 mb-3">
-        <form action="{{ site.api }}" method="POST">
+        <form id="newsletter" name="newsletter" action="{{ site.api }}" method="POST">
           <h4>Subscribe to my newsletter</h4>
           <p>Monthly digest of what's new and exciting from me.</p>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Email address</label>
-            <input id="newsletter1" type="text" name="email" class="form-control" placeholder="Email address" required>
-            <button class="btn btn-success" type="submit">Subscribe</button>
+            <label for="emailAddress" class="visually-hidden">Email address</label>
+            <input id="emailAddress" type="email" name="email" class="form-control" placeholder="Email address"
+              required>
+            <button id="sendbutton" class="btn btn-dark" type="submit">Subscribe</button>
           </div>
         </form>
       </div>
@@ -56,3 +60,44 @@
     </div>
   </footer>
 </div>
+
+
+<script>
+  const form = document.getElementById('newsletter');
+  const sendbutton = document.getElementById('sendbutton');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    sendbutton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+
+    try {
+      const resp_text = await sendFormDataToApi();
+      form.reset();
+      if (resp_text === 'Accepted') {
+        sendbutton.innerHTML = 'Thanks! 🎉';
+        sendbutton.classList.remove('btn-dark');
+        sendbutton.classList.add('btn-success');
+      }
+      else {
+        sendbutton.innerHTML = 'Error';
+        sendbutton.classList.remove('btn-dark');
+        sendbutton.classList.add('btn-danger');
+      }
+      console.log(resp_text);
+    } catch (error) {
+      console.error('Error sending data:', error);
+      sendbutton.innerHTML = 'Error';
+      sendbutton.classList.remove('btn-dark');
+      sendbutton.classList.add('btn-danger');
+    }
+    async function sendFormDataToApi() {
+      const response = await fetch('{{ site.api }}', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.text();
+      return data;
+    }
+  });
+</script>
