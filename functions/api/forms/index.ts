@@ -26,7 +26,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 	}
 
 	const requestOrigin = request.headers.get('Origin');
-	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev'];
+	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev', 'https://email.mdalbinhossain.workers.dev'];
 
 	if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
 		const reqBody = await readRequestBody(request);
