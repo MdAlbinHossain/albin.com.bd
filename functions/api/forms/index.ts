@@ -34,7 +34,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 			const respBody = await createResponse(
 				context.env.DB,
 				{
-					id: "", form_name: request.url,
+					id: "", form_name: request.headers.get('origin')?.toString() || "Unknown",
 					data: JSON.stringify({ headers: Object.fromEntries(request.headers), body: reqBody })
 				});
 
