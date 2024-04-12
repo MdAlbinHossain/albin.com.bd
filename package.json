@@ -3,15 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
-    "preview": "wrangler pages dev _site",
-    "deploy": "wrangler pages deploy _site"
-  },
-  "dependencies": {
-    "buffer": "^6.0.3",
-    "hono": "^4.2.2"
+    "build": "bundle exec jekyll build",
+    "preview": "npm run build && wrangler pages dev _site",
+    "deploy": "npm run build && wrangler pages deploy _site"
   },
   "devDependencies": {
     "@cloudflare/ai": "^1.1.0",
