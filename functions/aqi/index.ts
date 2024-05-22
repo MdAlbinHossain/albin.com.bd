@@ -11,7 +11,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     try {
         const respBody = await createResponse(
             context.env.DB,
-            JSON.stringify({ headers: Object.fromEntries(request.headers), body: reqBody })
+            JSON.stringify(reqBody)
         );
 
         return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
