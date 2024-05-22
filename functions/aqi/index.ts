@@ -37,11 +37,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 };
 
 async function createResponse(db: D1Database, data: string) {
-    const query = 'INSERT INTO Milesight(data) VALUES (?)';
+    const query = 'INSERT INTO Milesight(ts, data) VALUES (?, ?)';
 
     const results = await db
         .prepare(query)
-        .bind(data)
+        .bind(Date.now(), data)
         .run();
 
     return results;
