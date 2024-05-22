@@ -62,32 +62,49 @@ async function readRequestBody(request: Request) {
     }
 }
 
+export const onRequest: PagesFunction = async (context) => {
+    return new Response(JSON.stringify({
+        headers: Object.fromEntries(context.request.headers),
+    }),
+        { headers: { 'content-type': 'application/json' } });
+}
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
 
-    try {
-        const responses = await getResponses(context.env.DB);
+    const request = context.request;
 
-        return new Response(JSON.stringify(responses), {
-            status: 200,
-            statusText: 'OK',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'cache-control': 'no-store',
-                'content-type': 'application/json',
-            },
-        });
-    }
-    catch (e: any) {
-        return new Response(e.message, {
-            status: 502,
-            statusText: 'Server Error',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'cache-control': 'no-store',
-                'content-type': 'application/json',
-            },
-        });
-    }
+    const reqBody = await readRequestBody(request);
+
+    return new Response(JSON.stringify({
+        headers: Object.fromEntries(context.request.headers),
+        body: reqBody
+    }),
+        { headers: { 'content-type': 'application/json' } });
+
+    // try {
+    //     const responses = await getResponses(context.env.DB);
+
+    //     return new Response(JSON.stringify(responses), {
+    //         status: 200,
+    //         statusText: 'OK',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'cache-control': 'no-store',
+    //             'content-type': 'application/json',
+    //         },
+    //     });
+    // }
+    // catch (e: any) {
+    //     return new Response(e.message, {
+    //         status: 502,
+    //         statusText: 'Server Error',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'cache-control': 'no-store',
+    //             'content-type': 'application/json',
+    //         },
+    //     });
+    // }
 }
 
 async function getResponses(db: D1Database) {
