@@ -1,7 +1,7 @@
 ---
 title: Notes
 categories: [Room Database]
-image: https://mdalbinhossain.github.io/Notes/Screenshot.png
+image: ./notes/screenshot.png
 description: An Android app for creating and managing instant notes.
 download_url: https://mdalbinhossain.github.io/Notes/
 external_url: https://mdalbinhossain.github.io/Notes/
