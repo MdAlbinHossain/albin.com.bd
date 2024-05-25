@@ -3,15 +3,71 @@ export interface Env {
     DB: D1Database;
 }
 
+type SensorEvent = {
+    "eventId": string,
+    "eventCreatedTime": number,
+    "eventVersion": string,
+    "eventType": string,
+    "data": {
+        "deviceProfile": {
+            "deviceId": string,
+            "sn": string,
+            "devEUI": string,
+            "name": string
+        },
+        "type": string,
+        "tslId": string | null,
+        "payload": {
+            "temperature": number,
+            "humidity": number,
+            "pir_status": number,
+            "als_level": number,
+            "co2": number,
+            "tvoc_level": number,
+            "tvoc": number,
+            "pressure": number,
+            "buzzer_status": number
+        }
+    }
+}
+
+type Payload = {
+    ts: number,
+    deviceId: string,
+    deviceName: string,
+    temperature: number,
+    humidity: number,
+    pir_status: number,
+    als_level: number,
+    co2: number,
+    tvoc_level: number,
+    tvoc: number,
+    pressure: number,
+    buzzer_status: number
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const request = context.request;
 
-    const reqBody = await readRequestBody(request);
+    const reqBody: SensorEvent = await request.json();
 
     try {
         const respBody = await createResponse(
             context.env.DB,
-            JSON.stringify(reqBody)
+            {
+                ts: reqBody.eventCreatedTime,
+                deviceId: reqBody.data.deviceProfile.deviceId,
+                deviceName: reqBody.data.deviceProfile.name,
+                temperature: reqBody.data.payload.temperature,
+                humidity: reqBody.data.payload.humidity,
+                pir_status: reqBody.data.payload.pir_status,
+                als_level: reqBody.data.payload.als_level,
+                co2: reqBody.data.payload.co2,
+                tvoc_level: reqBody.data.payload.tvoc_level,
+                tvoc: reqBody.data.payload.tvoc,
+                pressure: reqBody.data.payload.pressure,
+                buzzer_status: reqBody.data.payload.buzzer_status
+            }
         );
 
         return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
@@ -36,31 +92,28 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
 };
 
-async function createResponse(db: D1Database, data: string) {
-    const query = 'INSERT INTO Milesight(ts, data) VALUES (?, ?)';
+async function createResponse(db: D1Database, data: Payload) {
+    const query = 'INSERT INTO Milesight(ts,deviceId,deviceName,temperature,humidity,pir_status,als_level,co2,tvoc_level,tvoc,pressure,buzzer_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     const results = await db
         .prepare(query)
-        .bind(Date.now(), data)
+        .bind(
+            data.ts,
+            data.deviceId,
+            data.deviceName,
+            data.temperature,
+            data.humidity,
+            data.pir_status,
+            data.als_level,
+            data.co2,
+            data.tvoc_level,
+            data.tvoc,
+            data.pressure,
+            data.buzzer_status)
         .run();
 
     return results;
 };
-
-async function readRequestBody(request: Request) {
-    const contentType = request.headers.get('content-type');
-    if (contentType && contentType.includes('application/json')) {
-        return await request.json();
-    } else if (contentType && contentType.includes('application/text')) {
-        return await request.text();
-    } else if (contentType && contentType.includes('text/html')) {
-        return await request.text();
-    } else if (contentType && contentType.includes('form')) {
-        return Object.fromEntries(await request.formData());
-    } else {
-        return String('a file or binary data');
-    }
-}
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
 
