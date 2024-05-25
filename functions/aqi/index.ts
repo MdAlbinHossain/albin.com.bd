@@ -3,6 +3,8 @@ export interface Env {
     DB: D1Database;
 }
 
+const SENSOR_DATA_KEY = 'SENSOR_DATA';
+
 type SensorEvent = {
     "eventId": string,
     "eventCreatedTime": number,
@@ -46,33 +48,52 @@ type Payload = {
     buzzer_status: number
 }
 
+async function saveData(KV: KVNamespace, key: string, data: string) {
+    await KV.put(key, data);
+}
+
+async function getData(KV: KVNamespace, key: string): Promise<string | null> {
+    return await KV.get(key);
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const request = context.request;
 
-    const reqBody: SensorEvent = await request.json();
+    const reqBody = await request.json();
+
 
     try {
-        const respBody = await createResponse(
-            context.env.DB,
-            {
-                ts: reqBody.eventCreatedTime,
-                deviceId: reqBody.data.deviceProfile.deviceId,
-                deviceName: reqBody.data.deviceProfile.name,
-                temperature: reqBody.data.payload.temperature,
-                humidity: reqBody.data.payload.humidity,
-                pir_status: reqBody.data.payload.pir_status,
-                als_level: reqBody.data.payload.als_level,
-                co2: reqBody.data.payload.co2,
-                tvoc_level: reqBody.data.payload.tvoc_level,
-                tvoc: reqBody.data.payload.tvoc,
-                pressure: reqBody.data.payload.pressure,
-                buzzer_status: reqBody.data.payload.buzzer_status
-            }
-        );
+        // const respBody = await createResponse(
+        //     context.env.DB,
+        //     {
+        //         ts: reqBody.eventCreatedTime,
+        //         deviceId: reqBody.data.deviceProfile.deviceId,
+        //         deviceName: reqBody.data.deviceProfile.name,
+        //         temperature: reqBody.data.payload.temperature,
+        //         humidity: reqBody.data.payload.humidity,
+        //         pir_status: reqBody.data.payload.pir_status,
+        //         als_level: reqBody.data.payload.als_level,
+        //         co2: reqBody.data.payload.co2,
+        //         tvoc_level: reqBody.data.payload.tvoc_level,
+        //         tvoc: reqBody.data.payload.tvoc,
+        //         pressure: reqBody.data.payload.pressure,
+        //         buzzer_status: reqBody.data.payload.buzzer_status
+        //     }
+        // );
 
-        return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
-            status: respBody.success === true ? 200 : 500,
-            statusText: respBody.success === true ? 'OK' : 'Internal Server Error',
+        // return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
+        //     status: respBody.success === true ? 200 : 500,
+        //     statusText: respBody.success === true ? 'OK' : 'Internal Server Error',
+        //     headers: {
+        //         'content-type': 'text/plain',
+        //         'Access-Control-Allow-Origin': '*',
+        //     },
+        // });
+
+        await saveData(context.env.KV, SENSOR_DATA_KEY, JSON.stringify(reqBody))
+        return new Response("Accepted", {
+            status: 200,
+            statusText: 'OK',
             headers: {
                 'content-type': 'text/plain',
                 'Access-Control-Allow-Origin': '*',
@@ -118,9 +139,9 @@ async function createResponse(db: D1Database, data: Payload) {
 export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     try {
-        const responses = await getResponses(context.env.DB);
+        const responses = await getData(context.env.KV, SENSOR_DATA_KEY);
 
-        return new Response(JSON.stringify(responses), {
+        return new Response(responses, {
             status: 200,
             statusText: 'OK',
             headers: {
