@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        var payload = { temperature: 20, humidity: 30, co2: 400 };
+        var deviceData = { eventCreatedTime: 0 };
+
+        getData();
+        setInterval(getData, 300000);
+
+        google.charts.load('current', { 'packages': ['gauge'] });
+        google.charts.setOnLoadCallback(drawTemperatureChart);
+        google.charts.setOnLoadCallback(drawHumidityChart);
+        google.charts.setOnLoadCallback(drawCO2Chart);
+
+        async function getData() {
+            let resp = await fetch('https://dev.mdalbinhossain.pages.dev/aqi/');
+            deviceData = (await resp.json());
+            payload = deviceData.data.payload;
+            document.getElementById('data').innerHTML = `<p>Last updated: ${(new Date(deviceData.eventCreatedTime * 1000)).toLocaleString()}</p>
+            Recieved data:
+            <pre>${JSON.stringify(deviceData, null, 2)}</pre>`
+        }
+
+        function drawTemperatureChart() {
+
+            var options = {
+                width: 1000, height: 300,
+                min: -20, max: 60,
+                greenFrom: 17, greenTo: 27,
+                redFrom: 27, redTo: 60,
+                yellowFrom: -20, yellowTo: 17,
+                minorTicks: 5,
+            };
+
+            const title = 'Temperature'
+
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                [title, payload[title.toLowerCase()]],
+            ]);
+
+            var chart = new google.visualization.Gauge(document.getElementById(title));
+
+            chart.draw(data, options);
+
+            setInterval(function () {
+                data.setValue(0, 1, payload[title.toLowerCase()]);
+                chart.draw(data, options);
+            }, 5000);
+        }
+        function drawHumidityChart() {
+
+            var options = {
+                width: 1000, height: 300,
+                min: 0, max: 100,
+                greenFrom: 30, greenTo: 60,
+                redFrom: 60, redTo: 100,
+                yellowFrom: 0, yellowTo: 30,
+                minorTicks: 5,
+            };
+
+            const title = 'Humidity'
+
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                [title, payload[title.toLowerCase()]],
+            ]);
+
+            var chart = new google.visualization.Gauge(document.getElementById(title));
+
+            chart.draw(data, options);
+
+            setInterval(function () {
+                data.setValue(0, 1, payload[title.toLowerCase()]);
+                chart.draw(data, options);
+            }, 5000);
+        }
+        function drawCO2Chart() {
+
+            var options = {
+                width: 1000, height: 300,
+                min: 0, max: 2000,
+                greenFrom: 0, greenTo: 1000,
+                yellowFrom: 1000, yellowTo: 1500,
+                redFrom: 1500, redTo: 2000,
+                minorTicks: 5,
+            };
+
+            const title = 'CO2'
+
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                [title, payload[title.toLowerCase()]],
+            ]);
+
+            var chart = new google.visualization.Gauge(document.getElementById(title));
+
+            chart.draw(data, options);
+
+            setInterval(function () {
+                data.setValue(0, 1, payload[title.toLowerCase()]);
+                chart.draw(data, options);
+            }, 5000);
+        }
+
+    </script>
+</head>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+    }
+</style>
+
+<body>
+    <h1>Milesight AM307 Sensor Data visualization</h1>
+    <table>
+        <tr>
+            <td>
+                <div id="CO2" style="border: 1px solid #ccc"></div>
+            </td>
+            <td>
+                <div id="Temperature" style="border: 1px solid #ccc"></div>
+            </td>
+            <td>
+                <div id="Humidity" style="border: 1px solid #ccc"></div>
+            </td>
+        </tr>
+    </table>
+    <p id="data"></p>
+</body>
+
+</html>
