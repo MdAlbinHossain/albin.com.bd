@@ -3,100 +3,27 @@ export interface Env {
     DB: D1Database;
 }
 
-const SENSOR_DATA_KEY = 'SENSOR_DATA';
-
-type SensorEvent = {
-    "eventId": string,
-    "eventCreatedTime": number,
-    "eventVersion": string,
-    "eventType": string,
-    "data": {
-        "deviceProfile": {
-            "deviceId": string,
-            "sn": string,
-            "devEUI": string,
-            "name": string
-        },
-        "type": string,
-        "tslId": string | null,
-        "payload": {
-            "temperature": number,
-            "humidity": number,
-            "pir_status": number,
-            "als_level": number,
-            "co2": number,
-            "tvoc_level": number,
-            "tvoc": number,
-            "pressure": number,
-            "buzzer_status": number
-        }
-    }
-}
-
-type Payload = {
-    ts: number,
-    deviceId: string,
-    deviceName: string,
-    temperature: number,
-    humidity: number,
-    pir_status: number,
-    als_level: number,
-    co2: number,
-    tvoc_level: number,
-    tvoc: number,
-    pressure: number,
-    buzzer_status: number
-}
-
-async function saveData(KV: KVNamespace, key: string, data: string) {
-    await KV.put(key, data);
-}
-
-async function getData(KV: KVNamespace, key: string): Promise<string | null> {
-    return await KV.get(key);
-}
+const SENSOR_DATA_KEY = 'SENSOR_DATA_KEY';
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const request = context.request;
 
-    const reqBody = await request.json();
-
+    const reqBody = await readRequestBody(request);
 
     try {
-        // const respBody = await createResponse(
-        //     context.env.DB,
-        //     {
-        //         ts: reqBody.eventCreatedTime,
-        //         deviceId: reqBody.data.deviceProfile.deviceId,
-        //         deviceName: reqBody.data.deviceProfile.name,
-        //         temperature: reqBody.data.payload.temperature,
-        //         humidity: reqBody.data.payload.humidity,
-        //         pir_status: reqBody.data.payload.pir_status,
-        //         als_level: reqBody.data.payload.als_level,
-        //         co2: reqBody.data.payload.co2,
-        //         tvoc_level: reqBody.data.payload.tvoc_level,
-        //         tvoc: reqBody.data.payload.tvoc,
-        //         pressure: reqBody.data.payload.pressure,
-        //         buzzer_status: reqBody.data.payload.buzzer_status
-        //     }
-        // );
+        const respBody = await createResponse(
+            context.env.KV,
+            SENSOR_DATA_KEY,
+            JSON.stringify(reqBody)
+        );
 
-        // return new Response(respBody.success === true ? "Accepted" : respBody.error || "Error", {
-        //     status: respBody.success === true ? 200 : 500,
-        //     statusText: respBody.success === true ? 'OK' : 'Internal Server Error',
-        //     headers: {
-        //         'content-type': 'text/plain',
-        //         'Access-Control-Allow-Origin': '*',
-        //     },
-        // });
-
-        await saveData(context.env.KV, SENSOR_DATA_KEY, JSON.stringify(reqBody))
-        return new Response("Accepted", {
-            status: 200,
-            statusText: 'OK',
+        return new Response(respBody || "Error", {
+            status: respBody !== null ? 200 : 500,
+            statusText: respBody !== null ? 'OK' : 'Internal Server Error',
             headers: {
-                'content-type': 'text/plain',
+                'content-type': respBody !== null ? 'application/json' : 'text/plain',
                 'Access-Control-Allow-Origin': '*',
+                'cache-control': 'no-store',
             },
         });
     }
@@ -107,39 +34,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             headers: {
                 'content-type': 'text/plain',
                 'Access-Control-Allow-Origin': '*',
+                'cache-control': 'no-store',
             },
         });
     }
 
 };
 
-async function createResponse(db: D1Database, data: Payload) {
-    const query = 'INSERT INTO Milesight(ts,deviceId,deviceName,temperature,humidity,pir_status,als_level,co2,tvoc_level,tvoc,pressure,buzzer_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-
-    const results = await db
-        .prepare(query)
-        .bind(
-            data.ts,
-            data.deviceId,
-            data.deviceName,
-            data.temperature,
-            data.humidity,
-            data.pir_status,
-            data.als_level,
-            data.co2,
-            data.tvoc_level,
-            data.tvoc,
-            data.pressure,
-            data.buzzer_status)
-        .run();
-
-    return results;
-};
-
 export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     try {
-        const responses = await getData(context.env.KV, SENSOR_DATA_KEY);
+        const responses = await getResponse(context.env.KV, SENSOR_DATA_KEY);
 
         return new Response(responses, {
             status: 200,
@@ -164,10 +69,26 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 }
 
-async function getResponses(db: D1Database) {
-    const query = 'SELECT * FROM Milesight';
+async function createResponse(kv: KVNamespace, key: string, value: string) {
+    await kv.put(key, value)
+    return await kv.get(key)
+};
 
-    const { results } = await db.prepare(query).all();
+async function getResponse(kv: KVNamespace, key: string) {
+    return await kv.get(key)
+};
 
-    return results;
+async function readRequestBody(request: Request) {
+    const contentType = request.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+        return await request.json();
+    } else if (contentType && contentType.includes('application/text')) {
+        return await request.text();
+    } else if (contentType && contentType.includes('text/html')) {
+        return await request.text();
+    } else if (contentType && contentType.includes('form')) {
+        return Object.fromEntries(await request.formData());
+    } else {
+        return String('a file or binary data');
+    }
 }
