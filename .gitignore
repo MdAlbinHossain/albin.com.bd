@@ -2,8 +2,10 @@ _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+Gemfile.lock
 gemfiles/
 Gemfile
+Gemfile.lock
 node_modules/
 vendor/bundle/
 vendor/cache/
