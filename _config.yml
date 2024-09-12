@@ -81,7 +81,6 @@ exclude:
   - .jekyll-cache/
   - gemfiles/
   - Gemfile
-  - Gemfile.lock
   - node_modules/
   - vendor/bundle/
   - vendor/cache/
@@ -92,3 +91,4 @@ compress_html:
   clippings: all
 
 # google-site-verification: 2hINLENEyfOQQnSezXVDFIn0nSrV_8d0V_RopdbxVKM
+encoding: utf-8
