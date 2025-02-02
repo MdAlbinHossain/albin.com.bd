@@ -12,18 +12,18 @@ type FormResponse = {
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
 	const request = context.request;
-	if (context.params.test) {
-		const reqBody = await readRequestBody(request);
+	// if (context.params.test) {
+	// 	const reqBody = await readRequestBody(request);
 
-		return new Response(JSON.stringify(reqBody), {
-			status: 200,
-			statusText: 'OK',
-			headers: {
-				'content-type': 'text/plain',
-				'Access-Control-Allow-Origin': '*',
-			},
-		});
-	}
+	// 	return new Response(JSON.stringify(reqBody), {
+	// 		status: 200,
+	// 		statusText: 'OK',
+	// 		headers: {
+	// 			'content-type': 'text/plain',
+	// 			'Access-Control-Allow-Origin': '*',
+	// 		},
+	// 	});
+	// }
 
 	const requestOrigin = request.headers.get('Origin');
 	const allowedOrigins = ['https://albin.com.bd', 'https://mdalbinhossain.pages.dev', 'https://dev.mdalbinhossain.pages.dev', 'https://email.mdalbinhossain.workers.dev'];
