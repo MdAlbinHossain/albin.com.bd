@@ -27,37 +27,6 @@ layout: default
       {{ content }}
     </div>
 
-
-    {%- if page.tags.size > 0 -%}
-    <div class="d-flex gap-2 align-items-center my-5">
-      <h4>Tags:</h4>
-      <ol class="list-inline mb-0">
-        {%- for tag in page.tags -%}
-        <li class="list-inline-item">
-          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="btn btn-sm btn-outline-secondary">
-            <span>{{ tag | capitalize }}</span>
-          </a>
-        </li>
-        {%- endfor -%}
-      </ol>
-    </div>
-    {%- endif -%}
-
-    {%- if page.categories.size > 0 -%}
-    <div class="d-flex gap-2 align-items-center my-5">
-      <h4>Categories:</h4>
-      <ol class="list-inline mb-0">
-        {%- for category in page.categories -%}
-        <li class="list-inline-item">
-          <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="btn btn-sm btn-outline-secondary">
-            <span>{{ category | capitalize }}</span>
-          </a>
-        </li>
-        {%- endfor -%}
-      </ol>
-    </div>
-    {%- endif -%}
-
     <div class="d-flex gap-2 align-items-center my-5">
       <h4>Share:</h4>
       <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}"
@@ -140,6 +109,37 @@ layout: default
           {%- endfor -%}
         </ul>
       </div>
+
+      {%- if page.tags.size > 0 -%}
+      <div class="d-flex gap-2 align-items-center my-5">
+        <h4>Tags:</h4>
+        <ol class="list-inline mb-0">
+          {%- for tag in page.tags -%}
+          <li class="list-inline-item">
+            <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="btn btn-sm btn-outline-secondary">
+              <span>{{ tag | capitalize }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ol>
+      </div>
+      {%- endif -%}
+  
+      {%- if page.categories.size > 0 -%}
+      <div class="d-flex gap-2 align-items-center my-5">
+        <h4>Categories:</h4>
+        <ol class="list-inline mb-0">
+          {%- for category in page.categories -%}
+          <li class="list-inline-item">
+            <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="btn btn-sm btn-outline-secondary">
+              <span>{{ category | capitalize }}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ol>
+      </div>
+      {%- endif -%}
+    </div>      
 
   </aside>
 
